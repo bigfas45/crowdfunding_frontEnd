@@ -9,13 +9,31 @@ const Footer = () => {
 
     return(
         <Fragment>
-             <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.4
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
+            <div className="container-fluid">
+            <div className="row">
+              <div className="col-12">
+                <footer className="footer-area d-flex align-items-center flex-wrap">
+                  <div className="copywrite-text">
+                    <p>
+                      Created by <Link to="#">Theme-zome</Link>
+                    </p>
+                  </div>
+
+                  <ul className="footer-nav d-flex align-items-center">
+                    <li>
+                      <Link to="#">About</Link>
+                    </li>
+                    <li>
+                      <Link to="#">Privacy</Link>
+                    </li>
+                    <li>
+                      <Link to="#">Purchase</Link>
+                    </li>
+                  </ul>
+                </footer>
+              </div>
+            </div>
+          </div>
         </Fragment>
     )
 

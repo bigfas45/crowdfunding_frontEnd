@@ -9,125 +9,249 @@ const Header = () => {
 const nav = () => {
     return(
         <Fragment>
-            <nav className="main-header navbar navbar-expand navbar-white navbar-light">
-    {/* <!-- Left navbar links --> */}
-    <ul className="navbar-nav">
-      <li className="nav-item">
-        <Link className="nav-link" data-widget="pushmenu" to="#" role="button"><i className="fas fa-bars"></i></Link>
-      </li>
-      <li className="nav-item d-none d-sm-inline-block">
-        <Link to="index3.html" className="nav-link">Home</Link>
-      </li>
-      <li className="nav-item d-none d-sm-inline-block">
-        <Link to="#" className="nav-link">Contact</Link>
-      </li>
-    </ul>
+        <header className="top-header-area d-flex align-items-center justify-content-between">
+            <div className="left-side-content-area d-flex align-items-center">
+              <div className="mobile-logo mr-3 mr-sm-4">
+                <Link to="index.html">
+                  <img src="img/core-img/small-logo.png" alt="Mobile Logo" />
+                </Link>
+              </div>
 
-    {/* <!-- SEARCH FORM --> */}
-    <form className="form-inline ml-3">
-      <div className="input-group input-group-sm">
-        <input className="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" />
-        <div className="input-group-append">
-          <button className="btn btn-navbar" type="submit">
-            <i className="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+              <div className="ecaps-triggers mr-1 mr-sm-3">
+                <div className="menu-collasped" id="menuCollasped">
+                  <i className="bx bx-menu"></i>
+                </div>
+                <div className="mobile-menu-open" id="mobileMenuOpen">
+                  <i className="bx bx-menu"></i>
+                </div>
+              </div>
 
-    {/* <!-- Right navbar links --> */}
-    <ul className="navbar-nav ml-auto">
-      {/* <!-- Messages Dropdown Menu --> */}
-      <li className="nav-item dropdown">
-        <Link className="nav-link" data-toggle="dropdown" to="#">
-          <i className="far fa-comments"></i>
-          <span className="badge badge-danger navbar-badge">3</span>
-        </Link>
-        <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <Link to="#" className="dropdown-item">
-            {/* <!-- Message Start --> */}
-            <div className="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" className="img-size-50 mr-3 img-circle" />
-              <div className="media-body">
-                <h3 className="dropdown-item-title">
-                  Brad Diesel
-                  <span className="float-right text-sm text-danger"><i className="fas fa-star"></i></span>
-                </h3>
-                <p className="text-sm">Call me whenever you can...</p>
-                <p className="text-sm text-muted"><i className="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
+              <ul className="left-side-navbar d-flex align-items-center">
+                <li className="hide-phone app-search">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search..."
+                  />
+                  <span className="bx bx-search-alt"></span>
+                </li>
+              </ul>
             </div>
-            {/* <!-- Message End --> */}
-          </Link>
-          <div className="dropdown-divider"></div>
-          <Link to="#" className="dropdown-item">
-            {/* <!-- Message Start --> */}
-            <div className="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" className="img-size-50 img-circle mr-3" />
-              <div className="media-body">
-                <h3 className="dropdown-item-title">
-                  John Pierce
-                  <span className="float-right text-sm text-muted"><i className="fas fa-star"></i></span>
-                </h3>
-                <p className="text-sm">I got your message bro</p>
-                <p className="text-sm text-muted"><i className="far fa-clock mr-1"></i> 4 Hours Ago</p>
+
+            <div className="right-side-navbar d-flex align-items-center justify-content-end">
+              <div className="right-side-trigger" id="rightSideTrigger">
+                <i className="bx bx-menu-alt-right"></i>
               </div>
+
+              <ul className="right-side-content d-flex align-items-center">
+                <li className="nav-item dropdown">
+                  <button
+                    type="button"
+                    className="btn dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <span className="flag-thumb-cu">
+                      <img
+                        src="http://demo.riktheme.com/litam/side-menu/img/core-img/l1.jpg"
+                        alt=""
+                      />
+                    </span>
+                  </button>
+                  <div className="dropdown-menu language-dropdown dropdown-menu-right">
+                    <Link to="#" className="dropdown-item mb-15">
+                      <img src="img/core-img/l5.jpg" alt="Image" />{" "}
+                      <span>USA</span>
+                    </Link>
+                    <Link to="#" className="dropdown-item mb-15">
+                      <img src="img/core-img/l2.jpg" alt="Image" />{" "}
+                      <span>German</span>
+                    </Link>
+                    <Link to="#" className="dropdown-item mb-15">
+                      <img src="img/core-img/l3.jpg" alt="Image" />{" "}
+                      <span>Italian</span>
+                    </Link>
+                    <Link to="#" className="dropdown-item">
+                      <img src="img/core-img/l4.jpg" alt="Image" />{" "}
+                      <span>Russian</span>
+                    </Link>
+                  </div>
+                </li>
+
+                <li className="nav-item dropdown">
+                  <div className="dropdown d-none d-lg-inline-block ml-1 show">
+                    <button
+                      type="button"
+                      className="btn dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i className="bx bx-customize"></i>
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                      <div className="px-lg-2">
+                        <div className="row no-gutters">
+                          <div className="col">
+                            <Link className="dropdown-icon-item" to="#">
+                              <img src="img/shop-img/18.jpg" alt="image" />
+                              <span>Motriza</span>
+                            </Link>
+                          </div>
+                          <div className="col">
+                            <Link className="dropdown-icon-item" to="#">
+                              <img src="img/shop-img/19.jpg" alt="image" />
+                              <span>Jisladtd</span>
+                            </Link>
+                          </div>
+                          <div className="col">
+                            <Link className="dropdown-icon-item" to="#">
+                              <img src="img/shop-img/20.jpg" alt="image" />
+                              <span>Dribbble</span>
+                            </Link>
+                          </div>
+                        </div>
+
+                        <div className="row no-gutters">
+                          <div className="col">
+                            <Link className="dropdown-icon-item" to="#">
+                              <img src="img/shop-img/13.png" alt="image" />
+                              <span>GitHub</span>
+                            </Link>
+                          </div>
+                          <div className="col">
+                            <Link className="dropdown-icon-item" to="#">
+                              <img src="img/shop-img/14.png" alt="image" />
+                              <span>Google</span>
+                            </Link>
+                          </div>
+                          <div className="col">
+                            <Link className="dropdown-icon-item" to="#">
+                              <img src="img/shop-img/17.jpg" alt="image" />
+                              <span>Dribbble</span>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="nav-item dropdown">
+                  <button
+                    type="button"
+                    className="btn dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i className="bx bx-bell bx-tada"></i>{" "}
+                    <span className="active-status"></span>
+                  </button>
+                  <div className="dropdown-menu dropdown-menu-right">
+                    <div className="top-notifications-area">
+                      <div className="notifications-heading">
+                        <div className="heading-title">
+                          <h6>Notifications</h6>
+                        </div>
+                        <span>07 New</span>
+                      </div>
+
+                      <div className="notifications-box" id="notificationsBox">
+                        <Link to="#" className="dropdown-item">
+                          <i className="bx bx-shopping-bag"></i>
+                          <div>
+                            <span>Your order is placed</span>
+                            <p className="mb-0 font-12">
+                              Consectetur adipisicing elit. Ipsa, porro!
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Link to="#" className="dropdown-item">
+                          <img src="img/member-img/mail-1.jpg" alt="" />
+                          <div>
+                            <span>Haslina Obeta</span>
+                            <p className="mb-0 font-12">
+                              Consectetur adipisicing elit. Ipsa, porro!
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Link to="#" className="dropdown-item">
+                          <i className="bx bx-atom bg-success"></i>
+                          <div>
+                            <span>Your order is Dollar</span>
+                            <p className="mb-0 font-12">
+                              Consectetur adipisicing elit. Ipsa, porro!
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Link to="#" className="dropdown-item">
+                          <img src="img/member-img/mail-3.jpg" alt="" />
+                          <div>
+                            <span>Your order is placed</span>
+                            <p className="mb-0 font-12">
+                              Consectetur adipisicing elit. Ipsa, porro!
+                            </p>
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="nav-item dropdown">
+                  <button
+                    type="button"
+                    className="btn dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="http://demo.riktheme.com/litam/side-menu/img/member-img/contact-2.jpg"
+                      alt=""
+                    />
+                  </button>
+                  <div className="dropdown-menu profile dropdown-menu-right">
+                    <div className="user-profile-area">
+                      <Link to="#" className="dropdown-item">
+                        <i
+                          className="bx bx-user font-15"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        My profile
+                      </Link>
+                      <Link to="#" className="dropdown-item">
+                        <i
+                          className="bx bx-wallet font-15"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        My wallet
+                      </Link>
+                      <Link to="#" className="dropdown-item">
+                        <i
+                          className="bx bx-wrench font-15"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        settings
+                      </Link>
+                      <Link to="#" className="dropdown-item">
+                        <i
+                          className="bx bx-power-off font-15"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        Sign-out
+                      </Link>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
-            {/* <!-- Message End --> */}
-          </Link>
-          <div className="dropdown-divider"></div>
-          <Link to="#" className="dropdown-item">
-            {/* <!-- Message Start --> */}
-            <div className="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" className="img-size-50 img-circle mr-3" />
-              <div className="media-body">
-                <h3 className="dropdown-item-title">
-                  Nora Silvester
-                  <span className="float-right text-sm text-warning"><i className="fas fa-star"></i></span>
-                </h3>
-                <p className="text-sm">The subject goes here</p>
-                <p className="text-sm text-muted"><i className="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            {/* <!-- Message End --> */}
-          </Link>
-          <div className="dropdown-divider"></div>
-          <Link to="#" className="dropdown-item dropdown-footer">See All Messages</Link>
-        </div>
-      </li>
-      {/* <!-- Notifications Dropdown Menu --> */}
-      <li className="nav-item dropdown">
-        <Link className="nav-link" data-toggle="dropdown" to="#">
-          <i className="far fa-bell"></i>
-          <span className="badge badge-warning navbar-badge">15</span>
-        </Link>
-        <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span className="dropdown-item dropdown-header">15 Notifications</span>
-          <div className="dropdown-divider"></div>
-          <Link to="#" className="dropdown-item">
-            <i className="fas fa-envelope mr-2"></i> 4 new messages
-            <span className="float-right text-muted text-sm">3 mins</span>
-          </Link>
-          <div className="dropdown-divider"></div>
-          <Link to="#" className="dropdown-item">
-            <i className="fas fa-users mr-2"></i> 8 friend requests
-            <span className="float-right text-muted text-sm">12 hours</span>
-          </Link>
-          <div className="dropdown-divider"></div>
-          <Link to="#" className="dropdown-item">
-            <i className="fas fa-file mr-2"></i> 3 new reports
-            <span className="float-right text-muted text-sm">2 days</span>
-          </Link>
-          <div className="dropdown-divider"></div>
-          <Link to="#" className="dropdown-item dropdown-footer">See All Notifications</Link>
-        </div>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" data-widget="control-sidebar" data-slide="true" to="#" role="button"><i
-            className="fas fa-th-large"></i></Link>
-      </li>
-    </ul>
-  </nav>
+          </header>
         </Fragment>
 
     )

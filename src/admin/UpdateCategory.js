@@ -123,59 +123,37 @@ const showLoading = () => (
     const categoryForm = () => {
         return(
             <Fragment>
-                 <section className="content-header">
-      <div className="container-fluid">
-        <div className="row mb-2">
-          <div className="  col-sm-6">
-            <h1>Category Form</h1>
-          </div>
-          <div className="col-sm-6">
-            <ol className="breadcrumb float-sm-right">
-              <li className="breadcrumb-item"><a href="#">Home</a></li>
-              <li className="breadcrumb-item active">Category Form</li>
-            </ol>
+              <div class="offset-3 col-xl-6 box-margin height-card">
+          <div class="card card-body">
+            <h4 class="card-title">Category creation from</h4>
+            {showError()}
+            {showSuccess()}
+            {showLoading()}
+            <div class="row">
+              <div class="col-sm-12 col-xs-12">
+                <form role="form" onSubmit={clickSubmit}>
+                  <div class="form-group">
+                    <label for="exampleInputEmail111"> Name</label>
+                    <input
+                      onChange={handleChange}
+                      value={name}
+                      type="text"
+                      class="form-control"
+                      id="exampleInputEmail111"
+                      placeholder="Enter category name"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn btn-primary mr-2">
+                    Submit
+                  </button>
+                
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-                <section className="content">
-      <div className="container-fluid">
-        <div className="row">
-     
-          <div className="offset-3 col-md-6">
-        
-            <div className="card card-primary">
-              <div className="card-header">
-            
-                <h3 className="card-title">Category</h3>
-              </div>
-            
-              <form role="form" onSubmit={clickSubmit}>
-                <div className="card-body">
-                  <div className="form-group">
-                  {showError()}
-       {showSuccess()}
-       {showLoading()}
-                    <label for="exampleInputEmail1">Category</label>
-                    <input onChange={handleChange} value={name} type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter category Name" />
-                  </div>
-                  
-               
-                </div>
-              
 
-                <div className="card-footer">
-                  <button type="submit" className="btn btn-primary">Submit</button>
-                </div>
-              </form>
-            </div>
-            </div>
-
-
-
-            </div>
-            </div>
-            </section>
             </Fragment>
         )
     }
@@ -184,15 +162,20 @@ const showLoading = () => (
 
 
     return(
-        <Fragment>
-         <Header></Header>
-    <Aside></Aside>
-        <div className="content-wrapper">
-       
-     {  categoryForm()}
-     {redirectUser()}
+      <Fragment>
+      <div className="ecaps-page-wrapper">
+        <Aside></Aside>
+        <div className="ecaps-page-content">
+          <Header></Header>
+          <div className="main-content">
+            <div class="container-fluid">
+              <div class="row">{categoryForm()}</div>
+              {redirectUser()}
+            </div>
+          </div>
         </div>
-        </Fragment>
+      </div>
+    </Fragment>
     )
 
 

@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import Header from "./Header";
 import Aside from "./Aside";
 import { isAuthenticated } from "../auth";
-import { updateProject, getCategories, getProject } from "./ApiAdmin";
+import { updateProject, getCategories, getProject, getProjectRead } from "./ApiAdmin";
 import { Link, Redirect } from "react-router-dom";
 import {API} from '../config';
 import ReactHtmlParser from 'react-html-parser';
@@ -14,6 +14,11 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 
 
 const UpdateAnnualReport = ({match}) => {
+
+const [dataGet, setData] = useState([]);
+
+let des
+
   const [values, setValues] = useState({
     title: "",
     description:"",
@@ -25,6 +30,7 @@ const UpdateAnnualReport = ({match}) => {
     returns: "",
     userId: "",
     duration:"",
+    projectType:"",
     status: 0,
     image:"",
     loading: false,
@@ -45,6 +51,7 @@ const UpdateAnnualReport = ({match}) => {
     returns,
     userId, 
     duration,
+    projectType,
     status,
     image,
     loading,
@@ -71,11 +78,13 @@ const UpdateAnnualReport = ({match}) => {
                 website: data.website,
                 status: data.status,
                 returns: data.returns,
-                userId: data.userId.firstname,
+                userId: data.userId,
+                projectType: data.projectType,
                 duration: data.duration,
                  formData: new FormData()})
             // load security
             initCategories()
+         
           }
       })
   }
@@ -92,9 +101,27 @@ const UpdateAnnualReport = ({match}) => {
     })
   }
 
+
+  const initRead = (projectId) => {
+    getProjectRead(projectId).then(data => {
+      if (data.error) {
+        setValues({...values, error:data.error})
+      }else{
+       setData(data)
+      }
+    })
+  }
+
   useEffect(() => {
     init(match.params.projectId);
+    initRead(match.params.projectId)
   }, []);
+
+  const processProduct = () => {
+   dataGet.map((p, i) => {
+    des = p.description
+   })
+  }
 
   const handleChange = name => event => {
     const value = name === "image" ? event.target.files[0] : event.target.value;
@@ -103,13 +130,10 @@ const UpdateAnnualReport = ({match}) => {
   };
 
   const handleOnChange = (e, editor) => {
-    console.log("description", description)
-    // const descriptionData = editor.getData()
-    // editor.setData(description);
+    const descriptionData = editor.getData();
+    formData.append("description", descriptionData);
+  };
 
-    // formData.append('description', descriptionData);
-  
-  }
 
   const clickSubmit = event => {
     //
@@ -166,191 +190,204 @@ const redirectUser = () => {
   
 
 
-  const projectFrom = () => {
+  const projectForm = () => {
     return (
       <Fragment>
-        <section className="content">
-        <form className="mb-3" onSubmit={clickSubmit}>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="card card-primary">
-                <div className="card-header">
-                  <h3 className="card-title">General</h3>
+        <div className="col-12 box-margin height-card">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title mb-30">Add Project</h6>
+              {showSuccess()}
+              {showError()}
+              <form onSubmit={clickSubmit}>
+                <div className="row">
+                  <div className="col-sm-12">
+                    <div className="form-group">
+                      <label className="control-label">Project Title</label>
+                      <input
+                        onChange={handleChange("title")}
+                        value={title}
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter project title"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="form-group">
+                      <label className="control-label">Project Type</label>
+                      <select
+                        onChange={handleChange("projectType")}
+                        value={projectType}
+                        className="form-control"
+                        id="category"
+                      >
+                        <option>{projectType}</option>
+                        <option value="Loan">Loan</option>
+                        <option value="Equity">Equity</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="form-group">
+                      <label className="control-label">Category</label>
+                      <select
+                        onChange={handleChange("category")}
+                        value={category}
+                        className="form-control"
+                        id="category"
+                        name="category"
+                      >
+                        <option>{category}</option>
 
-                  <div className="card-tools">
-                    <button
-                      type="button"
-                      className="btn btn-tool"
-                      data-card-widget="collapse"
-                      data-toggle="tooltip"
-                      title="Collapse"
-                    >
-                      <i className="fas fa-minus"></i>
-                    </button>
+                        {categories &&
+                          categories.map((c, i) => (
+                            <option key={i} value={c._id}>
+                              {c.name}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
                   </div>
                 </div>
-            
-
-                <div className="card-body">
-                  <div className="form-group">
-                    <label >Project Name</label>
-                    <input onChange={handleChange('title')} value={title} type="text" className="form-control" placeholder="Enter category Name" />
-                </div>
-
-                <div className="form-group">
-                    <label for="inputDescription">Project Description</label>
-                    <textarea
-                    onChange={handleChange('description')}
-                      id="inputDescription"
-                      className="form-control"
-                      rows="4"
-                      value={description}
-                    ></textarea>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <div className="form-group">
+                      <label className="control-label">Location</label>
+                      <input
+                        onChange={handleChange("location")}
+                        value={location}
+                        type="text"
+                        className="form-control"
+                      />
+                    </div>
                   </div>
-
-
-                  <div className="form-group">
-                    <label for="inputStatus">Category</label>
-                <select  onChange={handleChange('category')} className="form-control custom-select"   >
-                      
-                      <option>{category}</option>
-                      {categories && categories.map((c, i) => (
-                        <option key={i} value={c._id}>{c.name}</option>))}
-                    </select>
+                  <div className="col-sm-4">
+                    <div className="form-group">
+                      <label className="control-label"> Website </label>
+                      <input
+                        onChange={handleChange("website")}
+                        value={website}
+                        type="text"
+                        className="form-control"
+                      />
+                    </div>
                   </div>
-                  <div className="form-group">
-                    <label   for="inputClientCompany" >Location</label>
-                    <input
-                    onChange={handleChange('location')}
-                      type="text"
-                      id="inputClientCompany"
-                      className="form-control"
-                      value={location}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label   for="inputProjectLeader" >Website</label>
-                    <input
-                    onChange={handleChange('website')}
-                      type="text"
-                      id="inputProjectLeader"
-                      className="form-control"
-                      value={website}
-                    />
-                  </div>
-              </div>
-            </div>
-            </div>
-            <div className="col-md-6">
-              <div className="card card-secondary">
-                <div className="card-header">
-                  <h3 className="card-title">Budgeted Pledge</h3>
-
-                  <div className="card-tools">
-                    <button
-                      type="button"
-                      className="btn btn-tool"
-                      data-card-widget="collapse"
-                      data-toggle="tooltip"
-                      title="Collapse"
-                    >
-                      <i className="fas fa-minus"></i>
-                    </button>
-                  </div>
-                </div>
-                <div className="card-body">
-                  <div className="form-group">
-                    <label for="inputEstimatedBudget">Estimated Pledge</label>
-                    <input
-                     onChange={handleChange('pledge')}
-                      type="number"
-                      id="inputEstimatedBudget"
-                      className="form-control"
-                      value={pledge}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="inputSpentBudget">Estimated Pledge returns</label>
-                    <input
-                      onChange={handleChange('returns')}
-                      type="number"
-                      id="inputSpentBudget"
-                      className="form-control"
-                      value={returns}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="inputEstimatedDuration">
-                      Estimated Pledge duration
-                    </label>
-                    <input
-                      onChange={handleChange('duration')}
-                      type="number"
-                      id="inputEstimatedDuration"
-                      className="form-control"
-                      value={duration}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label for="inputStatus">User</label>
-                    <select  onChange={handleChange('userId')} className="form-control custom-select" >
-                      
-                      <option>{userId}</option>
-                   
-                        <option value={user._id}>{user.firstname}</option>
-                    </select>
-                  </div>
-
-                  <div className="form-group">
-                    <label for="inputStatus">Status</label>
-                    <select  onChange={handleChange('status')} className="form-control custom-select" >
+                  <div className="col-sm-4">
+                    <div className="form-group">
+                      <label className="control-label"> Status </label>
+                      <select  onChange={handleChange('status')} className="form-control custom-select" >
                       
                       <option>{getStatus(status)}</option>
                    
                         <option value="0">Inactivate</option>
                         <option value="1">Activate</option>
                     </select>
-                  </div>
-
-
-                  <div class="form-group">
-                    <label for="exampleInputFile">Project Image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input  onChange={handleChange('image')} type="file" class="custom-file-input" accept="image/*" />
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                     </div>
-                     
                     </div>
                   </div>
-
-                  <div className="col-sm-6 product-img" > 
-                        <img src={`${API}/project/image/${match.params.projectId}`} alt={title} style={{maxWidth:'100%', maxWidth: '100%'}} class="img-fluid mb-2" />
-                    </div>
-                  
                 </div>
-                
-              </div>
-               
-          <div className="row">
-            <div className="col-12">
-              <Link to="/admin/project/manage" className="btn btn-secondary">
-                Cancel
-              </Link>
-              <input
-                type="submit"
-                value="Update"
-                className="btn btn-success float-right"
-              />
+                <div className="row">
+                  <div className="col-sm-4">
+                    <div className="form-group">
+                      <label className="control-label">Goal </label>
+                      <input
+                        onChange={handleChange("pledge")}
+                        value={pledge}
+                        type="number"
+                        className="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-sm-4">
+                    <div className="form-group">
+                      <label className="control-label">Return</label>
+                      <input
+                        onChange={handleChange("returns")}
+                        value={returns}
+                        type="number"
+                        className="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-sm-4">
+                    <div className="form-group">
+                      <label className="control-label">Duration</label>
+                      <input
+                        onChange={handleChange("duration")}
+                        value={duration}
+                        type="number"
+                        className="form-control"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <div className="form-group">
+                      <label htmlFor="inputDescription">
+                        Project Description
+                      </label>
+                      <CKEditor
+                        editor={ClassicEditor}
+                        name="description"
+                        onChange={handleOnChange}
+                        data={` ${des} ` }
+                      />
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="form-group">
+                      <label className="control-label">Feature Picture</label>
+                      <small>
+                        (This is the first thing that people will see when they
+                        come across your project.)
+                      </small>
+                      <input
+                        onChange={handleChange("image")}
+                        required=""
+                        type="file"
+                        name="file"
+                        className="dropify"
+                        data-height="300"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 single_gallery_item development branding">
+                      <div class="gallery-content">
+                        <img src={`${API}/project/image/${match.params.projectId}`} alt={title} />
+                        <div class="gallery-hover-overlay d-flex justify-content-between">
+                          <div class="port-more-view">
+                            <div class="port-text  mb-30">
+                              <p class="text-white mb-0">Magazine </p>
+                              <h4>
+                                <a href="#" class="text-white">
+                                  Responsive Template
+                                </a>
+                              </h4>
+                            </div>
+                            <div class="port-icon">
+                              <a href="#" class="gallery_icon">
+                                <i class="fa fa-plus"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fa fa-link"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <input
+                  type="submit"
+                  className="btn btn-success float-right"
+                  value="Submit and continue"
+                />
+              </form>
             </div>
-          
           </div>
-            </div>
-          </div>
-          
-        
-          </form>
-        </section>
+        </div>
       </Fragment>
     );
   };
@@ -383,18 +420,24 @@ const redirectUser = () => {
   };
 
   const tableOptions = () => {
-    return(
+    return (
       <Fragment>
-          <div class="card-body pad table-responsive">
-           
-           <Link class="btn btn-success" to={`/admin/project/gallery/${match.params.projectId}`}>Gallery</Link> 
-           <Link class="btn btn-info" to="">Document</Link>
-           <Link class="btn btn-warning" to="">Warning</Link>
-           <Link class="btn btn-danger" to="">Delete</Link>
+        <div className="col-lg-6 height-card box-margin">
+          <div className="card">
+            <div className="card-body">
+              <Link
+                to={`/admin/project/gallery/create/${match.params.projectId}`}
+              >
+                {" "}
+                <button type="button" class="btn btn-outline-primary mb-2 mr-2">
+                  Gallery
+                </button>
+              </Link>
+            </div>
           </div>
+        </div>
       </Fragment>
-
-    )
+    );
   }
 
 
@@ -412,14 +455,17 @@ const getStatus = (status) => {
 
   return (
     <Fragment>
-     <Header></Header>
-      <Aside></Aside>
-      <div className="content-wrapper">
-          {projectHeaderForm()}
-          {tableOptions()}
-     {projectFrom()}
-   {redirectUser()}
-     </div>
+      <div className="ecaps-page-wrapper">
+        <Aside></Aside>
+        <div className="ecaps-page-content">
+          <Header></Header>
+          <div className="main-content">
+            <div className="container-fluid">
+             {tableOptions()} {processProduct()} {projectForm()} {redirectUser()}
+            </div>
+          </div>
+        </div>
+      </div>
     </Fragment>
   );
 };

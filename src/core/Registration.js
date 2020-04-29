@@ -79,13 +79,18 @@ const Registration = () => {
 
   return (
     <Fragment>
-    <Header></Header>
-    <Aside></Aside>
-    <div class="content-wrapper">
-        {content()}
+    <div className="ecaps-page-wrapper">
+      <Aside></Aside>
+      <div className="ecaps-page-content">
+        <Header></Header>
+        <div className="main-content">
+          <div class="container-fluid">
+            {content()}
+          </div>
+        </div>
+      </div>
     </div>
-
-    </Fragment>
+  </Fragment>
   );
 };
 

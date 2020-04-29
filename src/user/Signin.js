@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { signin, authenticate, isAuthenticated } from "../auth";
 import { Spinner } from "reactstrap";
+import img from "../img/nasdlogop.jpg"
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -67,7 +68,7 @@ const Signin = () => {
       if (user && user.role === 1) {
         return <Redirect to="/admin/dashboard"></Redirect>;
       }else{
-        return <Redirect to="/"></Redirect>;
+        return <Redirect to="/"></Redirect>
       }
     }
   };
@@ -75,67 +76,58 @@ const Signin = () => {
   const signinForm = () => {
     return (
       <Fragment>
-        <body class="hold-transition login-page" style={{  
-    backgroundImage: "url(" + "https://nasdng.com/wp-content/uploads/2020/01/PA-FX-Background.jpg" + ")",
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    height: "780px"
-  
-  }}>
-       <div class="login-box">
-  <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
-  </div>
-  {/* <!-- /.login-logo --> */}
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-              {showError()}
+       <body class="login-area">
+
+
+
+ <div class="main-content- h-100vh">
+     <div class="container h-100">
+         <div class="row h-100 align-items-center justify-content-center">
+             <div class="col-md-8 col-lg-5">
+                 <div class="middle-box">
+                     <div class="card">
+                         <div class="card-body p-4">
+
+                         {showError()}
                 {showLoading()}
-      <form action="../../index3.html" method="post">
-        <div class="input-group mb-3">
-          <input     onChange={handleChnage("email")} type="email" class="form-control" placeholder="Email" value={email} />
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input    onChange={handleChnage("password")} type="password" class="form-control" placeholder="Password"    value={password} />
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember" />
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
-          {/* <!-- /.col --> */}
-          <div class="col-4">
-            <button   onClick={clickSubmit} type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          {/* <!-- /.col --> */}
-        </div>
-      </form>
+                            <center><img src={img} height="150" width="200"/></center> 
+                             <h4 class="font-24 mb-1">Login.</h4>
+                             <p class="mb-30">Sign in to your account to continue.</p>
 
-    
-      <Link to="/signup" class="text-center">I dont have a membership</Link>
+                             <form>
+                                 <div class="form-group">
+                                     <label class="float-left" for="emailaddress">Email address</label>
+                                     <input onChange={handleChnage("email")} value={email} class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email"/>
+                                 </div>
 
-    
-    </div>
-    {/* <!-- /.login-card-body --> */}
-  </div>
-</div>
-</body>
+                                 <div class="form-group">
+                                     <a href="forget-password.html" class="text-dark float-right"></a>
+                                     <label class="float-left" for="password">Password</label>
+                                     <input  onChange={handleChnage("password")}  value={password} class="form-control" type="password" required="" id="password" placeholder="Enter your password"/>
+                                 </div>
+
+                                 <div class="form-group d-flex justify-content-between align-items-center mb-3">
+                                      
+                                        <span class="font-13 text-primary"><Link to="/password/reset">Forgot your password?</Link></span>
+                                    </div>
+
+                                 <div class="form-group mb-0">
+                                     <button  onClick={clickSubmit} class="btn btn-primary btn-block" type="submit"> Log In </button>
+                                 </div>
+
+                                 <div class="text-center mt-15"><span class="mr-2 font-13 font-weight-bold">Don't have an account?</span><Link class="font-13 font-weight-bold" to="/signup">Sign up</Link></div>
+
+                             </form>
+
+                           
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ </body>
       </Fragment>
     );
   };

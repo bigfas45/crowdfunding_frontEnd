@@ -1,88 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="shortcut icon" href="images/newNasdIcon.jpg" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="%PUBLIC_URL%/plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="%PUBLIC_URL%/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="%PUBLIC_URL%/dist/css/adminlte.min.css">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="theme-color" content="#000000"/>
+        <meta name="description" content="Web site created using create-react-app"/>
+        <link rel="shortcut icon" href="images/newNasdIcon.jpg"/>
 
-  <link rel="stylesheet" href="%PUBLIC_URL%/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <link rel="stylesheet" href="%PUBLIC_URL%/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-  <link rel="stylesheet" href="%PUBLIC_URL%/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
- 
-  <link rel="stylesheet" href="%PUBLIC_URL%/plugins/ekko-lightbox/ekko-lightbox.css">
-  <link href="%PUBLIC_URL%/dist/css/style.css" rel="stylesheet">
-    <title>NASD CrowdFunding</title>
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
 
-  </head>
-  <body className="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+        <link rel="stylesheet" href="%PUBLIC_URL%/js/default-assets/vector-map/jquery-jvectormap-2.0.2.css"/>
 
 
+        <link rel="stylesheet" href="%PUBLIC_URL%/style.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/default-assets/new/ekko-lightbox.min.css"/>
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/default-assets/new/lightbox.min.css">
+
+        <link href="%PUBLIC_URL%/dropify/dropify.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/dropzone.min.css"/>
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/default-assets/fileupload.css"/>
+
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/default-assets/summernote.css"/>
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/default-assets/datatables.bootstrap4.css">
+
+
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/default-assets/responsive.bootstrap4.css">
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/default-assets/buttons.bootstrap4.css">
+        <link href="%PUBLIC_URL%/dist/css/style.css" rel="stylesheet">
+     
+        <title>NASD CrowdFunding</title>
+
+    </head>
+    <body classname="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+        <!--
+              This HTML file is a template.
+              If you open it directly in the browser, you will see an empty page.
+        
+              You can add webfonts, meta tags, or analytics to this file.
+              The build step will place the bundled scripts into the <body> tag.
+        
+              To begin the development, run `npm start` or `yarn start`.
+              To create a production bundle, use `npm run build` or `yarn build`.
+            -->
+
+
+        <script src="%PUBLIC_URL%/js/jquery.min.js"></script>
+        <script src="%PUBLIC_URL%/js/popper.min.js"></script>
+        <script src="%PUBLIC_URL%/js/bootstrap.min.js"></script>
+        <script src="%PUBLIC_URL%/js/bundle.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/setting.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/fullscreen.js"></script>
+
+        <!-- Active JS -->
+        <!-- <script src="%PUBLIC_URL%/js/default-assets/active.js"></script> -->
+
+        <script src="%PUBLIC_URL%/js/default-assets/apexchart.min.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/dashboard-active.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/peity.min.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/peity-demo.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/vector-map/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/vector-map/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/vector-map/jquery-jvectormap-in-mill.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/vector-map/jquery-jvectormap-us-aea-en.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/vector-map/jquery-jvectormap-uk-mill-en.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/vector-map/jquery-jvectormap-au-mill.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/vector-map/jvectormap.custom.js"></script>
+
+
+        <script src="%PUBLIC_URL%/js/default-assets/ekko-lightbox.min.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/lightbox.min.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/light-box-active.js"></script>
+
+       
+
+        <script src="%PUBLIC_URL%/js/default-assets/summernote.min.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/summernote-active.js"></script>
+
+
+        <script src="%PUBLIC_URL%/js/dropzone.min.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/dropzone-custom.js"></script>
+        <script src="%PUBLIC_URL%/js/default-assets/dropzone-and-module.min.js"></script>
+
+
+        <script src="%PUBLIC_URL%/plugins/bootstrap-wizard/jquery.backstretch.min.js"></script>
+    <script src="%PUBLIC_URL%/plugins/bootstrap-wizard/form.scripts.js"></script>
+
+      <!-- These plugins only need for the run this page -->
+    <script src="%PUBLIC_URL%/js/default-assets/jquery.datatables.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/datatables.bootstrap4.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/datatable-responsive.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/responsive.bootstrap4.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/datatable-button.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/button.bootstrap4.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/button.html5.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/button.flash.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/button.print.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/datatables.keytable.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/datatables.select.min.js"></script>
+    <script src="%PUBLIC_URL%/js/default-assets/demo.datatable-init.js"></script>
 
 
 
-  <!-- admin -->
-  <script src="%PUBLIC_URL%/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="%PUBLIC_URL%/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- overlayScrollbars -->
-  <script src="%PUBLIC_URL%/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="%PUBLIC_URL%/dist/js/adminlte.js"></script>
-  
-  <!-- OPTIONAL SCRIPTS -->
-  <script src="%PUBLIC_URL%/dist/js/demo.js"></script>
-  
-  <!-- PAGE PLUGINS -->
-  <!-- jQuery Mapael -->
-  <script src="%PUBLIC_URL%/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-  <script src="%PUBLIC_URL%/plugins/raphael/raphael.min.js"></script>
-  <script src="%PUBLIC_URL%/plugins/jquery-mapael/jquery.mapael.min.js"></script>
-  <script src="%PUBLIC_URL%/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-  <!-- ChartJS -->
-  <script src="%PUBLIC_URL%/plugins/chart.js/Chart.min.js"></script>
 
-  <script src="%PUBLIC_URL%/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-  <script src="%PUBLIC_URL%/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-  <script src="%PUBLIC_URL%/plugins/moment/moment.min.js"></script>
-  <!-- PAGE SCRIPTS -->
-  <script src="%PUBLIC_URL%/dist/js/pages/dashboard2.js"></script>
-
-  <script src="%PUBLIC_URL%/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
-
-  <script src="%PUBLIC_URL%/plugins2/bootstrap-wizard/jquery.backstretch.min.js"></script>
-
-  <script src="%PUBLIC_URL%/plugins2/bootstrap-wizard/form.scripts.js"></script>
-
-  </body>
+    </body>
 </html>
+

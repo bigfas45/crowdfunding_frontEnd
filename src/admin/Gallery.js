@@ -2,13 +2,15 @@ import React, { Fragment, useState, useEffect } from "react";
 import Header from "./Header";
 import Aside from "./Aside";
 import { isAuthenticated } from "../auth";
-import { createGallery, getProjects } from "./ApiAdmin";
+import { createGallery, getProjects, getProjectGallery } from "./ApiAdmin";
 import { Spinner } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
 import Footer from "./Footer";
+import {API} from '../config';
 
 
-const Project = () => {
+
+const Project = ({match}) => {
     const {user, token} = isAuthenticated();
     const [values, setValues] = useState({
         projects: [],
@@ -26,21 +28,26 @@ const Project = () => {
     } = values;
 
 
-    const init = () => {
-        getProjects().then(data => {
-            if (data.error) {
-                setValues({...values, error: data.error})
-            }else{
-                setValues({
-                    ...values,
-                    projects: data, 
-                     formData: new FormData()
-                    });
-            }
-        });
+    const init = (projectId) => {
+      getProjectGallery(projectId).then(data => {
+        if (data.error) {
+          setValues({...values, error: data.error})
+        }else{
+            setValues({
+                ...values,
+                projects: data, 
+                 formData: new FormData()
+                });
+        }
+    });
     };
+
+  
+
+
+
     useEffect(() => {
-        init();
+        init(match.params.projectId);
        
      }, []);
 
@@ -51,6 +58,8 @@ const Project = () => {
   const handleChange = name => event => {
     const value = name  === 'file' ? event.target.files[0] : event.target.value;
     formData.set(name, value);
+   
+    formData.append('project', match.params.projectId);
     setValues({...values,  error: '', [name]: value});
 };
 
@@ -73,101 +82,78 @@ const clickSubmit = event => {
 };
 
 const showSuccess = () => (
+  <div style={{display: createdProduct ? '' : 'none'}} class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Success - </strong> oject is created.!
+</div>
+);
 
-
-    <div class="alert alert-success alert-dismissible" style={{display: createdProduct ? '' : 'none'}}>
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h5><i class="icon fas fa-check"></i> Alert!</h5>
-    <span><strong>Success!</strong>  Project is updated. </span>
-  </div>
-  
-  
-  );
-  
-  const showError = () => (
-  
-    <div class="alert alert-danger alert-dismissible" style={{display: error ? '' : 'none'}}>
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-ban"></i> Alert!</h5>
-                  <span><strong>Error!</strong>   {error}</span>
-                </div>
-  );
-  
+const showError = () => (
+  <div style={{display: error ? '' : 'none'}} class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Error - </strong> A simple danger alert—check it out!
+</div>
+);
 
 
 const Form = () => {
-    return(
-        <Fragment>
-             <section className="content-header">
-  <div className="container-fluid">
-    <div className="row mb-2">
-      <div className="  col-sm-6">
-        <h1>Project Gallery Form</h1>
-        {showSuccess()}
-        {showError()}
-      </div>
-      <div className="col-sm-6">
-        <ol className="breadcrumb float-sm-right">
-          <li className="breadcrumb-item"><a href="#">Home</a></li>
-          <li className="breadcrumb-item active">Category Form</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
-            <section className="content">
-  <div className="container-fluid">
-    <div className="row">
- 
-      <div className="offset-3 col-md-6">
-    
-        <div className="card card-primary">
-          <div className="card-header">
-        
-            <h3 className="card-title">Category</h3>
-          </div>
-        
+    return (
+      <Fragment>
+        <div class="col-12">
+          <div class="card box-margin">
           <form role="form" onSubmit={clickSubmit}>
-            <div className="card-body">
-            <div className="form-group">
-                    <label for="inputStatus">Project</label>
-                    <select  onChange={handleChange('project')} className="form-control custom-select" value={project}>
-                      
-                      <option>Pleae select</option>
-                      {projects && projects.map((p, i) => (
-                        <option key={i} value={p._id}>{p.title}</option>))}
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputFile">Project Image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input  onChange={handleChange('file')} type="file" class="custom-file-input" accept="image/*" />
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                     </div>
-                     
-                    </div>
-                  </div>
-              
-           
+            <div class="card-body">
+          {showSuccess()}
+          {showError()}
+              <div>
+              <label for="file-1">
+                  <i class="fa fa-upload"></i>
+                  <label for="exampleInputFile">File input</label>
+                </label>
+              <input onChange={handleChange('file')} type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"/>
+               
+              </div>
+            
+             
             </div>
-          
-
             <div className="card-footer">
               <button type="submit" className="btn btn-primary">Submit</button>
             </div>
-          </form>
+            </form>
+          </div>
         </div>
-        </div>
+      </Fragment>
+    );
+}
 
 
+const imageGallery = () => {
+  return(
+    <Fragment>
+    <div class="col-12 box-margin">
+                            <div class="card">
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">Image Gallery</h5>
+                                    <div class="row">
+                                    { projects.map((g, i) => {
+                                      return(
+                                        <div class="col-sm-6 col-xl-3">
+                                            <a href={`${API}/gallery/file/${g._id}`} data-toggle="lightbox" data-gallery="example-gallery"><img src={`${API}/gallery/file/${g._id}`} alt={g.project.title} class="img-fluid mb-30" /></a>
+                                        </div>
+                                         )
+                                        })}
 
-        </div>
-        </div>
-        </section>
-        </Fragment>
-    )
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                 
+              </Fragment>
+  )
 }
 
 
@@ -176,12 +162,18 @@ const Form = () => {
 
   return (
     <Fragment>
-      <Header></Header>
-      <Aside></Aside>
-      <div className="content-wrapper">
-    {Form()}
+      <div className="ecaps-page-wrapper">
+        <Aside></Aside>
+        <div className="ecaps-page-content">
+          <Header></Header>
+          <div className="main-content">
+            <div className="container-fluid">
+              {Form()}
+              {imageGallery()}
+            </div>
+          </div>
+        </div>
       </div>
-      <Footer></Footer>
     </Fragment>
   );
 };

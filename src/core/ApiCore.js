@@ -130,6 +130,58 @@ export const getFilteredProduct = (skip, limit, filters = {}) => {
         .catch(err => console.log(err));
     };
 
+      export const readUser = (userId, token) => {
+        return fetch (`${API}/user/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    export const payment = (userId, token, data) => {
+        return  fetch(`${API}/payment/create/${userId}`, {
+             method: "POST",
+             headers: {
+                 Accept: "application/json",
+                 
+                 Authorization: `Bearer ${token}`
+             },
+             body: data
+         })
+             .then(response => {
+                 return response.json();
+             })
+             .catch(err => {
+                 console.log(err);
+             });
+     };
+
+
+     export const getPaymentByRef = (refId, userId, token) => {
+        return fetch (`${API}/payment/${refId}/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+    
+
+
 
     
  

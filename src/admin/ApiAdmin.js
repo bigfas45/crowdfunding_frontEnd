@@ -108,6 +108,17 @@ export const createCategory = (userId, token, category) => {
         .catch(err => console.log(err));
     };
 
+    export const getProjectRead = (projectId) => {
+        return fetch (`${API}/project/read/${projectId}`, {
+            method: "GET"
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
 
     export const updateProject = (projectId, userId, token, project) => {
         return fetch (`${API}/project/${projectId}/${userId}`, {
@@ -175,7 +186,7 @@ export const createCategory = (userId, token, category) => {
 
 
     export const updateUser = (updatedUserId,  token, user) => {
-        return fetch (`${API}/user/${updatedUserId}`, {
+        return fetch (`${API}/user/update/${updatedUserId}`, {
             method: "PUT",
             headers: {
                 Accept: "application/json",

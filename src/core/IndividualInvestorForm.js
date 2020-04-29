@@ -1244,11 +1244,18 @@ const IndividualInvestorForm = () => {
 
   return (
     <Fragment>
-      <Header></Header>
-      <Aside></Aside>
-      <div className="content-wrapper">
-        {content()}
-      {redirectUser()}
+      <div className="ecaps-page-wrapper">
+        <Aside></Aside>
+        <div className="ecaps-page-content">
+          <Header></Header>
+          <div className="main-content">
+            <div class="container-fluid">
+          
+              {content()}
+              {redirectUser()}
+            </div>
+          </div>
+        </div>
       </div>
     </Fragment>
   );

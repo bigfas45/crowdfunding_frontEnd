@@ -54,90 +54,110 @@ const ManageUser = () => {
   const body = () => {
     return (
       <Fragment>
-        <section className="content">
-          <div className="card">
-            <div className="card-header">
-              <h3 className="card-title">Projects</h3>
+     
+        <div class="row">
+          <div class="col-12 box-margin">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title mb-2">User - Manage</h4>
+                <p class="text-muted font-13 mb-4">
+                  This example shows the DataTables table body scrolling in the
+                  vertical direction. This can generally be seen as an
+                  alternative method to pagination for displaying a large table
+                  in a fairly small vertical area, and as such pagination has
+                  been disabled here (note that this is not mandatory, it will
+                  work just fine with pagination enabled as well!).
+                </p>
 
-              <div className="card-tools">
-                <button
-                  type="button"
-                  className="btn btn-tool"
-                  data-card-widget="collapse"
-                  data-toggle="tooltip"
-                  title="Collapse"
+                <table
+                  id="scroll-vertical-datatable"
+                  class="table dt-responsive nowrap"
                 >
-                  <i className="fas fa-minus"></i>
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-tool"
-                  data-card-widget="remove"
-                  data-toggle="tooltip"
-                  title="Remove"
-                >
-                  <i className="fas fa-times"></i>
-                </button>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Goal</th>
+                      <th>Duration</th>
+                      <th>Category</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {users.map((u, i) => {
+                      count++;
+                      return (
+                        <Fragment>
+                          <tr key={i}>
+                            <td>{count} </td>
+                            <td>
+                              <a>{u.firstname}</a>
+                              <br />
+                              <small> {moment(u.createdAt).format("LL")}</small>
+                            </td>
+                            <td>{u.role === 0 ? "Client" : "Admin"} </td>
+                            <td>
+                              {u.userType === 0 ? "Issuers" : "Investor"}{" "}
+                            </td>
+                            <td>{u.email} </td>
+                            <td className="project-state">{u.telephone}</td>
+                            <td className="project-actions text-right">
+                              <Link
+                                className="btn btn-info btn-sm"
+                                to={`/admin/user/update/${u._id}`}
+                              >
+                                <i className="fas fa-pencil-alt"></i>
+                                Edit
+                              </Link>
+                            </td>
+                          </tr>
+                        </Fragment>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             </div>
-            <div className="card-body p-0">
-              <table className="table table-striped projects">
-                <thead>
-                  <tr>
-                    <th style={{ width: "1%" }}>#</th>
-                    <th style={{ width: "20%" }}>User Name</th>
-                    <th >Role</th>
-                    <th>User Type</th>
-                    <th>Email</th>
-                    <th>
-                      Telephone
-                    </th>
-                    <th style={{ width: "20%" }}></th>
-                  </tr>
-                </thead>
-                <tbody>
-                    {users.map((u,i) => {
-                        count++
-                        return(
-                            <Fragment>
-                                <tr key={i}>
-                                    <td>{count} </td>
-                                    <td>
-                                        <a>{u.firstname }</a>
-                                        <br />
-                                        <small>   {moment(u.createdAt).format('LL')}</small>
-                                    </td>
-                                    <td>{u.role ===0 ? 'Client' : 'Admin'} </td>
-                                    <td>{u.userType ===0 ? 'Issuers' : 'Investor'} </td>
-                                    <td>{u.email} </td>
-                                     <td className="project-state">{u.telephone}</td>
-                                    <td className="project-actions text-right">
-                                        <Link className="btn btn-info btn-sm" to={`/admin/user/update/${u._id}`}>
-                                        <i className="fas fa-pencil-alt"></i>
-                                        Edit
-                                        </Link>
-                                    </td>
-                                </tr>
-                            </Fragment>
-                        )
-                    })}
-                
-                </tbody>
-              </table>
-            </div>
           </div>
-        </section>
+        </div>
       </Fragment>
     );
   };
+  const tableOptions = () => {
+    return (
+      <Fragment>
+        <div className="col-lg-6 height-card box-margin">
+          <div className="card">
+            <div className="card-body">
+              <Link
+                to={`/admin/user/create`}
+              >
+                {" "}
+                <button type="button" class="btn btn-outline-primary mb-2 mr-2">
+                  Add User
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Fragment>
+    );
+  }
 
   return (
     <Fragment>
-      <Header></Header>
-      <Aside></Aside>
-      <div className="content-wrapper">
-        {header()}
-        {body()}
+      <div className="ecaps-page-wrapper">
+        <Aside></Aside>
+        <div className="ecaps-page-content">
+          <Header></Header>
+          <div className="main-content">
+            <div className="container-fluid">
+            {tableOptions()}   {body()}
+            </div>
+          </div>
+        </div>
       </div>
     </Fragment>
   );

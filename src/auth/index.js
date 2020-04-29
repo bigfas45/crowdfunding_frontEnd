@@ -67,3 +67,54 @@ export const isAuthenticated = () => {
     return false;
   }
 }
+
+
+export const sendVerificationMail = (email) => {
+  return fetch (`${API}/mail/signup/verification/${email}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+};
+
+
+export const passwordReset = (email) => {
+  return fetch (`${API}/mail/password/reset/${email}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+};
+
+
+export const verified = (userId) => {
+  return fetch (`${API}/mail/verification/${userId}`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err));
+};
+
+export const updatePassword = (password, userID) => {
+  // console.log(firstname, lastname, email, password)
+  return fetch(`${API}/user/passwordreset/${userID}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(password)
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
