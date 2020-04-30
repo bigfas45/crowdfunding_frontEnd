@@ -76,7 +76,7 @@ const Signin = () => {
   const signinForm = () => {
     return (
       <Fragment>
-       <body class="login-area">
+      
 
 
 
@@ -127,7 +127,7 @@ const Signin = () => {
          </div>
      </div>
  </div>
- </body>
+
       </Fragment>
     );
   };

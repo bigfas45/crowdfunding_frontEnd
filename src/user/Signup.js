@@ -76,7 +76,7 @@ const Signup = () => {
     return (
      
         <div
-          class="alert alert-danger"
+          className="alert alert-danger"
           role="alert"
           style={{ display: error ? "" : "none" }}
         >
@@ -91,7 +91,7 @@ const Signup = () => {
     return (
       <Fragment>
         <div
-          class="alert alert-info"
+          className="alert alert-info"
           role="alert"
           style={{ display: success ? "" : "none" }}
         >
@@ -104,60 +104,60 @@ const Signup = () => {
   const signupForm = () => {
     return (
       <Fragment>
-     <body class="login-area">
+     
    
 
-    <div class="main-content- h-100vh">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center justify-content-center">
-                <div class="col-md-8 col-lg-5">
+    <div className="main-content- h-100vh">
+        <div className="container h-100">
+            <div className="row h-100 align-items-center justify-content-center">
+                <div className="col-md-8 col-lg-5">
               
-                    <div class="middle-box">
-                        <div class="card">
-                            <div class="card-body p-4">
+                    <div className="middle-box">
+                        <div className="card">
+                            <div className="card-body p-4">
                                  <center><img src="img/nasdlogop.jpg" height="150" width="200"/></center> 
-                                <h4 class="font-24 mb-30">Create account.</h4>
+                                <h4 className="font-24 mb-30">Create account.</h4>
                                 {showSuccess()}
                            {showError()}
                                 <form action="#">
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="fullname">First Name</label>
-                                        <input  onChange={handleChnage("firstname")} value={firstname} class="form-control" type="text" id="fullname" placeholder="Enter your name" required/>
+                                        <input  onChange={handleChnage("firstname")} value={firstname} className="form-control" type="text" id="fullname" placeholder="Enter your name" required/>
                                     </div>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="fullname">Last Name</label>
-                                        <input  onChange={handleChnage("lastname")} value={lastname} class="form-control" type="text" id="username" placeholder="Username" required/>
+                                        <input  onChange={handleChnage("lastname")} value={lastname} className="form-control" type="text" id="username" placeholder="Username" required/>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="emailaddress">Email address</label>
-                                        <input  onChange={handleChnage("email")} value={email}  class="form-control" type="email" id="emailaddress" required placeholder="Enter your email"/>
+                                        <input  onChange={handleChnage("email")} value={email}  className="form-control" type="email" id="emailaddress" required placeholder="Enter your email"/>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="telephone">Telephone </label>
-                                        <input  onChange={handleChnage("telephone")} value={telephone}  class="form-control" type="number" id="telephone" required placeholder="Enter your telephone number"/>
+                                        <input  onChange={handleChnage("telephone")} value={telephone}  className="form-control" type="number" id="telephone" required placeholder="Enter your telephone number"/>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="telephone">User Type </label>
-                                        <select  class="form-control"  onChange={handleChnage("userType")} value={userType}>
+                                        <select  className="form-control"  onChange={handleChnage("userType")} value={userType}>
                                           <option value="">Please select account type</option>
                                             <option value="0">Investror</option>
                                             <option value="1">Issuers</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="password">Password</label>
-                                        <input  onChange={handleChnage("password")} value={password} class="form-control" type="password" required id="password" placeholder="Enter your password"/>
+                                        <input  onChange={handleChnage("password")} value={password} className="form-control" type="password" required id="password" placeholder="Enter your password"/>
                                     </div>
 
-                                    <div class="form-group mb-0 mt-15">
-                                        <button  onClick={clickSubmit} class="btn btn-primary btn-block" type="submit">Create my account</button>
+                                    <div className="form-group mb-0 mt-15">
+                                        <button  onClick={clickSubmit} className="btn btn-primary btn-block" type="submit">Create my account</button>
                                     </div>
 
-                                    <div class="text-center mt-15"><span class="mr-2 font-13 font-weight-bold">Already have an account?</span><Link class="font-13 font-weight-bold" to="/signin">Sign in</Link></div>
+                                    <div className="text-center mt-15"><span className="mr-2 font-13 font-weight-bold">Already have an account?</span><Link className="font-13 font-weight-bold" to="/signin">Sign in</Link></div>
 
                                 </form>
 
@@ -169,7 +169,6 @@ const Signup = () => {
             </div>
         </div>
     </div>
-    </body>
       </Fragment>
     );
   };
@@ -179,7 +178,7 @@ const Signup = () => {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    height: "780px"
+    height: "1080px"
   
   }}>
     {signupForm()}
