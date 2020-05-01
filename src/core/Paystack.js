@@ -3,7 +3,6 @@ import Header from "./Header";
 import Aside from "./Aside";
 import { isAuthenticated } from "../auth";
 import { getPaymentByRef, getBraintreeClientToken, processPayment } from "./ApiCore";
-import Dropln from "braintree-web-drop-in-react";
 import PaystackButton from 'react-paystack';
 
 const Paystack = ({ match }) => {
