@@ -10,6 +10,8 @@ import FundProject from "./core/FundProject";
 import Paystack from "./core/Paystack";
 import Invoice from "./core/Invoice";
 import Balance from "./core/Balance";
+import VerificationInvestor from "./core/VerificationConfirmation";
+
 
 
 import IssuerHome from "./issuer/Home";
@@ -75,6 +77,7 @@ const Routes = () => {
         <PrivateRoute path="/project/paystack/:refId" exact component={Paystack} />
         <PrivateRoute path="/invoice/:refId" exact component={Invoice} />
         <PrivateRoute path="/payment/balance" exact component={Balance} />
+        <PrivateRoute path="/investor/verification" exact component={VerificationInvestor} />
 
 
         <IssuerRoute path="/issuer/dashboard" exact component={IssuerHome} />

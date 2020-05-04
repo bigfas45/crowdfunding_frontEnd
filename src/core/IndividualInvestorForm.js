@@ -151,7 +151,7 @@ const IndividualInvestorForm = () => {
 
     if (redirectToProfile) {
         if (!error) {
-            return <Redirect to="/" />
+            return <Redirect to="/investor/verification" />
         }
     }
   

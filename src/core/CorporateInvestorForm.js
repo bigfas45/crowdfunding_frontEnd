@@ -166,7 +166,7 @@ const CorporateInvestorForm = () => {
   const redirectUser = () => {
     if (redirectToProfile) {
       if (!error) {
-        return <Redirect to="/" />;
+        return <Redirect to="/investor/verification" />;
       }
     }
   };

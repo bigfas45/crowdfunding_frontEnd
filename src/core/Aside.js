@@ -34,7 +34,7 @@ const asideBar = () => {
                     <ul className="sidebar-menu" data-widget="tree">
                       
                         <br /><li><Link to="/investment"><i className='fa fa-money'></i><span>INVEST</span></Link></li><hr />
-                        <li><Link to="/"><i className='bx bx-home-heart'></i><span>DASHBOARD</span></Link></li>
+                        <li><Link to="/investor/dashboard"><i className='bx bx-home-heart'></i><span>DASHBOARD</span></Link></li>
                         <li><Link to="/payment/balance"><i className='fa fa-money'></i><span> STATEMENT</span></Link></li>
                       
                     </ul>
