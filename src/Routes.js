@@ -8,6 +8,23 @@ import Investment from "./core/Investment";
 import InvestmentDetails from "./core/InvestmentDetails";
 import FundProject from "./core/FundProject";
 import Paystack from "./core/Paystack";
+import Invoice from "./core/Invoice";
+import Balance from "./core/Balance";
+
+
+import IssuerHome from "./issuer/Home";
+import IssuerProject from "./issuer/Project";
+import IssuerManageProducts from "./issuer/ManageProducts";
+import IssuerUpdateProducts from "./issuer/UpdateProduct";
+import IssuerGallery from "./issuer/Gallery";
+import IssuerProjectGallery from "./issuer/ProjectGallery";
+import Document from "./issuer/Document";
+import Payment from "./issuer/Payment";
+import IssuerApplicationForm from "./issuer/IssuerApplicationForm";
+import VerificationIssuer from "./issuer/VerificationConfirmation";
+
+
+
 
 import {signout} from "./auth";
 import Signup from "./user/Signup";
@@ -19,6 +36,7 @@ import ResetPassword from "./user/ResetPassword";
 import ForgetPassword from "./user/ForgetPassword";
 import PrivateRoute from './auth/PrivateRoute'
 import AdminRoute from './auth/AdminRoute'
+import IssuerRoute from './auth/IssuerRoute'
 import AdminHome from "./admin/Home";
 import Category from "./admin/Category";
 import UpdateCategory from "./admin/UpdateCategory";
@@ -29,6 +47,8 @@ import Gallery from "./admin/Gallery";
 import ProjectGallery from "./admin/ProjectGallery";
 import ManageUser from "./admin/ManageUser";
 import UpdateUser from "./admin/UpdateUser";
+import IssuerApplication from "./admin/IssuerApplication";
+import IssuerApplicationUpdate from "./admin/IssuerApplicationUpdate";
 
 
 
@@ -45,7 +65,7 @@ const Routes = () => {
     <BrowserRouter>
  
       <Switch>
-        <PrivateRoute path="/" exact component={Home} />
+        <PrivateRoute path="/investor/dashboard" exact component={Home} />
         <PrivateRoute path="/investor/registration" exact component={Registration} />
         <PrivateRoute path="/individual/investor/registration" exact component={IndividualInvestorForm} />
         <PrivateRoute path="/corporate/investor/registration" exact component={CorporateInvestorForm} />
@@ -53,6 +73,22 @@ const Routes = () => {
         <PrivateRoute path="/investment/:projectId" exact component={InvestmentDetails} />
         <PrivateRoute path="/project/fund/:projectId" exact component={FundProject} />
         <PrivateRoute path="/project/paystack/:refId" exact component={Paystack} />
+        <PrivateRoute path="/invoice/:refId" exact component={Invoice} />
+        <PrivateRoute path="/payment/balance" exact component={Balance} />
+
+
+        <IssuerRoute path="/issuer/dashboard" exact component={IssuerHome} />
+        <IssuerRoute path="/issuer/project/create" exact component={IssuerProject} />
+        <IssuerRoute path="/issuer/project/manage" exact component={IssuerManageProducts} />
+        <IssuerRoute path="/issuer/project/update/:projectId" exact component={IssuerUpdateProducts} />
+        <IssuerRoute path="/issuer/project/gallery/create/:projectId" exact component={IssuerGallery} />
+        <IssuerRoute path="/issuer/project/gallery/:projectId" exact component={IssuerProjectGallery} />
+        <IssuerRoute path="/issuer/project/document/create/:projectId" exact component={Document} />
+        <IssuerRoute path="/issuer/project/payment/:projectId" exact component={Payment} />
+        <IssuerRoute path="/issuer/application" exact component={IssuerApplicationForm} />
+        <IssuerRoute path="/issuer/verification" exact component={VerificationIssuer} />
+
+
         <AdminRoute path="/admin/dashboard" exact component={AdminHome} />
         <AdminRoute path="/admin/category/create" exact component={Category} />
         <AdminRoute path="/category/:catId" exact component={UpdateCategory} />
@@ -63,10 +99,12 @@ const Routes = () => {
         <AdminRoute path="/admin/project/gallery/:projectId" exact component={ProjectGallery} />
         <AdminRoute path="/admin/user/manage" exact component={ManageUser} />
         <AdminRoute path="/admin/user/update/:userId" exact component={UpdateUser} />
+        <AdminRoute path="/admin/issuer/application" exact component={IssuerApplication} />
+        <AdminRoute path="/admin/issuer/application/:Id" exact component={IssuerApplicationUpdate} />
 
 
         <Route path="/signout" exact component={signout} />
-        <Route path="/signin" exact component={Signin} />
+        <Route path="/" exact component={Signin} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/password/reset" exact component={ForgetPassword} />
         <Route path="/verification" exact component={Verification} />

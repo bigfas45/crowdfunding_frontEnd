@@ -198,15 +198,48 @@ export const getFilteredProduct = (skip, limit, filters = {}) => {
     };
 
 
-    export const processPayment = (userId, token, paymentData) => {
-        return fetch (`${API}/braintree/payment/${userId}`, {
-            method: "POST",
+    export const processPayment = (payId, userId, token, data) => {
+        return fetch (`${API}/payment/${payId}/${userId}`, {
+            method: "PUT",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(paymentData)
+            body: data
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+    
+
+
+    export const paymentMail = (refId, userId, token) => {
+        return fetch (`${API}/mail/payment/${refId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    export const getUserPayment = ( userId, token) => {
+        return fetch (`${API}//payment/user/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
         })
         .then(response => {
             return response.json();

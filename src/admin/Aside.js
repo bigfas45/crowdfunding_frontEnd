@@ -34,15 +34,16 @@ const asideBar = () => {
                         <li><a href="/"><i className='bx bx-home-heart'></i><span>Dashboard</span></a></li>
                         <li><Link to="/admin/category/create"><i className='fa fa-money'></i><span>Category</span></Link></li>
                         <li><Link to="/admin/project/manage"><i className='fa fa-money'></i><span>Project</span></Link></li>
-                        {/* <li><Link to="/admin/project/manage"><i className='fa fa-money'></i><span>Project</span></Link></li>
+                        {/* <li><Link to="/admin/project/manage"><i className='fa fa-money'></i><span>Applications</span></Link></li> */}
                         <li className="treeview">
-                            <Link to="#"><i className='bx bx-home-heart'></i> <span>User Manage</span> <i className="fa fa-angle-right"></i></Link>
+                            <Link to="#"><i className='bx bx-home-heart'></i> <span>Applications</span> <i className="fa fa-angle-right"></i></Link>
                             <ul className="treeview-menu">
-                                <li><Link to="#">Customers</Link></li>
-                                <li><Link to="#">Reports</Link></li>
+                                <li><Link to="/admin/issuer/application">Issuers</Link></li>
+                                <li><Link to="#">Individual Investors</Link></li>
+                                <li><Link to="#">Corporate Investors</Link></li>
                                
                             </ul>
-                        </li> */}
+                        </li>
                           <li><Link to="/admin/user/manage"><i className='fa fa-money'></i><span>User</span></Link></li>
                       
                     </ul>

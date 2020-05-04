@@ -67,8 +67,10 @@ const Signin = () => {
     if (redirectToReferrer) {
       if (user && user.role === 1) {
         return <Redirect to="/admin/dashboard"></Redirect>;
-      }else{
-        return <Redirect to="/"></Redirect>
+      }else if(user && user.role === 0 && user.userType ===1 ){
+        return <Redirect to="/investor/dashboard"></Redirect>;
+      }else if(user && user.role === 0 && user.userType ===0 ){
+        return <Redirect to="/issuer/dashboard"></Redirect>;
       }
     }
   };

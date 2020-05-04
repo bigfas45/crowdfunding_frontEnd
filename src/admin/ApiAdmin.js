@@ -219,4 +219,95 @@ export const createCategory = (userId, token, category) => {
 
 
 
+    export const getIssuerApplication = (userId, token) => {
+        return fetch (`${API}/issuer/user/application/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+    export const getIssuerPApplication = (id, userId, token) => {
+        return fetch (`${API}/issuer/application/${id}/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    export const updateStatus = (id, userId, token) => {
+        return fetch (`${API}/issuer/status/update/${id}/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    export const declineStatusUpdate = (id, userId, token) => {
+        return fetch (`${API}/issuer/status/decline/${id}/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+
+    
+
+
+    export const sendDeclineMail = (email) => {
+        return fetch (`${API}/mail/application/decline/${email}`, {
+            method: "GET",
+           
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+    export const sendApprovedMail = (email) => {
+        return fetch (`${API}/mail/application/accept/${email}`, {
+            method: "GET",
+           
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+
+
+
+
+
  

@@ -3,11 +3,11 @@ import {Route, Redirect} from 'react-router-dom';
 import {isAuthenticated} from './index';
 
 
-const PrivateRoute = ({component: Component, ...rest}) => (
+const IssuerRoute = ({component: Component, ...rest}) => (
 
   
      
-    <Route {...rest} render={props => isAuthenticated() && isAuthenticated().user.userType === 1  ? (
+    <Route {...rest} render={props => isAuthenticated() && isAuthenticated().user.userType === 0  ? (
         <Component {...props} />
     ) : (
         
@@ -15,4 +15,4 @@ const PrivateRoute = ({component: Component, ...rest}) => (
     )} />
 );
 
-export default PrivateRoute
+export default IssuerRoute

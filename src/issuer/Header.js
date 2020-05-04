@@ -246,7 +246,7 @@ const Header = ({ history }) => {
                       </Link>
                       <span  onClick={() =>
                         signout(() => {
-                          history.push("/investor/dashboard");
+                          history.push("/issuer/dashboard");
                         })
                       }
                       style={{ cursor: "pointer" }} className="dropdown-item">
