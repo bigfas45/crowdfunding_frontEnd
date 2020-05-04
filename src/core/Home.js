@@ -7,6 +7,8 @@ import  image from  '../img/company.svg';
 import  image2 from  '../img/person-investor.svg';
 import {getIndividualInvestorForm, getCorporateInvestorForm } from "./ApiCore";
 import Footer from "./Footer";
+import swal from "sweetalert";
+
 
 
 const Home = () => {
@@ -68,6 +70,25 @@ useEffect(() => {
   init();
   init2();
 }, []);
+
+
+
+const dashboarddashboard = () => {
+  swal({
+    title: ` Disclaimer`,
+    text: `NASD CROWDY PORTAL [“Portal”] is a product of NASD Technology Service Limited.
+    Users of this Portal are subject to this Disclaimer, the Privacy Statement, Terms of Use, Risk Warning and all other Policies and Procedures.
+    
+    Any User that accesses this Portal agrees to be bound by this Disclaimer. All Investments including Crowdfunding Projects submitted on the NASD Crowdy Portals are highly speculative in nature and involves substantial risk of loss. We therefore encourage Investors to get advice from their Professional Investment Advisor and to make independent investigations before acting on any information published on the Portal. 
+    
+    We make no endorsements, representations or warranties whatsoever that any Investor will, or is likely to, achieve profits based on expected or simulated performance of a Crowdfunding Project as this is not necessarily indicative of future results.
+   
+    Please click "Ok" before proceeding.
+    `,
+    icon: "success"
+  });
+};
+
 
 
 
@@ -469,6 +490,7 @@ useEffect(() => {
 
   return (
     <Fragment>
+      {dashboarddashboard()}
       <div className="ecaps-page-wrapper">
         <Aside></Aside>
         <div className="ecaps-page-content">
