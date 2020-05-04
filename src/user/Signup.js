@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import {signup, sendVerificationMail} from '../auth';
+import { Spinner, Button } from "reactstrap";
 
 
 
@@ -13,9 +14,10 @@ const Signup = () => {
     password: "",
     telephone:"",
     error: "",
+    loading: false,
     success: false
   });
-  const { firstname, lastname, email, userType, password, telephone, error, success } = values;
+  const { firstname, lastname, email, userType, password, telephone, error, success, loading } = values;
 
   const handleChnage = name => event => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -52,10 +54,10 @@ const Signup = () => {
 
   const clickSubmit = event => {
     event.preventDefault();
-    setValues({...values, error:false});
+    setValues({...values, error:false, loading: true});
     signup({ firstname, lastname, email, password, telephone, userType }).then(data => {
       if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
+        setValues({ ...values, error: data.error, success: false, loading: false });
       } else {
         setValues({
           ...values,
@@ -100,6 +102,22 @@ const Signup = () => {
       </Fragment>
     );
   };
+
+
+  const showLoading = () =>
+    loading && (
+      <div>
+        <Spinner type="grow" color="primary" />
+        <Spinner type="grow" color="secondary" />
+        <Spinner type="grow" color="success" />
+        <Spinner type="grow" color="danger" />
+        <Spinner type="grow" color="warning" />
+        <Spinner type="grow" color="info" />
+        <Spinner type="grow" color="light" />
+        <Spinner type="grow" color="dark" />
+      </div>
+    );
+
 
   const signupForm = () => {
     return (
@@ -154,8 +172,16 @@ const Signup = () => {
                                     </div>
 
                                     <div className="form-group mb-0 mt-15">
-                                        <button  onClick={clickSubmit} className="btn btn-primary btn-block" type="submit">Create my account</button>
-                                    </div>
+                                    {loading && loading ? (<Button class="btn btn-primary btn-block" variant="success" disabled>
+    <Spinner
+      as="span"
+      animation="grow"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
+    Loading...
+  </Button>) : ( <button  onClick={clickSubmit} class="btn btn-primary btn-block" type="submit"> Log In </button>)}                                    </div>
 
                                     <div className="text-center mt-15"><span className="mr-2 font-13 font-weight-bold">Already have an account?</span><Link className="font-13 font-weight-bold" to="/signin">Sign in</Link></div>
 

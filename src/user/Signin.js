@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { signin, authenticate, isAuthenticated } from "../auth";
-import { Spinner } from "reactstrap";
+import { Spinner, Button } from "reactstrap";
 import img from "../img/nasdlogop.jpg"
 
 const Signin = () => {
@@ -114,8 +114,21 @@ const Signin = () => {
                                     </div>
 
                                  <div class="form-group mb-0">
-                                     <button  onClick={clickSubmit} class="btn btn-primary btn-block" type="submit"> Log In </button>
+                                    
+
+                                     {loading && loading ? (<Button class="btn btn-primary btn-block" variant="success" disabled>
+    <Spinner
+      as="span"
+      animation="grow"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
+    Loading...
+  </Button>) : ( <button  onClick={clickSubmit} class="btn btn-primary btn-block" type="submit"> Log In </button>)}
                                  </div>
+
+
 
                                  <div class="text-center mt-15"><span class="mr-2 font-13 font-weight-bold">Don't have an account?</span><Link class="font-13 font-weight-bold" to="/signup">Sign up</Link></div>
 
