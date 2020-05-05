@@ -240,8 +240,8 @@ const UpdateUser = ({ match }) => {
                       >
                         <option>{getUserType(userType)}</option>
 
-                        <option value="0">Investor</option>
-                        <option value="1">Issuers</option>
+                        <option value="1">Investor</option>
+                        <option value="0">Issuers</option>
                       </select>
                     </div>
                   </div>
