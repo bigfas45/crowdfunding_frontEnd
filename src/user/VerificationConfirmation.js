@@ -36,7 +36,7 @@ const Verification = ({match}) => {
         <div class="outercontainer4">
           <h1>Your account has been verified!</h1>
           <p class="lead"><strong>Thank you for verifying your account and beginning the application process for NASD Crowdfunding</strong></p>
-          <p>From now on, you will be able to access your application by logging into the NASD Crowdfunding Platform with your email address and password at  <Link class="btn btn-primary btn-sm" to="/signin" role="button"> Signin</Link>.</p>
+          <p>From now on, you will be able to access your application by logging into the NASD Crowdfunding Platform with your email address and password at  <Link class="btn btn-primary btn-sm" to="/" role="button"> Signin</Link>.</p>
           
           </div>
       </div>

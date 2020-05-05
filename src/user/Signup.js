@@ -183,7 +183,7 @@ const Signup = () => {
     Loading...
   </Button>) : ( <button  onClick={clickSubmit} class="btn btn-primary btn-block" type="submit"> Log In </button>)}                                    </div>
 
-                                    <div className="text-center mt-15"><span className="mr-2 font-13 font-weight-bold">Already have an account?</span><Link className="font-13 font-weight-bold" to="/signin">Sign in</Link></div>
+                                    <div className="text-center mt-15"><span className="mr-2 font-13 font-weight-bold">Already have an account?</span><Link className="font-13 font-weight-bold" to="/">Sign in</Link></div>
 
                                 </form>
 
