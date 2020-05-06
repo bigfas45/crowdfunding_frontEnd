@@ -164,12 +164,10 @@ const dashboarddashboard = () => {
          <div class="row">
                         <div class="col-lg-8 box-margin height-card">
                             <div class="card">
-                                {/* <div class="card-body">
-                                    <div class="crm-chart">
-                                        <div id="apex7"></div>
-                                    </div>
-                                </div> */}
-                                {Reg()}
+                              
+                             {process()}
+
+                                {individual === _id || corporate === _id ? '' : Reg()}
                             </div>
                         </div>
 
@@ -184,38 +182,8 @@ const dashboarddashboard = () => {
 
                                   
                                     <ul class="dashboard-active-timeline list-unstyled" id="dashboardTimeline">
-                                        <li class="d-flex align-items-center mb-15">
-                                            <div class="timeline-icon bg-primary mr-3">
-                                                <i class="icon_plus"></i>
-                                            </div>
-                                            <div class="timeline-info">
-                                                <h6 class="mb-1 font-15">Client Meeting</h6>
-                                                <span>Bonbon macaroon jelly beans gummi bears jelly lollipop apple</span>
-                                                <p class="mb-0 font-13">25 mins ago</p>
-                                            </div>
-                                        </li>
-
-                                        <li class="d-flex align-items-center mb-15">
-                                            <div class="timeline-icon bg-warning mr-3">
-                                                <i class="icon_mic_alt"></i>
-                                            </div>
-                                            <div class="timeline-info">
-                                                <h6 class="mb-1 font-15">Email Newsletter</h6>
-                                                <span>Cupcake gummi bears soufflé caramels candy</span>
-                                                <p class="mb-0 font-13">29 mins ago</p>
-                                            </div>
-                                        </li>
-
-                                        <li class="d-flex align-items-center mb-15">
-                                            <div class="timeline-icon bg-danger mr-3">
-                                                <i class="icon_mail_alt"></i>
-                                            </div>
-                                            <div class="timeline-info">
-                                                <h6 class="mb-1 font-15">Plan Webinar</h6>
-                                                <span>Candy ice cream cake.</span>
-                                                <p class="mb-0 font-13">28 mins ago</p>
-                                            </div>
-                                        </li>
+                                      
+                                     
 
                                         <li class="d-flex align-items-center mb-15">
                                             <div class="timeline-icon bg-success mr-3">
@@ -228,16 +196,7 @@ const dashboarddashboard = () => {
                                             </div>
                                         </li>
 
-                                        <li class="d-flex align-items-center mb-15">
-                                            <div class="timeline-icon bg-danger mr-3">
-                                                <i class="icon_mail_alt"></i>
-                                            </div>
-                                            <div class="timeline-info">
-                                                <h6 class="mb-1 font-15">Plan Webinar</h6>
-                                                <span>Candy ice cream cake.</span>
-                                                <p class="mb-0 font-13">50 mins ago</p>
-                                            </div>
-                                        </li>
+                                      
                                     </ul>
                                 </div>
                             </div>
@@ -250,239 +209,65 @@ const dashboarddashboard = () => {
     )
   }
 
-    const contentHeader = () => {
-        return (
-            <Fragment> {/* <!-- Content Header (Page header) --> */}
-                <div className="content-header">
-                    <div className="container-fluid">
-                        <div className="row mb-2">
-                            <div className="col-sm-6">
-                                <h1 className="m-0 text-dark">Welcome {firstname}&nbsp;{lastname}</h1>
-                            </div>
-                            <div className="col-sm-6">
-                                <ol className="breadcrumb float-sm-right">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">Home</a>
-                                    </li>
-                                    <li className="breadcrumb-item active">Dashboard v2</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Fragment>
-        )
-    }
-
-  //   const display = (individual)  => {
-      
-  //  if (individual === _id || corporate === _id) {
-  //    return ''
-  //  } else {
-  //   return  Reg();
-  //  }
-  //   }
 
 
-    // const content = () => {
-    //     return (
-    //         <Fragment>
-    //             <section className="content">
-    //                 <div className="container-fluid">
-    //                     <div className="row">
-    //                         <div className="col-9">
-    //                             <div className="callout callout-info">
-    //                                 <h5>
-    //                                     <i className="fas fa-info"></i>
-    //                                     Note:</h5>
-    //                                 This is your dashboard. An overview of everything you have going on at any time such as your assets, investments, trades and fundraising campaigns, will show up here.
-    //                             </div>
-    //                             {process()}
-    //                             {/* {display(individual)} */}
 
-    //                             {individual === _id || corporate === _id ? '' : Reg()}
-                         
-    //                         </div>
-    //                         <div className="col-3">
-                                
-                                
-    //                           {  lastActivty() }
-    //                         </div>
-
-
-    //                     </div>
-    //                 </div>
-    //             </section>
-    //         </Fragment>
-    //     )
-    // }
-
-
-    const contentnew = () => {
-      return (
-          <Fragment>
-              <div className="main-content">
-          <div className="container-fluid">
-            <div className="row justify-content-center">
-              <div className="col-sm-6 col-lg-4">
-                <div className="card box-margin">
-                  <div className="card-body">
-                    <div className="float-right">
-                      <i className="fa fa-id-badge text-danger font-30"></i>
-                    </div>
-                    <span className="badge badge-danger">Sessions</span>
-                    <h4 className="my-3">26k</h4>
-                    <p className="mb-0">
-                      <span className="text-success">
-                        <i
-                          className="fa fa-level-up mr-1"
-                          aria-hidden="true"
-                        ></i>
-                        7.5%
-                      </span>
-                      New Sessions Today
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-sm-6 col-lg-4">
-                <div className="card box-margin">
-                  <div className="card-body">
-                    <div className="float-right">
-                      <i className="fa fa-bar-chart-o font-30"></i>
-                    </div>
-                    <span className="badge badge-secondary">
-                      Avg.Sessions
-                    </span>
-                    <h4 className="my-3">00:28</h4>
-                    <p className="mb-0">
-                      <span className="text-danger">
-                        <i
-                          className="fa fa-level-down mr-1"
-                          aria-hidden="true"
-                        ></i>
-                        1.4%
-                      </span>{" "}
-                      Weekly Avg.Sessions
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-sm-6 col-lg-4">
-                <div className="card box-margin">
-                  <div className="card-body">
-                    <div className="float-right">
-                      <i className="fa fa-codiepie text-warning font-30"></i>
-                    </div>
-                    <span className="badge badge-warning">Bounce Rate</span>
-                    <h4 className="my-3">$2500</h4>
-                    <p className="mb-0">
-                      <span className="text-danger">
-                        <i
-                          className="fa fa-level-down mr-1"
-                          aria-hidden="true"
-                        ></i>
-                        45%
-                      </span>{" "}
-                      Bounce Rate Weekly
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        
-        </div>
-          </Fragment>
-      )
-  }
 
   const content = () => {
     return (
       <Fragment>
-       
-         
-
        <div class="row">
-                      
-                        <div class="col-xl-3 col-md-6 height-card box-margin">
+                        <div class="col-md-6 col-xl-4 height-card box-margin">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>86%</h5>
-                                            <p class="mb-0">Total Product</p>
+                                    <div class="single-widget-area d-flex align-items-center justify-content-between">
+                                        <div class="profit-icon">
+                                            <i class="fa fa-list"></i>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="progress h-8 mb-0 mt-20 h-8">
-                                                <div class="progress-bar bg-primary" role="progressbar" style={{width: "85%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
+
+                                        <div class="total-profit">
+                                            <h6 class="mb-0">Total projects</h6>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">50</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                     
-                        <div class="col-xl-3 col-md-6 height-card box-margin">
+
+                        <div class="col-md-6 col-xl-4 height-card box-margin">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>40%</h5>
-                                            <p class="mb-0">Pending Product</p>
+                                    <div class="single-widget-area d-flex align-items-center justify-content-between">
+                                        <div class="profit-icon">
+                                            <i class="zmdi zmdi-network"></i>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="progress h-8 mb-0 mt-20 h-8">
-                                                <div class="progress-bar bg-info" role="progressbar" style={{width: "40%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
+
+                                        <div class="total-profit">
+                                            <h6 class="mb-0">Total amount invested</h6>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">200,000</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                      
-                        <div class="col-xl-3 col-md-6 height-card box-margin">
+
+                        <div class="col-md-6 col-xl-4 height-card box-margin">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>56%</h5>
-                                            <p class="mb-0">Product A</p>
+                                    <div class="single-widget-area d-flex align-items-center justify-content-between">
+                                        <div class="profit-icon">
+                                            <i class="fa fa-money"></i>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="progress mb-0 mt-20 h-8">
-                                                <div class="progress-bar bg-primary" style={{width: "60%"}} role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       
-                        <div class="col-xl-3 col-md-6 height-card box-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>26%</h5>
-                                            <p class="mb-0">Product B</p>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="progress mb-0 mt-20 h-8">
-                                                <div class="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
+
+                                        <div class="total-profit">
+                                            <h6 class="mb-0">Investment Balance</h6>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">5,000,000</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-         
-
-         
       </Fragment>
     );
   };

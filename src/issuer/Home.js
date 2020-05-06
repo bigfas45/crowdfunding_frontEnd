@@ -163,11 +163,15 @@ init();
                         
                       
                          
-                                {issuerUserId === _id   ? ( <div class="card-body">
+                                {issuerUserId === _id   ? ( 
+                                  <Fragment>
+                                    <div class="card-body">
                                     <div class="crm-chart">
                                         <div id="apex7"></div>
                                     </div>
-                                </div>) : Reg()}
+                                </div>
+                                  </Fragment>
+                                ) : Reg()}
                             </div>
                         </div>
 
@@ -193,49 +197,11 @@ init();
                                             </div>
                                         </li>
 
-                                        <li class="d-flex align-items-center mb-15">
-                                            <div class="timeline-icon bg-warning mr-3">
-                                                <i class="icon_mic_alt"></i>
-                                            </div>
-                                            <div class="timeline-info">
-                                                <h6 class="mb-1 font-15">Email Newsletter</h6>
-                                                <span>Cupcake gummi bears soufflé caramels candy</span>
-                                                <p class="mb-0 font-13">29 mins ago</p>
-                                            </div>
-                                        </li>
+                                       
+                                      
+                                      
 
-                                        <li class="d-flex align-items-center mb-15">
-                                            <div class="timeline-icon bg-danger mr-3">
-                                                <i class="icon_mail_alt"></i>
-                                            </div>
-                                            <div class="timeline-info">
-                                                <h6 class="mb-1 font-15">Plan Webinar</h6>
-                                                <span>Candy ice cream cake.</span>
-                                                <p class="mb-0 font-13">28 mins ago</p>
-                                            </div>
-                                        </li>
-
-                                        <li class="d-flex align-items-center mb-15">
-                                            <div class="timeline-icon bg-success mr-3">
-                                                <i class="icon_check"></i>
-                                            </div>
-                                            <div class="timeline-info">
-                                                <h6 class="mb-1 font-15">Launch Website</h6>
-                                                <span>Candy ice cream cake. </span>
-                                                <p class="mb-0 font-13">45 mins ago</p>
-                                            </div>
-                                        </li>
-
-                                        <li class="d-flex align-items-center mb-15">
-                                            <div class="timeline-icon bg-danger mr-3">
-                                                <i class="icon_mail_alt"></i>
-                                            </div>
-                                            <div class="timeline-info">
-                                                <h6 class="mb-1 font-15">Plan Webinar</h6>
-                                                <span>Candy ice cream cake.</span>
-                                                <p class="mb-0 font-13">50 mins ago</p>
-                                            </div>
-                                        </li>
+                                       
                                     </ul>
                                 </div>
                             </div>
