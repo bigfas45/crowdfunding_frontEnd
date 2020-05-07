@@ -51,6 +51,10 @@ import ManageUser from "./admin/ManageUser";
 import UpdateUser from "./admin/UpdateUser";
 import IssuerApplication from "./admin/IssuerApplication";
 import IssuerApplicationUpdate from "./admin/IssuerApplicationUpdate";
+import IndividualApplication from "./admin/IndividualApplication";
+import IndividualApplicationUpdate from "./admin/IndividualApplicationUpdate";
+import CorporateApplicationUpdate from "./admin/CorporateApplicationUpdate";
+import CorporateApplication from "./admin/CorporateApplication";
 
 
 
@@ -104,6 +108,10 @@ const Routes = () => {
         <AdminRoute path="/admin/user/update/:userId" exact component={UpdateUser} />
         <AdminRoute path="/admin/issuer/application" exact component={IssuerApplication} />
         <AdminRoute path="/admin/issuer/application/:Id" exact component={IssuerApplicationUpdate} />
+        <AdminRoute path="/admin/individual/application" exact component={IndividualApplication} />
+        <AdminRoute path="/admin/individual/application/:Id" exact component={IndividualApplicationUpdate} />
+        <AdminRoute path="/admin/corporate/application/:Id" exact component={CorporateApplicationUpdate} />
+        <AdminRoute path="/admin/corporate/application" exact component={CorporateApplication} />
 
 
         <Route path="/signout" exact component={signout} />

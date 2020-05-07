@@ -307,7 +307,159 @@ export const createCategory = (userId, token, category) => {
 
 
 
+    export const getIndividualApplication = (userId, token) => {
+        return fetch (`${API}/individual/investor/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+    export const getIndividualPApplication = (id, token) => {
+        return fetch (`${API}/individual/investor/application/${id}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+    export const updateIndividualStatus = (id, userId, token) => {
+        return fetch (`${API}/individual/status/update/${id}/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    export const declineIndividualStatusUpdate = (id, userId, token) => {
+        return fetch (`${API}/individual/status/decline/${id}/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
 
 
 
- 
+    
+
+
+    export const sendIndividualDeclineMail = (email) => {
+        return fetch (`${API}/mail/application/decline/${email}`, {
+            method: "GET",
+           
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+    export const sendIndividualApprovedMail = (email) => {
+        return fetch (`${API}/mail/application/accept/${email}`, {
+            method: "GET",
+           
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+
+    export const getCorporateApplication = (userId, token) => {
+        return fetch (`${API}/corporate/investor/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    export const getCorporateRApplication = (userId, token) => {
+        return fetch (`${API}/corporate/investor/application/${userId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+
+
+    
+    export const updateCorporateStatus = (id, userId, token) => {
+        return fetch (`${API}/corporate/status/update/${id}/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    export const declineCorporateStatusUpdate = (id, userId, token) => {
+        return fetch (`${API}/corporate/status/decline/${id}/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+
+    
+
+
+  
+
+  

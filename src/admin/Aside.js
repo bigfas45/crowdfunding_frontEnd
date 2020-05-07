@@ -39,8 +39,8 @@ const asideBar = () => {
                             <Link to="#"><i className='bx bx-home-heart'></i> <span>Applications</span> <i className="fa fa-angle-right"></i></Link>
                             <ul className="treeview-menu">
                                 <li><Link to="/admin/issuer/application">Issuers</Link></li>
-                                <li><Link to="#">Individual Investors</Link></li>
-                                <li><Link to="#">Corporate Investors</Link></li>
+                                <li><Link to="/admin/individual/application">Individual Investors</Link></li>
+                                <li><Link to="/admin/corporate/application">Corporate Investors</Link></li>
                                
                             </ul>
                         </li>
