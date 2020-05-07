@@ -87,7 +87,7 @@ init();
         
         We make no endorsements, representations or warranties whatsoever that any Investor will, or is likely to, achieve profits based on expected or simulated performance of a Crowdfunding Project as this is not necessarily indicative of future results.
        
-        Please click "Ok" before proceeding.
+        Please click "Ok" to proceeding.
         `,
         icon: "success"
       });
