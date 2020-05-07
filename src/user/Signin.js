@@ -93,7 +93,6 @@ const Signin = () => {
                          {showError()}
                 {showLoading()}
                             <center><img src={img} height="150" width="200"/></center> 
-                             <h4 class="font-24 mb-1">Login.</h4>
                              <p class="mb-30">Sign in to your account to continue.</p>
 
                              <form>

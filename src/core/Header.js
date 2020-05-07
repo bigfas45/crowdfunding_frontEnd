@@ -116,20 +116,8 @@ const Header = ({ history }) => {
                         ></i>{" "}
                         My profile
                       </Link>
-                      <Link to="#" className="dropdown-item">
-                        <i
-                          className="bx bx-wallet font-15"
-                          aria-hidden="true"
-                        ></i>{" "}
-                        My wallet
-                      </Link>
-                      <Link to="#" className="dropdown-item">
-                        <i
-                          className="bx bx-wrench font-15"
-                          aria-hidden="true"
-                        ></i>{" "}
-                        settings
-                      </Link>
+                     
+                     
                       <span  onClick={() =>
                         signout(() => {
                           history.push("/investor/dashboard");

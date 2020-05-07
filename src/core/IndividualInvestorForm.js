@@ -165,7 +165,7 @@ const IndividualInvestorForm = () => {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1>Advanced Form</h1>
+                <h1>Individual Investor Verification </h1>
               </div>
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
@@ -193,9 +193,7 @@ const IndividualInvestorForm = () => {
                         {showSuccess()}
                         {showError()}
                         <p className="mb-5">
-                          Before you can start investing, you need to verify
-                          your identity. This means answering a few questions
-                          and attaching your ID document.
+                        Verification of your Identity requires answering the following questions
                         </p>
                         <div className="f1-steps">
                           <div className="f1-progress">
@@ -236,9 +234,9 @@ const IndividualInvestorForm = () => {
                                   className="form-control"
                                 >
                                   <option label="blank">Select Title</option>
-                                  <option>Mr</option>
-                                  <option>Mrs</option>
-                                  <option>Miss</option>
+                                  <option>M.r</option>
+                                  <option>Mrs.</option>
+                                  <option>Miss.</option>
                                 </select>
                               </div>
 
@@ -276,7 +274,7 @@ const IndividualInvestorForm = () => {
                                   onChange={handleChange("middlename")}
                                   value={middlename}
                                   className="form-control"
-                                  placeholder="Enter First Name"
+                                  placeholder="Middle Name"
                                 />
                               </div>
                               <div className="form-group col-md-6">
@@ -484,7 +482,7 @@ const IndividualInvestorForm = () => {
                                   </option>
                                   <option value="ni-vanuatu">Ni-Vanuatu</option>
                                   <option value="nicaraguan">Nicaraguan</option>
-                                  <option value="nigerien">Nigerien</option>
+                                  <option value="nigerien">Nigerian</option>
                                   <option value="north korean">
                                     North Korean
                                   </option>
@@ -985,7 +983,7 @@ const IndividualInvestorForm = () => {
                               </div>
                               <div className="form-group col-md-6">
                                 <label className="control-label">
-                                  Mothers Maiden Name
+                                  Mother's Maiden Name
                                 </label>
                                 <input
                                   maxLength="100"
@@ -993,7 +991,7 @@ const IndividualInvestorForm = () => {
                                   onChange={handleChange("maidenname")}
                                   value={maidenname}
                                   className="form-control"
-                                  placeholder="Mothers Maiden Name"
+                                  placeholder="Mother's Maiden Name"
                                 />
                               </div>
                               <div className="form-group col-md-6">
@@ -1006,22 +1004,10 @@ const IndividualInvestorForm = () => {
                                   onChange={handleChange("occupation")}
                                   value={occupation}
                                   className="form-control"
-                                  placeholder="Mothers Maiden Name"
+                                  placeholder="Occupation"
                                 />
                               </div>
-                              <div className="form-group col-md-6">
-                                <label className="control-label">
-                                  Industry{" "}
-                                </label>
-                                <input
-                                  maxLength="100"
-                                  type="text"
-                                  onChange={handleChange("industry")}
-                                  value={industry}
-                                  className="form-control"
-                                  placeholder="Mothers Maiden Name"
-                                />
-                              </div>
+                             
 
                               <div className="form-group col-md-6">
                                 <label className="control-label">
@@ -1038,20 +1024,6 @@ const IndividualInvestorForm = () => {
                                 />
                               </div>
 
-                              <div className="form-group col-md-6">
-                                <label className="control-label">
-                                  Estimated Annual Turnover{" "}
-                                </label>
-                                <input
-                                  maxLength="100"
-                                  type="number"
-                                  onChange={handleChange(
-                                    "estimatedAnnualTurnOver"
-                                  )}
-                                  value={estimatedAnnualTurnOver}
-                                  className="form-control"
-                                />
-                              </div>
 
                               <div className="form-group col-md-6">
                                 <label className="control-label">
@@ -1062,7 +1034,7 @@ const IndividualInvestorForm = () => {
                                   onChange={handleChange("originOfFunds")}
                                   value={originOfFunds}
                                 >
-                                  <option label="blank">Select Currency</option>
+                                  <option label="">Select Currency</option>
                                   <option>Savings</option>
                                   <option>Profit</option>
                                   <option>Inheritance</option>
@@ -1182,26 +1154,17 @@ const IndividualInvestorForm = () => {
                         </fieldset>
                         <fieldset>
                           <h5 className="mb-3 font-weight-600">
-                            Social media profiles:
+                           
                           </h5>
-                          <h3>Investor declaration</h3>
+                          <h3>Investor Declaration</h3>
                           <p>
-                            1. I confirm that all information and documentation
-                            either signed or provided herein is true and correct
-                            and I further understand that I am responsible for
-                            the correctness of all information provided by
-                            myself or on my behalf.
+                            1. I confirm that all information and documentation provided herein is true and correct; I further understand that I am responsible for the veracity of all information provided.
                           </p>
                           <p>
-                            2. I have read and understand the contents including
-                            the terms and conditions of this application form.
+                            2. I have read and understood the contents including the terms and conditions of this Application form.
                           </p>
                           <p>
-                            3. Before completing this form, I have read and
-                            understand the latest MINIMUM DISCLOSURE DOCUMENTS
-                            that are relevant to the crowdfunding investment
-                            project(s) of my choice. (Click on the name to
-                            download the document.)
+                            3. I have read and understood the latest MINIMUM DISCLOSURE DOCUMENTS that are relevant to the Crowdfunding Investment Project(s) of my choice. 
                           </p>
                           <br />
 
@@ -1214,7 +1177,7 @@ const IndividualInvestorForm = () => {
                                 name="check"
                               />
                               <label for="check-a">
-                                You agree with our Terms Privacy Policy
+                              I agree with the Terms of Use and Privacy Policy
                               </label>
                             </div>
                           </div>

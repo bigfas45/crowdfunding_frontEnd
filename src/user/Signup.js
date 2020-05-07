@@ -134,17 +134,17 @@ const Signup = () => {
                         <div className="card">
                             <div className="card-body p-4">
                                  <center><img src="img/nasdlogop.jpg" height="150" width="200"/></center> 
-                                <h4 className="font-24 mb-30">Create account.</h4>
+                                <h4 className="font-24 mb-30">Create Account.</h4>
                                 {showSuccess()}
                            {showError()}
                                 <form action="#">
                                     <div className="form-group">
                                         <label for="fullname">First Name</label>
-                                        <input  onChange={handleChnage("firstname")} value={firstname} className="form-control" type="text" id="fullname" placeholder="Enter your name" required/>
+                                        <input  onChange={handleChnage("firstname")} value={firstname} className="form-control" type="text" id="fullname" placeholder="Enter your first name" required/>
                                     </div>
                                     <div className="form-group">
                                         <label for="fullname">Last Name</label>
-                                        <input  onChange={handleChnage("lastname")} value={lastname} className="form-control" type="text" id="username" placeholder="Username" required/>
+                                        <input  onChange={handleChnage("lastname")} value={lastname} className="form-control" type="text" id="username" placeholder="Enter your last name" required/>
                                     </div>
 
                                     <div className="form-group">
