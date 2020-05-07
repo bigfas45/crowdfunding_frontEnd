@@ -18,7 +18,7 @@ const Verification = () => {
           <h1>Let's get started!</h1>
           <p class="lead"><strong>Please check your email</strong> for further instructions on how to complete your account setup.</p>
           <p class="lead">
-    <Link class="btn btn-danger btn-sm" to="/signin" role="button">Continue to signin</Link>
+    <Link class="btn btn-danger btn-sm" to="/" role="button">Continue to signin</Link>
   </p>
           </div>
       </div>

@@ -161,8 +161,8 @@ const Signup = () => {
                                         <label for="telephone">User Type </label>
                                         <select  className="form-control"  onChange={handleChnage("userType")} value={userType}>
                                           <option value="">Please select account type</option>
-                                            <option value="1">Investror</option>
-                                            <option value="0">Issuers</option>
+                                            <option value="1">Investor</option>
+                                            <option value="0">Issuer</option>
                                         </select>
                                     </div>
 
