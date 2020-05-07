@@ -186,7 +186,7 @@ init();
 
                                   
                                     <ul class="dashboard-active-timeline list-unstyled" id="dashboardTimeline">
-                                        <li class="d-flex align-items-center mb-15">
+                                        {/* <li class="d-flex align-items-center mb-15">
                                             <div class="timeline-icon bg-primary mr-3">
                                                 <i class="icon_plus"></i>
                                             </div>
@@ -195,13 +195,7 @@ init();
                                                 <span>Bonbon macaroon jelly beans gummi bears jelly lollipop apple</span>
                                                 <p class="mb-0 font-13">25 mins ago</p>
                                             </div>
-                                        </li>
-
-                                       
-                                      
-                                      
-
-                                       
+                                        </li> */}
                                     </ul>
                                 </div>
                             </div>
@@ -237,49 +231,6 @@ init();
             </Fragment>
         )
     }
-
-  //   const display = (individual)  => {
-      
-  //  if (individual === _id || corporate === _id) {
-  //    return ''
-  //  } else {
-  //   return  Reg();
-  //  }
-  //   }
-
-
-    // const content = () => {
-    //     return (
-    //         <Fragment>
-    //             <section className="content">
-    //                 <div className="container-fluid">
-    //                     <div className="row">
-    //                         <div className="col-9">
-    //                             <div className="callout callout-info">
-    //                                 <h5>
-    //                                     <i className="fas fa-info"></i>
-    //                                     Note:</h5>
-    //                                 This is your dashboard. An overview of everything you have going on at any time such as your assets, investments, trades and fundraising campaigns, will show up here.
-    //                             </div>
-    //                             {process()}
-    //                             {/* {display(individual)} */}
-
-    //                             {individual === _id || corporate === _id ? '' : Reg()}
-                         
-    //                         </div>
-    //                         <div className="col-3">
-                                
-                                
-    //                           {  lastActivty() }
-    //                         </div>
-
-
-    //                     </div>
-    //                 </div>
-    //             </section>
-    //         </Fragment>
-    //     )
-    // }
 
 
     const contentnew = () => {

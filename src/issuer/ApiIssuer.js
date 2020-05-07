@@ -155,8 +155,8 @@ export const createDocument = (userId, token, document) => {
     .catch(err => console.log(err));
 };
 
-export const getProductPayment = (productId, userId, token) => {
-    return fetch (`${API}/payment/project/${productId}/${userId}`, {
+export const getProductPayment = (productId, token) => {
+    return fetch (`${API}/payment/project/${productId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",

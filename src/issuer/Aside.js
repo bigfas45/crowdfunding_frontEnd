@@ -22,7 +22,7 @@ const asideBar = () => {
     <div className="ecaps-sidemenu-area">
         
         <div className="ecaps-logo">
-            <Link to="#"><img className="desktop-logo" src="http://demo.riktheme.com/litam/side-menu/img/core-img/logo.png" alt="Desktop Logo"/> <img className="small-logo" src="http://demo.riktheme.com/litam/side-menu/img/core-img/small-logo.png" alt="Mobile Logo"/></Link>
+            <Link to="#"><img className="desktop-logo" src="https://nasdng.com/wp-content/uploads/2020/05/nasdlogop.jpg" alt="Desktop Logo"/> <img className="small-logo" src="https://nasdng.com/wp-content/uploads/2020/05/nasdlogop.jpg" alt="Mobile Logo"/></Link>
         </div>
 
        <br/><br/>
