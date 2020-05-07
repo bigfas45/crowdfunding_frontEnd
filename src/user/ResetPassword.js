@@ -67,7 +67,7 @@ const ResetPassword = ({match}) => {
               role="alert"
               style={{ display: success ? "" : "none" }}
             >
-             Your Password has been Reset <Link to="/signin">Signin</Link>  
+             Your Password has been Reset <Link to="/">Signin</Link>  
             </div>
           </Fragment>
         );
