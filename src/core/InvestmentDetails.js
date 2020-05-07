@@ -8,7 +8,9 @@ import {
   getProject,
   getProjectGallery,
   getIndividualInvestorForm,
-  getCorporateInvestorForm
+  getCorporateInvestorForm,
+  getProductPayment,
+  getProductDocument
 } from "./ApiCore";
 import ReactHtmlParser from "react-html-parser";
 import "../styles.css";
@@ -16,6 +18,8 @@ import { API } from "../config";
 //import the library
 import PaystackButton from "react-paystack";
 import moment from 'moment';
+import swal from "sweetalert";
+
 
 
 const InestmentDetails = ({ match }) => {
@@ -26,29 +30,56 @@ const InestmentDetails = ({ match }) => {
   const [corporateForm, setCorporateForm] = useState([]);
   let individual = "";
   let corporate = "";
-  const [key, setKey] = useState(
-    "pk_test_a3c6eed2d7700ebb41bf5417adeee9ae037f0fdc"
-  );
-  const [amount, setAmount] = useState(20000);
+  const [data, setData] = useState([]);
+  const [docData, setDocData] = useState([]);
 
-  const callback = response => {
-    console.log(response); // card charged successfully, get reference here
+
+  let amount=0
+let total =0
+let percentage=0
+let individualStatus , corporateStatus
+
+ 
+  const initPayment = (projectId) => {
+    getProductPayment(projectId).then(data => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setData(data);
+      }
+    });
   };
-  const close = () => {
-    console.log("Payment closed");
+
+
+  const initGetDoc = (projectId) => {
+    getProductDocument(projectId).then(data => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setDocData(data);
+      }
+    });
   };
 
-  const getReference = () => {
-    //you can put any unique reference implementation code here
-    let text = "";
-    let possible =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.=";
 
-    for (let i = 0; i < 15; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-    return text;
-  };
+
+  const payment = () => {
+    data.map((p,i) => {
+      amount = p.amount
+      total += amount
+   
+    })
+  }
+
+  const perce = (pledge)  => {
+    percentage = ( ((total)/pledge) *100 )
+    return percentage
+  }
+
+
+
+
 
   const [projectAll, setProjectAll] = useState([]);
   const [gallery, setGallery] = useState([]);
@@ -99,19 +130,68 @@ const InestmentDetails = ({ match }) => {
   const process = () => {
     investorForm.map((invest, i) => {
       individual = invest.userId._id;
+      individualStatus = invest.status
     });
 
     corporateForm.map((cop, i) => {
       corporate = cop.userId._id;
+      corporateStatus = cop.status;
+
     });
   };
 
   useEffect(() => {
     init(match.params.projectId);
     initProjectGallery(match.params.projectId);
+    initPayment(match.params.projectId);
+    initGetDoc(match.params.projectId)
     initIndividual();
     initCorporate();
   }, []);
+
+  const dashboarddashboard = () => {
+    swal({
+      title: ` Registration In Process`,
+      text: `
+      Hi ${firstname},
+
+      We are reviewing your verification for ${firstname} ${lastname}, and will get back to you within 1 business day with our approval or a request for more information.
+      
+      While you wait, why not have a look at our how-to guides for investors and for raising funds.
+      
+      Regards,
+      NASD
+      `,
+      icon: "success"
+    });
+  };
+
+
+
+  const dashboarddashboard2 = () => {
+    swal({
+      title: ` Registration Is Declined`,
+      text: `
+      Hi ${firstname},
+
+      Your application for ${firstname} ${lastname}, has been declined. You cannot now begin your investment without verifying your account .
+
+      Regards,
+      NASD
+      `,
+      icon: "success"
+    });
+  };
+
+  const message = () => {
+    
+    dashboarddashboard()
+  }
+
+  const messageDecline = () => {
+    
+    dashboarddashboard2()
+  }
 
   const content = () => {
     return (
@@ -121,6 +201,8 @@ const InestmentDetails = ({ match }) => {
           <div class="row">
             <div class="col-12">
               <div class="card box-margin">
+              {  payment()}
+
                 <div class="row justify-content-center">
                   <div class="col-12">
                     <div class="card-group box-margin">
@@ -161,12 +243,12 @@ const InestmentDetails = ({ match }) => {
                           <h5 class="h4 ">Progress</h5>
                           <p class="mt-4 mb-0 ">
                             <h5 class="font-14">
-                              &nbsp;<span class="float-right">0%</span>
+                              &nbsp;<span class="float-right">${perce(d.pledge).toFixed(0)}%</span>
                             </h5>
                             <div class="progress h-8 mb-20">
                               <div
                                 class="progress-bar bg-info wow animated progress-animated"
-                                style={{ width: "0%" }}
+                                style={{width: `${perce(d.pledge).toFixed(0)}%`}}
                                 role="progressbar"
                               >
                                 {" "}
@@ -183,7 +265,7 @@ const InestmentDetails = ({ match }) => {
                                 <p>Goal</p>
                               </h5>
                               <h5 style={{ color: "green" }}>
-                                ₦0<p>pledged</p>
+                                ₦{total.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}<p>pledged</p>
                               </h5>
                               <h5 class="product-price mb-0 mt-0">
                                 {moment(d.createdAt).fromNow()}
@@ -203,20 +285,55 @@ const InestmentDetails = ({ match }) => {
                           <br />
                           {process()}
 
-                          {individual === _id || corporate === _id ? (
-                           <Fragment>
-                        
+                          {individual === _id || corporate === _id ? 
+                          individualStatus === 1 || corporateStatus === 1  ? 
+                       
+                         
+                       (  <Fragment>
                                 <Link to={`/project/fund/${d._id}`}>
                                   {" "}
                                   <button
                                     type="button"
                                     class="btn btn-rounded btn-primary btn-lg mb-2 mr-2"
                                   >
-                                    Fund Now
+                                    Fund Now 
                                   </button>
                                 </Link>
-                                </Fragment>
-                          ) : (
+                                </Fragment>)
+                           :  
+                           individualStatus === 2 || corporateStatus === 2  ? 
+                           
+                           (<Fragment>
+                            <button
+                           onClick={() =>
+                            messageDecline(() => {
+                             })
+                           }
+                              type="button"
+                              class="btn btn-rounded btn-danger btn-lg mb-2 mr-2"
+                            >
+                            Registration is Declined
+                            </button>
+                     
+                          </Fragment>)
+                           
+                           : 
+                           
+                           
+                           (<Fragment>
+                            <button
+                           onClick={() =>
+                             message(() => {
+                             })
+                           }
+                              type="button"
+                              class="btn btn-rounded btn-warning btn-lg mb-2 mr-2"
+                            >
+                            Registration in process
+                            </button>
+                     
+                          </Fragment>)
+                           : (
                             <Link
                               to={`/investor/registration`}
                               class="btn btn-primary"
@@ -336,37 +453,17 @@ const InestmentDetails = ({ match }) => {
                                     <span class="timeline-step badge-warning"></span>
                                     <div class="timeline-content">
                                       <p class="font-weight-bold mb-1">
-                                        12:30 PM
+                                    ....
                                       </p>
                                       <h5 class="font-18">
-                                        You liked a comment from
+                                      ....
                                       </h5>
                                       <p class=" text-sm mb-0">
-                                        Nullam id dolor id nibh ultricies
-                                        vehicula ut id elit. Cum sociis natoque
-                                        penatibus et magnis dis parturient
-                                        montes, nascetur ridiculus mus.
+                                       ...
                                       </p>
                                     </div>
                                   </div>
 
-                                  <div class="timeline-block">
-                                    <span class="timeline-step badge-warning"></span>
-                                    <div class="timeline-content">
-                                      <p class="font-weight-bold mb-1">
-                                        12:30 PM
-                                      </p>
-                                      <h5 class="font-18">
-                                        You liked a comment from
-                                      </h5>
-                                      <p class=" text-sm mb-0">
-                                        Nullam id dolor id nibh ultricies
-                                        vehicula ut id elit. Cum sociis natoque
-                                        penatibus et magnis dis parturient
-                                        montes, nascetur ridiculus mus.
-                                      </p>
-                                    </div>
-                                  </div>
                                 </div>
                               </div>
 
@@ -377,7 +474,11 @@ const InestmentDetails = ({ match }) => {
                                 aria-labelledby="nav-documents-tab"
                               >
                                 <div class="card-body">
-                                  <div class="widget-download-file d-flex align-items-center justify-content-between mb-4">
+
+                                  {docData.map((d, i) => {
+                                    return(
+                                      <Fragment>
+                                        <div class="widget-download-file d-flex align-items-center justify-content-between mb-4">
                                     <div class="d-flex align-items-center mr-3">
                                       <div class="download-file-icon mr-3">
                                         <img
@@ -387,87 +488,23 @@ const InestmentDetails = ({ match }) => {
                                       </div>
                                       <div class="user-text-table">
                                         <h6 class="d-inline-block font-15 mb-0">
-                                          Documentation
+                                        {d.name}
                                         </h6>
-                                        <p class="mb-0">Lorem ipsum</p>
+                                        <p class="mb-0">{d.project.title}</p>
                                       </div>
                                     </div>
-                                    <a
-                                      href="#"
-                                      class="download-link badge badge-primary badge-pill"
-                                    >
-                                      Download
-                                    </a>
+                                    <a href={`${API}/document/file/${d._id}`} alt={d.project.title} class="download-link badge badge-primary badge-pill">Download</a>
                                   </div>
+                                      </Fragment>
+                                     
+                                    )
+                                  })}
+                                  
 
-                                  <div class="widget-download-file d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center mr-3">
-                                      <div class="download-file-icon mr-3">
-                                        <img
-                                          src="img/filemanager-img/5.png"
-                                          alt=""
-                                        />
-                                      </div>
-                                      <div class="user-text-table">
-                                        <h6 class="d-inline-block font-15 mb-0">
-                                          Bandwidth
-                                        </h6>
-                                        <p class="mb-0">Lorem ipsum</p>
-                                      </div>
-                                    </div>
-                                    <a
-                                      href="#"
-                                      class="download-link badge badge-info badge-pill"
-                                    >
-                                      Download
-                                    </a>
-                                  </div>
+                                 
 
-                                  <div class="widget-download-file d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center mr-3">
-                                      <div class="download-file-icon mr-3">
-                                        <img
-                                          src="img/filemanager-img/6.png"
-                                          alt=""
-                                        />
-                                      </div>
-                                      <div class="user-text-table">
-                                        <h6 class="d-inline-block font-15 mb-0">
-                                          Projects
-                                        </h6>
-                                        <p class="mb-0">Lorem ipsum</p>
-                                      </div>
-                                    </div>
-                                    <a
-                                      href="#"
-                                      class="download-link badge badge-success badge-pill"
-                                    >
-                                      Download
-                                    </a>
-                                  </div>
+                                 
 
-                                  <div class="widget-download-file d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center mr-3">
-                                      <div class="download-file-icon mr-3">
-                                        <img
-                                          src="img/filemanager-img/7.png"
-                                          alt=""
-                                        />
-                                      </div>
-                                      <div class="user-text-table">
-                                        <h6 class="d-inline-block font-15 mb-0">
-                                          Download
-                                        </h6>
-                                        <p class="mb-0">Lorem ipsum</p>
-                                      </div>
-                                    </div>
-                                    <a
-                                      href="#"
-                                      class="download-link badge badge-primary badge-pill"
-                                    >
-                                      Download
-                                    </a>
-                                  </div>
                                 </div>
                               </div>
                             </div>

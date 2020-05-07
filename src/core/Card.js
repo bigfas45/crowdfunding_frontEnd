@@ -3,7 +3,7 @@ import {Link, Redirect} from 'react-router-dom';
 import ShowImage from './ShowImage';
 import moment from 'moment';
 import image from "../img/puzzle-959x539.jpg";
-import {getIndividualInvestorForm, getCorporateInvestorForm } from "./ApiCore";
+import {getProductPayment } from "./ApiCore";
 import {isAuthenticated} from "../auth";
 
 
@@ -13,6 +13,42 @@ import {isAuthenticated} from "../auth";
 
 const Card = ({project}) => {
 
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(false);
+let amount=0
+let total =0
+let percentage=0
+
+  const init = () => {
+    getProductPayment(project._id).then(data => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setData(data);
+      }
+    });
+  };
+
+  const payment = () => {
+    data.map((p,i) => {
+      amount = p.amount
+      total += amount
+      console.log(amount)
+    })
+  }
+
+  const perce = (pledge)  => {
+    percentage = ( ((total)/pledge) *100 )
+    return percentage
+  }
+
+
+
+  useEffect(() => {
+   
+    init();
+   
+  }, []);
 
 
 
@@ -28,7 +64,7 @@ const Card = ({project}) => {
           <div class="ribbon ribbon-content ribbon-right ribbon-danger">
             {project.projectType}
           </div>
-
+          {  payment()}
           <h3 class="product font-17 mb-15 mt-20">  <a target="_black" href={`${project.website}`} >{project.title}</a></h3>
 
           <div class="d-flex justify-content-between align-items-center">
@@ -52,12 +88,12 @@ const Card = ({project}) => {
           <br />
 
           <h5 class="font-14">
-            &nbsp;<span class="float-right">90%</span>
+            &nbsp;<span class="float-right">{perce(project.pledge).toFixed(0)}%</span>
           </h5>
           <div class="progress h-8 mb-20">
             <div
               class="progress-bar bg-info wow animated progress-animated"
-              style={{width: "90%"}}
+              style={{width:`${perce(project.pledge).toFixed(0)}%`}}
               role="progressbar"
             >
               {" "}
@@ -70,7 +106,7 @@ const Card = ({project}) => {
             ₦{project.pledge.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}<p>Goal</p>
             </h5>
             <h5 style={{color: "green"}}>
-              ₦40,000<p>pledged</p>
+              ₦{total.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}<p>pledged</p>
             </h5>
             <h5>
             {moment(project.createdAt). fromNow()}<p>Duration</p>

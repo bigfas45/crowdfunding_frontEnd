@@ -247,6 +247,45 @@ export const getFilteredProduct = (skip, limit, filters = {}) => {
         .catch(err => console.log(err));
     };
     
+
+
+    export const getProductPayment = (paymentId) => {
+   
+        return  fetch(`${API}/payment/project/${paymentId}`, {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                  
+                },
+            })
+                .then(response => {
+                    return response.json();
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        };
+
+
+        export const getProductDocument = (projectId) => {
+   
+            return  fetch(`${API}/document/related/${projectId}`, {
+                    method: "GET",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                      
+                    },
+                })
+                    .then(response => {
+                        return response.json();
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            };
+        
     
 
 

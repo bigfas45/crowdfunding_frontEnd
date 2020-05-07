@@ -210,7 +210,7 @@ const UpdateUser = ({ match }) => {
                       <label class="control-label">User Role</label>
                       <select  onChange={handleChange('role')}   className="form-control custom-select" >
                       
-                      <option>{getStatus(role)}</option>
+                      <option></option>
                    
                         <option value="0">Client</option>
                         <option value="1">Admin</option>
@@ -238,7 +238,7 @@ const UpdateUser = ({ match }) => {
                         onChange={handleChange("userType")}
                         className="form-control custom-select"
                       >
-                        <option>{getUserType(userType)}</option>
+                        <option></option>
 
                         <option value="1">Investor</option>
                         <option value="0">Issuers</option>
