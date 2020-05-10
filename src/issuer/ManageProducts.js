@@ -7,7 +7,7 @@ import Header from "./Header";
 import Aside from "./Aside";
 import Footer from "./Footer";
 import moment from 'moment';
-
+import swal from "sweetalert";
 
 const ManageProducts = () => {
     const [projects, setProjects] = useState([]);
@@ -88,6 +88,50 @@ const checkIfApprove = () => {
         )
     }
 
+    const dashboarddashboard = () => {
+        swal({
+          title: ` Registration In Process`,
+          text: `
+          Hi ${user.firstname},
+    
+          We are reviewing your verification for ${user.firstname} ${user.lastname}, and will get back to you within 1 business day with our approval or a request for more information.
+          
+          While you wait, why not have a look at our how-to guides for investors and for raising funds.
+          
+          Regards,
+          NASD
+          `,
+          icon: "success"
+        });
+      };
+    
+    
+    
+      const dashboarddashboard2 = () => {
+        swal({
+          title: ` Registration Is Declined`,
+          text: `
+          Hi ${user.firstname},
+    
+          Your application for ${user.firstname} ${user.lastname}, has been declined. You cannot now begin your investment without verifying your account .
+    
+          Regards,
+          NASD
+          `,
+          icon: "success"
+        });
+      };
+    
+      const message = () => {
+        
+        dashboarddashboard()
+      }
+    
+      const messageDecline = () => {
+        
+        dashboarddashboard2()
+      }
+
     const tableOptions = () => {
         return (
             <Fragment>
@@ -102,8 +146,8 @@ const checkIfApprove = () => {
                                         </div>
 
                                         <div class="total-profit">
-                                            <h6 class="mb-0">Returning Customers</h6>
-                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">1,589</div>
+                                            <h6 class="mb-0">Total investors</h6>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">1</div>
                                         </div>
                                     </div>
                                 </div>
@@ -120,8 +164,8 @@ const checkIfApprove = () => {
                                         </div>
 
                                         <div class="total-profit">
-                                            <h6 class="mb-0">New Customers</h6>
-                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">25,6987</div>
+                                            <h6 class="mb-0">Total Projects</h6>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">2</div>
                                         </div>
                                     </div>
                                 </div>
@@ -138,8 +182,8 @@ const checkIfApprove = () => {
                                         </div>
 
                                         <div class="total-profit">
-                                            <h6 class="mb-0">Conversion</h6>
-                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">252.00</div>
+                                            <h6 class="mb-0">Total Amount Raised</h6>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">2</div>
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +193,6 @@ const checkIfApprove = () => {
                         <div class="col-md-6 col-xl-3 height-card box-margin">
                             <div class="card">
                                 <div class="card-body">
-                                
                                     <div class="single-widget-area d-flex align-items-center justify-content-between">
                                         <div class="profit-icon">
                                             <i class="zmdi zmdi-eye"></i>
@@ -178,13 +221,46 @@ const checkIfApprove = () => {
                         <div class="card mb-30">
                             <div class="card-body pb-0">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="card-title mb-0">Project manage</h6>
+                                    <h6 class="card-title mb-0">Project manager</h6>
                                     {process()}
-                                    {issuerUserId === user._id   ? (<Link to={`/issuer/project/create`}>
-                                        <button onClick={checkIfApprove()} type="button" class="btn btn-primary waves-effect btn-sm waves-light float-right" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg">+ Add New</button>
-                                    </Link>) : ( <a href={`/issuer/application`}> <button type="button" class="btn btn-primary waves-effect btn-sm waves-light float-right" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg">+ Verify your registration</button> </a>)  }
+                                    {issuerUserId === user._id ? 
+                          issuerStatus === 1   ? 
+                       
+                         
+                       (  <Fragment>
+                                <Link to={`/issuer/project/create`}>
+                                  {" "}
+                                  <button type="button" class="btn btn-primary waves-effect btn-sm waves-light float-right" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg">+ Add New</button>
+                                </Link>
+                                </Fragment>)
+                           :  
+                           issuerStatus === 2 ? 
+                           
+                           (<Fragment>
+                         
+                            <button onClick={() =>  messageDecline(() => { })  }  type="button" class="btn btn-primary waves-effect btn-sm waves-light float-right" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg">+ Add New</button>
 
+                     
+                          </Fragment>)
+                           
+                           : 
+                           
+                           
+                           (<Fragment>
+                          <button onClick={() =>  message(() => { })  }  type="button" class="btn btn-primary waves-effect btn-sm waves-light float-right" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg">+ Add New</button>
 
+                     
+                          </Fragment>)
+                           : (
+                            <a
+                              href={`/issuer/application`}
+                              class="btn btn-primary"
+                            >
+                              {" "}
+                              REGISTER{" "}
+                              <i class="feather icon-arrow-right ml-2"></i>
+                            </a>
+                          )}
                                     
                                 </div>
                             </div>

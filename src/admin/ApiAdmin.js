@@ -456,10 +456,68 @@ export const createCategory = (userId, token, category) => {
     };
 
 
+    export const getAllBlogs = () => {
+        return fetch (`${API}/blog`, {
+            method: "GET",
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
 
-    
+
+    export const createBlog = (userId, token, blog) => {
+        return  fetch(`${API}/blog/create/${userId}`, {
+             method: "POST",
+             headers: {
+                 Accept: "application/json",
+                 
+                 Authorization: `Bearer ${token}`
+             },
+             body: blog
+         })
+             .then(response => {
+                 return response.json();
+             })
+             .catch(err => {
+                 console.log(err);
+             });
+     };
+
+     export const getBlog = (blogId) => {
+        return fetch (`${API}/blog/${blogId}`, {
+            method: "GET"
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
 
 
   
 
-  
+    export const getBlogRead = (projectId) => {
+        return fetch (`${API}/blog/read/${projectId}`, {
+            method: "GET"
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+    export const updateBlog = (blogId, userId, token, project) => {
+        return fetch (`${API}/blog/${blogId}/${userId}`, {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+            },
+         body: project
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };

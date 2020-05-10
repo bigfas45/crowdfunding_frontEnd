@@ -55,7 +55,9 @@ import IndividualApplication from "./admin/IndividualApplication";
 import IndividualApplicationUpdate from "./admin/IndividualApplicationUpdate";
 import CorporateApplicationUpdate from "./admin/CorporateApplicationUpdate";
 import CorporateApplication from "./admin/CorporateApplication";
-
+import ManageBlog from "./admin/ManageBlog";
+import Blog from "./admin/Blog";
+import UpdateBlog from "./admin/UpdateBlog";
 
 
 
@@ -112,7 +114,9 @@ const Routes = () => {
         <AdminRoute path="/admin/individual/application/:Id" exact component={IndividualApplicationUpdate} />
         <AdminRoute path="/admin/corporate/application/:Id" exact component={CorporateApplicationUpdate} />
         <AdminRoute path="/admin/corporate/application" exact component={CorporateApplication} />
-
+        <AdminRoute path="/admin/blog/manage" exact component={ManageBlog} />
+        <AdminRoute path="/admin/blog/create" exact component={Blog} />
+        <AdminRoute path="/admin/blog/update/:blogId" exact component={UpdateBlog} />
 
         <Route path="/signout" exact component={signout} />
         <Route path="/" exact component={Signin} />

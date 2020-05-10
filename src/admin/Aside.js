@@ -31,7 +31,7 @@ const asideBar = () => {
              
                 <nav>
                     <ul className="sidebar-menu" data-widget="tree">
-                        <li><a href="/"><i className='bx bx-home-heart'></i><span>Dashboard</span></a></li>
+                        <li><a href="/admin/dashboard"><i className='bx bx-home-heart'></i><span>Dashboard</span></a></li>
                         <li><Link to="/admin/category/create"><i className='fa fa-money'></i><span>Category</span></Link></li>
                         <li><Link to="/admin/project/manage"><i className='fa fa-money'></i><span>Project</span></Link></li>
                         {/* <li><Link to="/admin/project/manage"><i className='fa fa-money'></i><span>Applications</span></Link></li> */}
@@ -44,6 +44,7 @@ const asideBar = () => {
                                
                             </ul>
                         </li>
+                        <li><Link to="/admin/blog/manage"><i className='fa fa-money'></i><span>Blog</span></Link></li>
                           <li><Link to="/admin/user/manage"><i className='fa fa-money'></i><span>User</span></Link></li>
                       
                     </ul>
