@@ -83,7 +83,7 @@ const body = () => {
                         <Fragment>
                           <tr key={i}>
                             <td>{count}</td>
-                            <td> {d.userId.firstname}
+                            <td> 
                             <br />
                               <small>{moment(d.createdAt).format("LL")}</small>
                              </td>
