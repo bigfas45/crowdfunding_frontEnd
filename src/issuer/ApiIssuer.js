@@ -217,3 +217,43 @@ export const getIssuerApplicationForm = (userId) => {
     })
     .catch(err => console.log(err));
 };
+
+
+export const getInvestorList = () => {
+    return fetch (`${API}//users/investor/list`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+
+export const getProjectCount = () => {
+    return fetch (`${API}/project/listProject`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+
+export const getPayment = () => {
+   
+    return  fetch(`${API}/payments`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => {
+                return response.json();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };

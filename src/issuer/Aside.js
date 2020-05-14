@@ -35,7 +35,7 @@ const asideBar = () => {
                       
                         <br /><li><Link to="/issuer/project/manage"><i className='fa fa-money'></i><span>Project</span></Link></li><hr />
                         <li><Link to="/issuer/dashboard"><i className='bx bx-home-heart'></i><span>DASHBOARD</span></Link></li>
-                        <li><Link to="/issuer/balance"><i className='fa fa-money'></i><span> STATEMENT</span></Link></li>
+                        {/* <li><Link to="/issuer/balance"><i className='fa fa-money'></i><span> STATEMENT</span></Link></li> */}
                       
                     </ul>
                 </nav>

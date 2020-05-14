@@ -194,8 +194,10 @@ const Project = () => {
                         name="category"
                       >
                         <option>Select Here..</option>
-                        <option value="Loan">Loan</option>
+                        <option value="Loan">Debt</option>
                         <option value="Equity">Equity</option>
+                        <option value="Donation">Donation</option>
+
                       </select>
                     </div>
                   </div>

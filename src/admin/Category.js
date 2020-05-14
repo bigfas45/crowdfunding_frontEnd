@@ -41,6 +41,7 @@ const Category = () => {
     e.preventDefault();
     setError("");
     setSuccess(false);
+    setLoading(true)
     // make request to create category
     createCategory(user._id, token, { name }).then(data => {
       if (data.error) {
@@ -48,6 +49,8 @@ const Category = () => {
       } else {
         setError("");
         setSuccess(true);
+        setLoading(false)
+        init();
       }
     });
   };

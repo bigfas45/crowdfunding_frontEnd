@@ -2,7 +2,7 @@ import React, {useState, useEffect, Fragment} from 'react';
 import Layout from '../core/Layout';
 import {isAuthenticated} from '../auth';
 import {Link, Redirect} from 'react-router-dom';
-import {getProjects, deleteProduct, getIssuerApplicationForm} from './ApiIssuer'
+import {getProjects, deleteProduct, getIssuerApplicationForm, getInvestorList, getProjectCount, getPayment} from './ApiIssuer'
 import Header from "./Header";
 import Aside from "./Aside";
 import Footer from "./Footer";
@@ -11,9 +11,15 @@ import swal from "sweetalert";
 
 const ManageProducts = () => {
     const [projects, setProjects] = useState([]);
+    const [paymentCount, setPaymentCount] = useState([]);
+
+    const [investorCount, setInvestorCount] = useState([]);
+    const [projectCount, setProjectCount] = useState([]);
+
 
     const {user, token} = isAuthenticated();
     let count = 0;
+    let totalInvestmentCapital=0;
 
     const loadProject = () => {
         getProjects(user._id, token).then(data => {
@@ -42,6 +48,41 @@ const init = () => {
 });
 };
 
+const initProjectCount = () => {
+    getProjectCount().then(data => {
+    if (data.error) {
+       setError(data.error);
+    }else{
+      setProjectCount(data)
+      
+    }
+  });
+  };
+
+
+
+const initInvestorCount = () => {
+    getInvestorList().then(data => {
+    if (data.error) {
+       setError(data.error);
+    }else{
+        setInvestorCount(data)
+    }
+  });
+  };
+
+
+  const initInvestmentCount = () => {
+    getPayment().then(data => {
+        if (data.error) {
+            setError(data.error);
+        } else {
+            setPaymentCount(data);
+        }
+    });
+};
+  
+
 
 
 
@@ -58,10 +99,18 @@ const checkIfApprove = () => {
     return <Redirect to="" />
 }
 
-
+const totalInvestedCapital = () => {
+    paymentCount.map((d, i) => {
+     let investment = d.amount
+     totalInvestmentCapital +=investment
+    })
+  }
 
     useEffect(() => {
-        loadProject()
+        loadProject();
+        initInvestorCount();
+        initProjectCount();
+        initInvestmentCount();
         init();
     }, [])
 
@@ -147,7 +196,7 @@ const checkIfApprove = () => {
 
                                         <div class="total-profit">
                                             <h6 class="mb-0">Total investors</h6>
-                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">1</div>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true"> {investorCount.length} </div>
                                         </div>
                                     </div>
                                 </div>
@@ -165,7 +214,7 @@ const checkIfApprove = () => {
 
                                         <div class="total-profit">
                                             <h6 class="mb-0">Total Projects</h6>
-                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">2</div>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true"> {projectCount.length} </div>
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +232,7 @@ const checkIfApprove = () => {
 
                                         <div class="total-profit">
                                             <h6 class="mb-0">Total Amount Raised</h6>
-                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">2</div>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true"> {totalInvestedCapital()} {totalInvestmentCapital.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} </div>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +249,7 @@ const checkIfApprove = () => {
 
                                         <div class="total-profit">
                                             <h6 class="mb-0">Bounce Rate</h6>
-                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">15.00</div>
+                                            <div class="counter font-30 font-weight-bold" data-comma-separated="true">00.00</div>
                                         </div>
                                     </div>
                                 </div>

@@ -99,8 +99,6 @@ const body = () => {
                                     </Link>
                                 </div>
                             </td>
-
-                            
                           </tr>
                         </Fragment>
                       );

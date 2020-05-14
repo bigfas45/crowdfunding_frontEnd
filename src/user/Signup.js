@@ -154,7 +154,7 @@ const Signup = () => {
 
                                     <div className="form-group">
                                         <label for="telephone">Telephone </label>
-                                        <input  onChange={handleChnage("telephone")} value={telephone}  className="form-control" type="number" id="telephone" required placeholder="Enter your telephone number"/>
+                                        <input  onChange={handleChnage("telephone")} value={telephone}  className="form-control" type="text" id="telephone" required placeholder="Enter your telephone number"/>
                                     </div>
 
                                     <div className="form-group">
