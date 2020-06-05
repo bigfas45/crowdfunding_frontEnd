@@ -6,6 +6,7 @@ import { isAuthenticated } from "../auth";
 import image from "../img/company.svg";
 import image2 from "../img/person-investor.svg";
 import { createIndividualInvestorApplicationForm } from "./ApiCore";
+import Menu from "./Menu"
 
 const IndividualInvestorForm = () => {
   const { user, token } = isAuthenticated();
@@ -39,6 +40,8 @@ const IndividualInvestorForm = () => {
     redirectToProfile: false,
     formData: ""
   });
+  
+  const [success, setSuccess] = useState(false);
 
   const {
     title,
@@ -90,36 +93,7 @@ const IndividualInvestorForm = () => {
         if (data.error) {
           setValues({ ...values, error: data.error });
         } else {
-          setValues({
-         
-            title: "",
-            firstname: "",
-            lastname: "",
-            middlename: "",
-            gender: "",
-            dob: "",
-            nationality: "",
-            userId: "",
-            countryOfResidence: "",
-            identification: "",
-            maidenname: "",
-            occupation: "",
-            industry: "",
-            estimatedAnnualIncome: "",
-            originOfFunds: "",
-            maximumAmountForInvestment: "",
-            currency: "",
-            address: "",
-            telephone: "",
-            city: "",
-            state: "",
-            email: "",
-            estimatedAnnualTurnOver: "",
-            loading: false,
-            error: false,
-            createdProduct: data.title,
-            redirectToProfile: true
-          });
+         setSuccess(data.email)
         }
       }
     );
@@ -128,64 +102,81 @@ const IndividualInvestorForm = () => {
 
   const showSuccess = () => (
 
+    <div style={
+            {
+                display: success ? '' : 'none'
+            }
+        }
+        className="alert alert-success alert-solid"
+        role="alert">
+         successfully
+    </div>
+);
 
-    <div class="alert alert-success alert-dismissible" style={{display: createdProduct ? '' : 'none'}}>
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h5><i class="icon fas fa-check"></i> Alert!</h5>
-    <span><strong>Success!</strong>  Project is updated. </span>
-  </div>
-  
-  
-  );
-  
-  const showError = () => (
-  
-    <div class="alert alert-danger alert-dismissible" style={{display: error ? '' : 'none'}}>
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-ban"></i> Alert!</h5>
-                  <span><strong>Error!</strong>   {error}</span>
-                </div>
-  );
+const showError = () => (
+
+    <div style={
+            {
+                display: error ? '' : 'none'
+            }
+        }
+        className="alert alert-danger alert-solid"
+        role="alert">Error!: {error} </div>
+
+);
 
   const redirectUser = () => {
 
-    if (redirectToProfile) {
+    if (success) {
         if (!error) {
-            return <Redirect to="/investor/verification" />
+            return <Redirect to={`/investor/verification/${user.email}`} />
         }
     }
   
+}
+
+
+const contentHeader = () => {
+  return (
+      <Fragment>
+
+
+          <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+              <div class="container-fluid">
+                  <div class="page-header-content">
+                      <h1 class="page-header-title">
+                          <div class="page-header-icon">
+                              <i data-feather="file"></i>
+                          </div>
+                          <span>Verify Your Identity</span>
+                      </h1>
+                      <div class="page-header-subtitle">Register here!</div>
+                  </div>
+              </div>
+          </div>
+      </Fragment>
+  )
+
 }
   
 
   const content = () => {
     return (
       <Fragment>
-        <section className="content-header">
-          <div className="container-fluid">
-            <div className="row mb-2">
-              <div className="col-sm-6">
-                <h1>Individual Investor Verification </h1>
-              </div>
-              <div className="col-sm-6">
-                <ol className="breadcrumb float-sm-right">
-                  <li className="breadcrumb-item">
-                    <Link to="#">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item active">Advanced Form</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        <section className="content">
-          <div className="container-fluid">
-            <div className="card card-default">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-lg-12">
-                    <div className="card-body text-center">
+
+       
+<div class="container-fluid mt-n10">
+                    <div class="row">
+                       
+                        <div class="offset-1 col-lg-10">
+                            <div id="default">
+                                <div class="card mb-4">
+                                    <div class="card-header">Kindly fill out the form</div>
+                                    <div class="card-body">
+                                      
+                                        <div class="sbp-preview">
+                                            <div class="sbp-preview-content">
                       <form method="post" className="f1" onSubmit={clickSubmit}>
                         <h3 className="mb-1 font-weight-600">
                           Verify your identity
@@ -1200,27 +1191,52 @@ const IndividualInvestorForm = () => {
               </div>
             </div>
           </div>
-        </section>
+          </div>
+          </div>
+     
       </Fragment>
     );
   };
 
+  const footer = () => {
+    return (
+        <Fragment>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &copy; Your Website 2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </Fragment>
+    )
+}
+
   return (
     <Fragment>
-      <div className="ecaps-page-wrapper">
-        <Aside></Aside>
-        <div className="ecaps-page-content">
-          <Header></Header>
-          <div className="main-content">
-            <div class="container-fluid">
-          
-              {content()}
+    <Header/>
+   <div id="layoutSidenav">
+       <Menu/>
+       <div id="layoutSidenav_content">
+
+           <main> {
+               contentHeader()
+           }
+
+           {content()}
               {redirectUser()}
-            </div>
-          </div>
-        </div>
-      </div>
-    </Fragment>
+         
+           </main>
+           {
+           footer()
+       } </div>
+   </div>
+</Fragment>
   );
 };
 

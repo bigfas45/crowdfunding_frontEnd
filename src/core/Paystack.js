@@ -5,6 +5,7 @@ import { isAuthenticated } from "../auth";
 import { getPaymentByRef, paymentMail, processPayment } from "./ApiCore";
 import PaystackButton from 'react-paystack';
 import { Link, Redirect } from "react-router-dom";
+import Menu from "./Menu"
 
 
 const Paystack = ({ match }) => {
@@ -77,7 +78,7 @@ const redirect = () => {
   };
 
   // let email, amount
-  let key ='pk_test_a3c6eed2d7700ebb41bf5417adeee9ae037f0fdc'
+  let key =pk_live_098c35141fc51e791417dbd444a3f1a152d968df
   //       const process = () => {
   //           refre.map((r,i) => {
   //             email = r.userId.email
@@ -104,18 +105,11 @@ const redirect = () => {
   const content = () => {
     return (
       <Fragment>
-        <div className="row">
-          <div className="col-md-8">
-            <div className="card box-margin">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="card-body">
-                      <div className="checkout-area mb-50">
-                        <h4 className="card-title mt-0 mb-3">Fund Project</h4>
+                <div class="container-fluid mt-n10">
+
                         {showError(values.error)}
 
-                        <div className="row"></div>
+                      
 
                         {refre.map((r,i) => {
                           paymentId = r._id
@@ -138,35 +132,75 @@ const redirect = () => {
                           );
                         })}
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                   
       </Fragment>
     );
   };
 
+  const footer = () => {
+    return (
+        <Fragment>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &copy; Your Website 2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </Fragment>
+    )
+}
+
+const contentHeader = () => {
+  return (
+      <Fragment>
+
+
+          <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+              <div class="container-fluid">
+                  <div class="page-header-content">
+                      <h1 class="page-header-title">
+                          <div class="page-header-icon">
+                              <i data-feather="file"></i>
+                          </div>
+                          <span>Confirm Payment</span>
+                      </h1>
+                      <div class="page-header-subtitle"></div>
+                  </div>
+              </div>
+          </div>
+      </Fragment>
+  )
+
+}
+
+
   return (
     <Fragment>
-      <div className="ecaps-page-wrapper">
-        <Aside></Aside>
-        <div className="ecaps-page-content">
-          <Header></Header>
-          <div className="main-content">
-            <div className="container-fluid">
-              <div className="mt-30">
+    <Header/>
+   <div id="layoutSidenav">
+       <Menu/>
+       <div id="layoutSidenav_content">
+
+           <main> {
+               contentHeader()
+           }
+
+           {content()}
+              {redirect()}
             
-                {content()}
-                {redirect()}
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Fragment>
+         
+           </main>
+           {
+           footer()
+       } </div>
+   </div>
+</Fragment>
   );
 };
 

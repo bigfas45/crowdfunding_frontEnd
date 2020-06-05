@@ -33,7 +33,7 @@ const ForgetPassword = () => {
         setValues({...values, error:false});
         passwordReset( email ).then(data => {
           if (data.error) {
-            setValues({ ...values, error: data.error, success: false , pop: false});
+            setValues({ ...values, error: true, success: false , pop: false});
           } else {
             setValues({
               ...values,
@@ -44,85 +44,116 @@ const ForgetPassword = () => {
         });
       };
     
+   
       const showError = () => {
         return (
-         
-            <div
-              class="alert alert-danger"
-              role="alert"
-              style={{ display: error ? "" : "none" }}
-            >
-              {error}
-            </div>
-        
-       
+
+            <div class="alert alert-danger" role="alert"
+                style={
+                    {
+                        display: error ? "" : "none"
+                    }
+            }>
+              An error occored please try again with a vaild email address </div>
+
+
         );
-      };
-    
-      const showSuccess = () => {
+    };
+
+    const showSuccess = () => {
         return (
-          <Fragment>
-            <div
-              class="alert alert-info"
-              role="alert"
-              style={{ display: success ? "" : "none" }}
-            >
-            Password reset link as been sent to your email  
-            </div>
-          </Fragment>
+            <Fragment>
+                <div style={
+                        {
+                            display: success ? "" : "none"
+                        }
+                    }
+                    class="alert alert-success alert-solid"
+                    role="alert">Password reset link as been sent to your email</div>
+            </Fragment>
         );
-      };
+    };
+
 
 
 
 
     const forgetPasswordForm = () => {
        return(
-           <Fragment>
-                <body class="login-area">
-  
-   
-   
-  <div class="main-content- h-100vh">
-      <div class="container h-100">
-          <div class="row h-100 align-items-center justify-content-center">
-              <div class="col-md-8 col-lg-5">
-             
-                  <div class="middle-box">
-                      <div class="card">
-                          <div class="card-body p-4">
-                               <center><img src={img} height="150" width="200"/></center>
-                               {showSuccess()}
-                              <h4 class="font-24 mb-30">Reset Your Password ?</h4>
-                              <p>Enter your new password </p>
-
-                              <form action="#">
-                                  <div class="form-group">
-                                      <label class="lock-text text-dark">Password</label>
-                                      <input   onChange={handleChnage("email")}   value={email}  type="email" class="form-control height-50" id="examplePassword1" placeholder="Email"/>
-                                  </div>
-
-                                  <div class="form-group mb-0">
-                                      <button onClick={clickSubmit} class="btn btn-primary btn-block" type="submit">Send Password</button>
-                                  </div>
-                              </form>
-                           
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </body>
-           </Fragment>
+        <Fragment>
+        <div class="bg-primary">
+            <div id="layoutAuthentication">
+                <div id="layoutAuthentication_content">
+                    <main>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-5">
+                                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    {
+                                            showSuccess()
+                                        }
+                                            {
+                                            showError()
+                                        }
+                                        <div class="card-header justify-content-center">
+                                          
+                                            <h3 class="font-weight-light my-4">Password Recovery</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
+                                            <form>
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="inputEmailAddress">Email</label><input onChange={
+                                                            handleChnage("email")
+                                                        }
+                                                        value={email}
+                                                        class="form-control py-4"
+                                                        id="inputEmailAddress"
+                                                        type="email"
+                                                        aria-describedby="emailHelp"
+                                                        placeholder="Enter email address"/></div>
+                                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                    <Link class="small" to="/">Return to login</Link>
+                                                    <button onClick={clickSubmit}
+                                                        class="btn btn-primary">Reset Password</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <div class="small">
+                                                <Link to="/">Need an account? Sign up!</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <div id="layoutAuthentication_footer">
+                    <footer class="footer mt-auto footer-dark">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6 small">Copyright &copy; <a href="http://ventureramp.com.ng/">Ventureramp</a> 2020</div>
+                                <div class="col-md-6 text-md-right small">
+                                    <a href="#!">Privacy Policy</a>
+                                    &middot;
+                                    <a href="#!">Terms &amp; Conditions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </Fragment>
        )
     }
 
     return(
-        <Fragment>
-           {forgetPasswordForm()}
-        </Fragment>
+      <Fragment> {
+        forgetPasswordForm()
+    } </Fragment>
     )
 
 }

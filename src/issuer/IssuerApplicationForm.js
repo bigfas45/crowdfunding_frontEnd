@@ -7,6 +7,7 @@ import image from "../img/company.svg";
 import image2 from "../img/person-investor.svg";
 import {createIssuerApplicationForm, verificationMail} from "./ApiIssuer";
 import { Spinner, Button } from "reactstrap";
+import Menu from "./Menu";
 
 
 const IssuerApplicationForm = () => {
@@ -197,6 +198,7 @@ const IssuerApplicationForm = () => {
     const content = () => {
         return (
             <Fragment>
+                 <div class="container-fluid mt-n10">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card box-margin">
@@ -573,31 +575,75 @@ const IssuerApplicationForm = () => {
                         </div>
                     </div>
                 </div>
+                </div>
             </Fragment>
         );
     };
 
-    return (
-        <Fragment>
-            <div className="ecaps-page-wrapper">
-                <Aside></Aside>
-                <div className="ecaps-page-content">
-                    <Header></Header>
-                    <div className="main-content">
-                        <div class="container-fluid">
-
-                            {
-                            content()
-                        }
-                            {redirectUser()  }
-                         
-                          
-                             </div>
+    const footer = () => {
+        return (<Fragment>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &copy;
+                            <a href="ventureramp.com.ng">ventureramp.com.ng</a>
+                            2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </Fragment>)
+      }
+      
+      const contentHeader = () => {
+        return (<Fragment>
+      
+      
+            <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+                <div class="container-fluid">
+                    <div class="page-header-content">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon">
+                                <i data-feather="file"></i>
+                            </div>
+                            <span>Issuer Application </span>
+                        </h1>
+                        <div class="page-header-subtitle">Manage your Issuer Application here!</div>
                     </div>
                 </div>
             </div>
-        </Fragment>
-    );
+        </Fragment>)
+      }
+      
+
+    return(
+   
+        <Fragment>
+        <Header/>
+        <div id="layoutSidenav">
+            <Menu/>
+            <div id="layoutSidenav_content">
+      
+                <main> {
+                    contentHeader()
+                }
+      
+                    {
+                    content()
+                } 
+                {redirectUser()}
+                
+                </main>
+                {
+                footer()
+            } </div>
+        </div>
+      </Fragment>
+      )
 };
 
 export default IssuerApplicationForm;

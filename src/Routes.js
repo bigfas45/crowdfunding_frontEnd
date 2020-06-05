@@ -58,6 +58,8 @@ import CorporateApplication from "./admin/CorporateApplication";
 import ManageBlog from "./admin/ManageBlog";
 import Blog from "./admin/Blog";
 import UpdateBlog from "./admin/UpdateBlog";
+import AdminPayment from "./admin/Payment";
+
 
 
 
@@ -83,7 +85,7 @@ const Routes = () => {
         <PrivateRoute path="/project/paystack/:refId" exact component={Paystack} />
         <PrivateRoute path="/invoice/:refId" exact component={Invoice} />
         <PrivateRoute path="/payment/balance" exact component={Balance} />
-        <PrivateRoute path="/investor/verification" exact component={VerificationInvestor} />
+        <PrivateRoute path="/investor/verification/:email" exact component={VerificationInvestor} />
 
 
         <IssuerRoute path="/issuer/dashboard" exact component={IssuerHome} />
@@ -117,6 +119,8 @@ const Routes = () => {
         <AdminRoute path="/admin/blog/manage" exact component={ManageBlog} />
         <AdminRoute path="/admin/blog/create" exact component={Blog} />
         <AdminRoute path="/admin/blog/update/:blogId" exact component={UpdateBlog} />
+        <AdminRoute path="/admin/project/payment/:projectId" exact component={AdminPayment} />
+
 
         <Route path="/signout" exact component={signout} />
         <Route path="/" exact component={Signin} />

@@ -6,8 +6,13 @@ import {isAuthenticated} from "../auth";
 import  image from  '../img/company.svg';
 import  image2 from  '../img/person-investor.svg';
 import { getIssuerApplicationForm} from "./ApiIssuer";
+import {getIndividualInvestorForm, getCorporateInvestorForm, getPayment } from "../core/ApiCore";
 import Footer from "./Footer";
 import swal from "sweetalert";
+import Menu from "./Menu"
+import moment from "moment";
+import IMG from "./color/drawkit-content-man-alt.svg"
+
 
 
 
@@ -24,8 +29,12 @@ const Home = () => {
 
 const [data, setData] = useState([]);
 const [error, setError] = useState(false);
-let issuerUserId, issuerStatus
 
+let issuerUserId, issuerStatus
+let individual = '';
+let corporate = '';
+let totalInvestmentCapital =0
+let totalUserCount = 0
 
 const init = () => {
   getIssuerApplicationForm(_id).then(data => {
@@ -49,9 +58,27 @@ data.map((issuer, i) => {
 
 }
 
+const initInvestmentCount = () => {
+  getPayment().then(data => {
+      if (data.error) {
+          setError(data.error);
+      } else {
+          setData(data);
+      }
+  });
+};
+
+const totalInvestedCapital = () => {
+  data.map((d, i) => {
+   let investment = d.amount
+   totalInvestmentCapital +=investment
+  })
+}
+
 
 useEffect(() => {
 init();
+initInvestmentCount();
 
 }, []);
 
@@ -315,116 +342,145 @@ init();
       )
   }
 
-  const content = () => {
-    return (
-      <Fragment>
-       
-         
 
-       <div class="row">
-                      
-                        <div class="col-xl-3 col-md-6 height-card box-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>86%</h5>
-                                            <p class="mb-0">Total Product</p>
+  const content = () => {
+    return(
+        <Fragment>
+              <div id="layoutSidenav_content">
+            <main>
+                <div className="container-fluid mt-5">
+                    <div className="d-flex justify-content-between align-items-sm-center flex-column flex-sm-row mb-4">
+                        <div className="mr-4 mb-3 mb-sm-0">
+                            <h1 className="mb-0">Dashboard</h1>
+                            <div className="small"><span className="font-weight-500 text-primary"> &middot; {moment().format('LLLL')} &middot;</span></div>
+                        </div>
+                        <div className="dropdown">
+                            <Link className="btn btn-white btn-sm font-weight-500 line-height-normal p-3 dropdown-toggle" id="dropdownMenuLink" to="#" role="button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"><i className="text-primary mr-2" data-feather="calendar"></i>{moment().format("MMM - Do - YY") }</Link>
+                            <div className="dropdown-menu dropdown-menu-sm-right animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                <Link className="dropdown-item" to="#!">Last 30 days</Link><Link className="dropdown-item" to="#!">Last week</Link><Link className="dropdown-item" to="#!">This year</Link><Link className="dropdown-item" to="#!">Yesterday</Link>
+                                <div className="dropdown-divider"></div>
+                                <Link className="dropdown-item" to="#!">Custom</Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="alert alert-primary border-0 mb-4 mt-5 px-md-5">
+                        <div className="position-relative">
+                            <div className="row align-items-center justify-content-between">
+                                <div className="col position-relative">
+                                    <h2 className="text-primary">Welcome back, your dashboard is ready!</h2>
+                                    <p className="text-gray-700">Great job, your affiliate dashboard is ready to go! You can view sales, generate links, prepare coupons, and download affiliate reports using this dashboard.</p>
+                                    <Link className="btn btn-teal" to="/investment">Get started<i className="ml-1" data-feather="arrow-right"></i></Link>
+                                </div>
+                                <div className="col d-none d-md-block text-right pt-3"><img className="img-fluid mt-n5" src={IMG} style={{maxWidth: "25rem"}} /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-xl-3 col-md-6 mb-4">
+                            <div className="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-blue h-100">
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center">
+                                        <div className="flex-grow-1">
+                                            <div className="small font-weight-bold text-blue mb-1">Total Projects</div>
+                                            <div className="h6"></div>
+                                            <div className="text-xs font-weight-bold text-success d-inline-flex align-items-center"><i className="mr-1" data-feather="trending-up"></i>12%</div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="progress h-8 mb-0 mt-20 h-8">
-                                                <div class="progress-bar bg-primary" role="progressbar" style={{width: "85%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
+                                        <div className="ml-2"><i className="fas fa-dollar-sign fa-2x text-gray-200"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                     
-                        <div class="col-xl-3 col-md-6 height-card box-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>40%</h5>
-                                            <p class="mb-0">Pending Product</p>
+                        <div className="col-xl-3 col-md-6 mb-4">
+                            <div className="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-purple h-100">
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center">
+                                        <div className="flex-grow-1">
+                                            <div className="small font-weight-bold text-purple mb-1">Total Amount Invested</div>
+                                            <div className="h5">$27.00</div>
+                                            <div className="text-xs font-weight-bold text-danger d-inline-flex align-items-center"><i className="mr-1" data-feather="trending-down"></i>3%</div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="progress h-8 mb-0 mt-20 h-8">
-                                                <div class="progress-bar bg-info" role="progressbar" style={{width: "40%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
+                                        <div className="ml-2"><i className="fas fa-tag fa-2x text-gray-200"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                      
-                        <div class="col-xl-3 col-md-6 height-card box-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>56%</h5>
-                                            <p class="mb-0">Product A</p>
+                        <div className="col-xl-3 col-md-6 mb-4">
+                            <div className="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-green h-100">
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center">
+                                        <div className="flex-grow-1">
+                                            <div className="small font-weight-bold text-green mb-1">Investment Balance</div>
+                                            <div className="h5">11,291</div>
+                                            <div className="text-xs font-weight-bold text-success d-inline-flex align-items-center"><i className="mr-1" data-feather="trending-up"></i>12%</div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="progress mb-0 mt-20 h-8">
-                                                <div class="progress-bar bg-primary" style={{width: "60%"}} role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
+                                        <div className="ml-2"><i className="fas fa-mouse-pointer fa-2x text-gray-200"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                       
-                        <div class="col-xl-3 col-md-6 height-card box-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>26%</h5>
-                                            <p class="mb-0">Product B</p>
+                        <div className="col-xl-3 col-md-6 mb-4">
+                            <div className="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-yellow h-100">
+                                <div className="card-body">
+                                    <div className="d-flex align-items-center">
+                                        <div className="flex-grow-1">
+                                            <div className="small font-weight-bold text-yellow mb-1">Last Login</div>
+                                            <div className="h5">1.23%</div>
+                                            <div className="text-xs font-weight-bold text-danger d-inline-flex align-items-center"><i className="mr-1" data-feather="trending-down"></i>1%</div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="progress mb-0 mt-20 h-8">
-                                                <div class="progress-bar" role="progressbar" style={{width: "25%"}} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
+                                        <div className="ml-2"><i className="fas fa-percentage fa-2x text-gray-200"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-         
+                    <div className="row">
+                        <div className="col-lg-4 col-xl-3 mb-4">
+                           
+                           
+                            <div className="card bg-secondary border-0">
+                                <div className="card-body">
+                                    <h5 className="text-white-50">Total Raised</h5>
+                                    {totalInvestedCapital()}
+                                    <div className="mb-4"><span className="display-4 text-white">₦{totalInvestmentCapital.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</span><span className="text-white-50"> current year</span></div>
+                                    <div className="progress bg-white-25 rounded-pill" style={{height: "0.5rem"}}><div className="progress-bar bg-white w-75 rounded-pill" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-8 col-xl-9 mb-4">
+                        {process()}
 
-         
-      </Fragment>
-    );
-  };
+{individual === _id || corporate === _id ? '' : Reg()}
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer className="footer mt-auto footer-light">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-6 small">Copyright &copy;<a href="http://ventureramp.com.ng/">ventureramp.com.ng</a> 2020</div>
+                        <div className="col-md-6 text-md-right small">
+                            <Link to="#!">Privacy Policy</Link>
+                            &middot;
+                            <Link to="#!">Terms &amp; Conditions</Link>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        </Fragment>
+    )
+}
 
 
   return (
     <Fragment>
-      {dashboarddashboard()}
-      <div className="ecaps-page-wrapper">
-        <Aside></Aside>
-        <div className="ecaps-page-content">
-        <Header></Header>
-        <div className="main-content">
-        <div class="container-fluid">
-        {content()}
-        {activeTimeLine()}
-    
-        </div>
-
-
-
-        
-        </div>
-      
-        </div>
-      </div>
-    </Fragment>
+    {dashboarddashboard()}
+   <Header />
+     <div id="layoutSidenav">
+         <Menu />
+         {content()}
+     </div>
+ </Fragment>
   );
 };
 

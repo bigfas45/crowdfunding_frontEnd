@@ -7,6 +7,7 @@ import Header from "./Header";
 import Aside from "./Aside";
 import Footer from "./Footer";
 import moment from "moment";
+import Menu from "./Menu";
 
 const ManageUser = () => {
   const [users, setUsers] = useState([]);
@@ -54,7 +55,7 @@ const ManageUser = () => {
   const body = () => {
     return (
       <Fragment>
-     
+      <div class="container-fluid mt-n10">
         <div class="row">
           <div class="col-12 box-margin">
             <div class="card">
@@ -122,6 +123,7 @@ const ManageUser = () => {
             </div>
           </div>
         </div>
+        </div>
       </Fragment>
     );
   };
@@ -145,22 +147,69 @@ const ManageUser = () => {
       </Fragment>
     );
   }
-
-  return (
-    <Fragment>
-      <div className="ecaps-page-wrapper">
-        <Aside></Aside>
-        <div className="ecaps-page-content">
-          <Header></Header>
-          <div className="main-content">
-            <div className="container-fluid">
-            {tableOptions()}   {body()}
+  const footer = () => {
+    return (<Fragment>
+        <footer class="footer mt-auto footer-light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 small">Copyright &copy;
+                        <a href="ventureramp.com.ng">ventureramp.com.ng</a>
+                        2020</div>
+                    <div class="col-md-6 text-md-right small">
+                        <a href="#!">Privacy Policy</a>
+                        &middot;
+                        <a href="#!">Terms &amp; Conditions</a>
+                    </div>
+                </div>
             </div>
-          </div>
+        </footer>
+    </Fragment>)
+  }
+  
+  const contentHeader = () => {
+    return (<Fragment>
+  
+  
+        <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+            <div class="container-fluid">
+                <div class="page-header-content">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon">
+                            <i data-feather="file"></i>
+                        </div>
+                        <span>User </span>
+                    </h1>
+                    <div class="page-header-subtitle">Manage your User here!</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </Fragment>
-  );
+    </Fragment>)
+  }
+  
+  
+  return(
+     
+    <Fragment>
+    <Header/>
+    <div id="layoutSidenav">
+        <Menu/>
+        <div id="layoutSidenav_content">
+  
+            <main> {
+                contentHeader()
+            }
+  
+                {
+                body()
+            } </main>
+            {
+            footer()
+        } </div>
+    </div>
+  </Fragment>
+  )
+  
+  
 };
 
 export default ManageUser;

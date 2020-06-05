@@ -78,44 +78,56 @@ const ResetPassword = ({match}) => {
 
     const resetPasswordForm = () => {
        return(
-           <Fragment>
-                <body class="login-area">
-  
-   
-   
-  <div class="main-content- h-100vh">
-      <div class="container h-100">
-          <div class="row h-100 align-items-center justify-content-center">
-              <div class="col-md-8 col-lg-5">
-             
-                  <div class="middle-box">
-                      <div class="card">
-                          <div class="card-body p-4">
-                               <center><img src={img} height="150" width="200"/></center>
-                               {showSuccess()}
+         <Fragment>
+           <div class="bg-primary">
+                    <div id="layoutAuthentication">
+                        <div id="layoutAuthentication_content">
+                            <main>
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-5">
+                                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                               
+                                            {showSuccess()}
                                {showError()}
-                              <h4 class="font-24 mb-30">Forgot Password ?</h4>
-                              <p>Enter your password to get reset link</p>
-
-                              <form action="#">
-                                  <div class="form-group">
-                                      <label class="lock-text text-dark">password</label>
-                                      <input   onChange={handleChnage("password")}   value={password}  type="password" class="form-control height-50" id="examplePassword1" placeholder="password"/>
-                                  </div>
-
+                           
+                                                <div class="card-header justify-content-center">
+                                              
+                                                    <h3 class="font-weight-light my-4">Enter your new password to reset password</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form>
+                                                      
+                                                        <div class="form-group">
+                                                            <label class="small mb-1" for="inputPassword">Password</label><input onChange={
+                                                                    handleChnage('password')
+                                                                }
+                                                                value={password}
+                                                                class="form-control py-4"
+                                                                id="inputPassword"
+                                                                type="password"
+                                                                placeholder="Enter password"/></div>
+                                                        
                                   <div class="form-group mb-0">
                                       <button onClick={clickSubmit} class="btn btn-primary btn-block" type="submit">Reset Password</button>
                                   </div>
-                              </form>
-                           
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </body>
+                                                      
+                                                    </form>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <div class="small">
+                                                        <Link to="/signup">Need an account? Sign up!</Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+
+                    </div>
+                </div>
            </Fragment>
        )
     }

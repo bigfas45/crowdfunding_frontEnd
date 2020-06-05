@@ -6,6 +6,7 @@ import { isAuthenticated } from "../auth";
 import ShowImage from './ShowImage';
 import randomstring from "randomstring";
 import { readUser, getProject, payment } from "./ApiCore";
+import Menu from "./Menu"
 
 const FundProject = ({match}) => {
     const {
@@ -141,24 +142,54 @@ const FundProject = ({match}) => {
         }
       };
       const showSuccess = () => (
-        <div style={{display: success ? '' : 'none'}} class="alert alert-success alert-dismissible bg-success text-white border-0 fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>Success - </strong> oject is created.!
-    </div>
-      );
+
+        <div style={
+                {
+                    display: success ? '' : 'none'
+                }
+            }
+            className="alert alert-success alert-solid"
+            role="alert">
+            User was added successfully
+        </div>
+    );
+
+    const showError = () => (
+
+        <div style={
+                {
+                    display: error ? '' : 'none'
+                }
+            }
+            className="alert alert-danger alert-solid"
+            role="alert">Error!:{error} </div>
+
+    );
+
     
-      const showError = () => (
-        <div style={{display: error ? '' : 'none'}} class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>Error - </strong> A simple danger alert—check it out!
-    </div>
-      );
     
-    
+const contentHeader = () => {
+  return (
+      <Fragment>
+
+
+          <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+              <div class="container-fluid">
+                  <div class="page-header-content">
+                      <h1 class="page-header-title">
+                          <div class="page-header-icon">
+                              <i data-feather="file"></i>
+                          </div>
+                          <span>Fund Project</span>
+                      </h1>
+                      <div class="page-header-subtitle">Fund project here!</div>
+                  </div>
+              </div>
+          </div>
+      </Fragment>
+  )
+
+}
 
 
 
@@ -166,6 +197,8 @@ const FundProject = ({match}) => {
   const content = () => {
     return (
       <Fragment>
+        <div class="container-fluid mt-n10">
+
         <div class="row">
           <div class="col-md-8">
             <div class="card box-margin">
@@ -312,22 +345,48 @@ const FundProject = ({match}) => {
             </div>
           </div>
         </div>
+        </div>
       </Fragment>
     );
   };
+  const footer = () => {
+    return (<Fragment>
+        <footer class="footer mt-auto footer-light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 small">Copyright &copy; <a href="http://ventureramp.com.ng/">ventureramp.com.ng</a> 2020</div>
+                    <div class="col-md-6 text-md-right small">
+                        <a href="#!">Privacy Policy</a>
+                        &middot;
+                        <a href="#!">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </Fragment>)
+}
+
 
   return (
     <Fragment>
-      <div className="ecaps-page-wrapper">
-        <Aside></Aside>
-        <div className="ecaps-page-content">
-          <Header></Header>
-          <div className="main-content">
-            <div class="container-fluid">{content()}{redirectUser()}</div>
-          </div>
-        </div>
-      </div>
-    </Fragment>
+    <Header/>
+   <div id="layoutSidenav">
+       <Menu/>
+       <div id="layoutSidenav_content">
+
+           <main> {
+               contentHeader()
+           }
+
+           {content()}
+              {redirectUser()}
+         
+           </main>
+           {
+           footer()
+       } </div>
+   </div>
+</Fragment>
   );
 };
 

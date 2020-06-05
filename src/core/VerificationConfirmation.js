@@ -2,6 +2,8 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { verified } from "../auth";
 import  '../verificationstyle.css'
+import { isAuthenticated } from "../auth";
+import { verificationMail } from "./ApiCore";
 
 
 
@@ -10,8 +12,18 @@ const Verification = ({match}) => {
     const [data, setData] = useState([]);
     const [error, setError] = useState(false);
 
-    const init = (userId) => {
-        verified(userId).then(data => {
+    const {
+      user: {
+          _id,
+          firstname,
+          lastname,
+          email,
+          role
+      }
+  } = isAuthenticated();
+
+    const init = (email) => {
+      verificationMail(email).then(data => {
             if (data.error) {
                setError(data.error)
             }else{
@@ -23,7 +35,7 @@ const Verification = ({match}) => {
       };
         
       useEffect(() => {
-        init(match.params.userId);
+        init(match.params.email);
       },[]);
 
 

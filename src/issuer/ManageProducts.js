@@ -8,6 +8,8 @@ import Aside from "./Aside";
 import Footer from "./Footer";
 import moment from 'moment';
 import swal from "sweetalert";
+import Menu from "./Menu";
+
 
 const ManageProducts = () => {
     const [projects, setProjects] = useState([]);
@@ -117,6 +119,7 @@ const totalInvestedCapital = () => {
 
     const header = () => {
         return (
+            
             <section className="content-header">
                 <div className="container-fluid">
                     <div className="row mb-2">
@@ -264,6 +267,7 @@ const totalInvestedCapital = () => {
     const body = () => {
         return (
             <Fragment>
+                 <div class="container-fluid mt-n10">
                 <div class="row">
                     <div class="col-12 box-margin">
 
@@ -374,9 +378,9 @@ const totalInvestedCapital = () => {
                                                                     <a href={`/issuer/project/update/${ p._id }`} class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="Quick view">
                                                                         <i class="fa fa-external-link"></i>
                                                                     </a>
-                                                                    <Link class="action-item mr-2"
+                                                                    <Link className="btn btn-info btn-sm"
                                                                     to={
-                                                                        `/issuer/project/payment/${
+                                                                        `/admin/project/payment/${
                                                                             p._id
                                                                         }`
                                                                 }>
@@ -397,6 +401,7 @@ const totalInvestedCapital = () => {
                         </div>
                     </div>
                 </div>
+                </div>
             </Fragment>
         );
     }
@@ -410,25 +415,64 @@ const totalInvestedCapital = () => {
         }
     }
 
-
-    return (
-        <Fragment>
-            <div className="ecaps-page-wrapper">
-                <Aside></Aside>
-                <div className="ecaps-page-content">
-                    <Header></Header>
-                    <div className="main-content">
-                        <div className="container-fluid">
-                            {
-                            tableOptions()
-                        }
-                            {
-                            body()
-                        } </div>
+    const footer = () => {
+        return (<Fragment>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &copy;
+                            <a href="ventureramp.com.ng">ventureramp.com.ng</a>
+                            2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </Fragment>)
+      }
+      
+      const contentHeader = () => {
+        return (<Fragment>
+      
+      
+            <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+                <div class="container-fluid">
+                    <div class="page-header-content">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon">
+                                <i data-feather="file"></i>
+                            </div>
+                            <span>Product </span>
+                        </h1>
+                        <div class="page-header-subtitle">Manage your product here!</div>
                     </div>
                 </div>
             </div>
-        </Fragment>
+        </Fragment>)
+      }
+
+    return (
+        <Fragment>
+        <Header/>
+        <div id="layoutSidenav">
+            <Menu/>
+            <div id="layoutSidenav_content">
+      
+                <main> {
+                    contentHeader()
+                }
+      
+                    {
+                    body()
+                } </main>
+                {
+                footer()
+            } </div>
+        </div>
+      </Fragment>
     )
 
 }

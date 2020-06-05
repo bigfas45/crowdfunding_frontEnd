@@ -19,6 +19,8 @@ import { API } from "../config";
 import PaystackButton from "react-paystack";
 import moment from 'moment';
 import swal from "sweetalert";
+import Menu from "./Menu"
+import ShowImage from './ShowImage';
 
 
 
@@ -198,6 +200,20 @@ let individualStatus , corporateStatus
       <Fragment>
          {projectAll.map((d,i) => {
         return (
+          <Fragment>
+          <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+                        <div class="container-fluid">
+                            <div class="page-header-content">
+                                <h1 class="page-header-title">
+                                    <div class="page-header-icon"><i class="fa fa-list"></i></div>
+                                    <span>{d.title}</span>
+                                </h1>
+                                
+                            </div>
+                        </div>
+                    </div>
+          <div class="container-fluid mt-n10">
+
           <div class="row">
             <div class="col-12">
               <div class="card box-margin">
@@ -257,20 +273,17 @@ let individualStatus , corporateStatus
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center">
-                              <h5 style={{ color: "red" }}>
+                              <h6 style={{ color: "red" }}>
                                 ₦
                                 {d.pledge.toLocaleString(navigator.language, {
                                   minimumFractionDigits: 0
                                 })}
                                 <p>Goal</p>
-                              </h5>
-                              <h5 style={{ color: "green" }}>
+                              </h6>
+                              <h6 style={{ color: "green" }}>
                                 ₦{total.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}<p>pledged</p>
-                              </h5>
-                              <h5 class="product-price mb-0 mt-0">
-                                {moment(d.createdAt).fromNow()}
-                                <p>Duration</p>
-                              </h5>
+                              </h6>
+                           
                             </div>
                           </p>
                         </div>
@@ -278,10 +291,8 @@ let individualStatus , corporateStatus
 
                       <div class="card  px-4 py-5 border-0">
                         <div class="card-body">
-                          <br />
-                          <br />
-                          <br />
-                          <br />
+                        <ShowImage item={d} url="project" />            
+                                      <br />
                           <br />
                           {process()}
 
@@ -517,26 +528,53 @@ let individualStatus , corporateStatus
               </div>
             </div>
           </div>
+          </div>
+        </Fragment>
         );
       })}
       </Fragment>
     );
   };
 
+  const footer = () => {
+    return (
+        <Fragment>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &copy; Your Website 2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </Fragment>
+    )
+}
+
+
+
   return (
     <Fragment>
-      <div className="ecaps-page-wrapper">
-        <Aside></Aside>
-        <div className="ecaps-page-content">
-          <Header></Header>
-          <div className="main-content">
-            <div class="container-fluid">
-              {content()}
-            </div>
-          </div>
-        </div>
-      </div>
-    </Fragment>
+    <Header/>
+   <div id="layoutSidenav">
+       <Menu/>
+       <div id="layoutSidenav_content">
+
+           <main> 
+
+           {content()}
+              
+           
+           </main>
+           {
+           footer()
+       } </div>
+   </div>
+</Fragment>
   );
 };
 

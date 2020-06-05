@@ -8,6 +8,7 @@ import { Link, Redirect } from "react-router-dom";
 import Footer from "./Footer";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Menu from "./Menu";
 
 
 const Project = () => {
@@ -106,6 +107,7 @@ const Project = () => {
   const projectForm = () => {
     return (
       <Fragment>
+          <div class="container-fluid mt-n10">
         <div className="col-12 box-margin height-card">
           <div className="card">
             <div className="card-body">
@@ -180,22 +182,69 @@ const Project = () => {
             </div>
           </div>
         </div>
+        </div>
       </Fragment>
     );
   };
 
+  const footer = () => {
+    return (<Fragment>
+        <footer class="footer mt-auto footer-light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 small">Copyright &copy;
+                        <a href="ventureramp.com.ng">ventureramp.com.ng</a>
+                        2020</div>
+                    <div class="col-md-6 text-md-right small">
+                        <a href="#!">Privacy Policy</a>
+                        &middot;
+                        <a href="#!">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </Fragment>)
+  }
+  
+  const contentHeader = () => {
+    return (<Fragment>
+  
+  
+        <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+            <div class="container-fluid">
+                <div class="page-header-content">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon">
+                            <i data-feather="file"></i>
+                        </div>
+                        <span>Issuer Application </span>
+                    </h1>
+                    <div class="page-header-subtitle">Manage your Issuer Application here!</div>
+                </div>
+            </div>
+        </div>
+    </Fragment>)
+  }
+
   return (
     <Fragment>
-      <div className="ecaps-page-wrapper">
-        <Aside></Aside>
-        <div className="ecaps-page-content">
-          <Header></Header>
-          <div className="main-content">
-            <div className="container-fluid">{projectForm()}</div>
-          </div>
-        </div>
-      </div>
-    </Fragment>
+    <Header/>
+    <div id="layoutSidenav">
+        <Menu/>
+        <div id="layoutSidenav_content">
+  
+            <main> {
+                contentHeader()
+            }
+  
+                {
+                projectForm()
+            } </main>
+            {
+            footer()
+        } </div>
+    </div>
+  </Fragment>
   );
 };
 

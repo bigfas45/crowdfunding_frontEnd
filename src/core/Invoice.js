@@ -3,7 +3,7 @@ import Header from "./Header";
 import Aside from "./Aside";
 import { isAuthenticated } from "../auth";
 import { getPaymentByRef } from "./ApiCore";
-
+import Menu from "./Menu"
 import moment from 'moment';
 
 const Invoice = ({ match }) => {
@@ -37,7 +37,7 @@ const Invoice = ({ match }) => {
                 {refre.map((r,i) => {
                     return(
 
-                   
+     <div class="container-fluid mt-n10">
  <div class="row" key={i}>
                         <div class="offset-xl-2 col-xl-8">
                          
@@ -198,6 +198,7 @@ const Invoice = ({ match }) => {
                        
                        
                         </div>
+                        </div>
                          )
                         })}
             </Fragment>
@@ -205,23 +206,68 @@ const Invoice = ({ match }) => {
     }
 
 
+    const footer = () => {
+        return (<Fragment>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &copy; <a href="http://ventureramp.com.ng/">ventureramp.com.ng</a> 2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </Fragment>)
+    }
+    
+    const contentHeader = () => {
+      return (
+          <Fragment>
+    
+    
+              <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+                  <div class="container-fluid">
+                      <div class="page-header-content">
+                          <h1 class="page-header-title">
+                              <div class="page-header-icon">
+                                  <i data-feather="file"></i>
+                              </div>
+                              <span>Invoice</span>
+                          </h1>
+                          <div class="page-header-subtitle">Invoice Info</div>
+                      </div>
+                  </div>
+              </div>
+          </Fragment>
+      )
+    
+    }
+
 
 
     return(
         <Fragment>
-        <div className="ecaps-page-wrapper">
-          <Aside></Aside>
-          <div className="ecaps-page-content">
-            <Header></Header>
-            <div className="main-content">
-              <div className="container-fluid">
+        <Header/>
+       <div id="layoutSidenav">
+           <Menu/>
+           <div id="layoutSidenav_content">
+    
+               <main> {
+                   contentHeader()
+               }
+    
                {content()}
-          
-              </div>
-            </div>
-          </div>
-        </div>
-      </Fragment>
+               
+             
+               </main>
+               {
+               footer()
+           } </div>
+       </div>
+    </Fragment>
     )
 
 }

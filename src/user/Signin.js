@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { signin, authenticate, isAuthenticated } from "../auth";
 import { Spinner, Button } from "reactstrap";
 import img from "../img/nasdlogop.jpg"
+import imgLogo from "../nasdlogop.jpg";
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -80,78 +81,94 @@ const Signin = () => {
       <Fragment>
       
 
+      <div class="bg-primary">
+                    <div id="layoutAuthentication">
+                        <div id="layoutAuthentication_content">
+                            <main>
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-5">
+                                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                               
+                                                {
+                                                showError()
+                                            }
+                                                <div class="card-header justify-content-center">
+                                                <center><img src={imgLogo} height="150" width="200"/></center> 
+                                                    <h3 class="font-weight-light my-4">Login</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label class="small mb-1" for="inputEmailAddress">Email</label><input onChange={
+                                                                    handleChnage('email')
+                                                                }
+                                                                value={email}
+                                                                class="form-control py-4"
+                                                                id="inputEmailAddress"
+                                                                type="email"
+                                                                placeholder="Enter email address"/></div>
+                                                        <div class="form-group">
+                                                            <label class="small mb-1" for="inputPassword">Password</label><input onChange={
+                                                                    handleChnage('password')
+                                                                }
+                                                                value={password}
+                                                                class="form-control py-4"
+                                                                id="inputPassword"
+                                                                type="password"
+                                                                placeholder="Enter password"/></div>
+                                                        <div class="form-group">
+                                                            <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox"/><label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                            <Link class="small" to="/password/reset">Forgot Password?</Link>
 
-
- <div class="main-content- h-100vh">
-     <div class="container h-100">
-         <div class="row h-100 align-items-center justify-content-center">
-             <div class="col-md-8 col-lg-5">
-                 <div class="middle-box">
-                     <div class="card">
-                         <div class="card-body p-4">
-
-                         {showError()}
-                {showLoading()}
-                            <center><img src={img} height="150" width="200"/></center> 
-                             <p class="mb-30">Sign in to your account to continue.</p>
-
-                             <form>
-                                 <div class="form-group">
-                                     <label class="float-left" for="emailaddress">Email address</label>
-                                     <input onChange={handleChnage("email")} value={email} class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email"/>
-                                 </div>
-
-                                 <div class="form-group">
-                                     <a href="forget-password.html" class="text-dark float-right"></a>
-                                     <label class="float-left" for="password">Password</label>
-                                     <input  onChange={handleChnage("password")}  value={password} class="form-control" type="password" required="" id="password" placeholder="Enter your password"/>
-                                 </div>
-
-                                 <div class="form-group d-flex justify-content-between align-items-center mb-3">
-                                      
-                                        <span class="font-13 text-primary"><Link to="/password/reset">Forgot your password?</Link></span>
+                                                            {
+                                                            loading && loading ? (
+                                                                <Button class="btn btn-primary" variant="success" disabled>
+                                                                    <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>
+                                                                    Loading...
+                                                                </Button>
+                                                            ) : (
+                                                                <button onClick={clickSubmit}
+                                                                    class="btn btn-primary"
+                                                                    type="submit">
+                                                                    Login
+                                                                </button>
+                                                            )
+                                                        } </div>
+                                                    </form>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <div class="small">
+                                                        <Link to="/signup">Need an account? Sign up!</Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                            </main>
+                        </div>
 
-                                 <div class="form-group mb-0">
-                                    
-
-                                     {loading && loading ? (<Button class="btn btn-primary btn-block" variant="success" disabled>
-    <Spinner
-      as="span"
-      animation="grow"
-      size="sm"
-      role="status"
-      aria-hidden="true"
-    />
-    Loading...
-  </Button>) : ( <button  onClick={clickSubmit} class="btn btn-primary btn-block" type="submit"> Log In </button>)}
-                                 </div>
-
-
-
-                                 <div class="text-center mt-15"><span class="mr-2 font-13 font-weight-bold">Don't have an account?</span><Link class="font-13 font-weight-bold" to="/signup">Sign up</Link></div>
-
-                             </form>
-
-                           
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
-
+                    </div>
+                </div>
       </Fragment>
     );
   };
 
   return (
     <Fragment>
+    <div className="bg-primary">
+        {
+        signinForm()
+    } 
+    {redirectUser()}
+ 
+    </div>
 
-      {signinForm()}
-      {redirectUser()}
-    </Fragment>
+</Fragment>
   );
 };
 

@@ -7,6 +7,7 @@ import {Spinner, Button} from "reactstrap";
 import {Link, Redirect} from "react-router-dom";
 import Footer from "./Footer";
 import {API} from '../config';
+import Menu from "./Menu";
 
 
 const Project = ({match}) => {
@@ -94,6 +95,8 @@ const Project = ({match}) => {
                     loading: false,
                     createdProduct: data.name
                 });
+                init(match.params.projectId);
+
             }
         })
 
@@ -153,7 +156,9 @@ const Project = ({match}) => {
     const Form = () => {
         return (
             <Fragment>
-                <div class="col-6">
+
+                      <div class="container-fluid mt-n10">
+                <div class="col-12">
                     <div class="card box-margin">
                         <form role="form"
                             onSubmit={clickSubmit}>
@@ -210,6 +215,7 @@ const Project = ({match}) => {
                         </form>
                     </div>
                 </div>
+                </div>
             </Fragment>
         );
     }
@@ -218,7 +224,7 @@ const Project = ({match}) => {
     const document = () => {
         return (
             <Fragment>
-               <div class="col-xl-6 height-card box-margin">
+               <div class="col-xl-12 height-card box-margin">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="bg-transparent d-flex align-items-center justify-content-between">
@@ -271,26 +277,67 @@ const Project = ({match}) => {
             </Fragment>
         )
     }
-
-
-    return (
-        <Fragment>
-            <div className="ecaps-page-wrapper">
-                <Aside></Aside>
-                <div className="ecaps-page-content">
-                    <Header></Header>
-                    <div className="main-content">
-                        <div className="container-fluid">
-                        <div class="row">
-                            {  Form() }
-                            {document() }
+    const footer = () => {
+        return (<Fragment>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &copy;
+                            <a href="ventureramp.com.ng">ventureramp.com.ng</a>
+                            2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </Fragment>)
+      }
+      
+      const contentHeader = () => {
+        return (<Fragment>
+      
+      
+            <div class="page-header pb-10 page-header-dark bg-gradient-primary-to-secondary">
+                <div class="container-fluid">
+                    <div class="page-header-content">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon">
+                                <i data-feather="file"></i>
                             </div>
-                             </div>
+                            <span>Product </span>
+                        </h1>
+                        <div class="page-header-subtitle">Manage your product here!</div>
                     </div>
                 </div>
             </div>
-        </Fragment>
-    );
+        </Fragment>)
+      }
+
+      return (
+        <Fragment>
+        <Header/>
+        <div id="layoutSidenav">
+            <Menu/>
+            <div id="layoutSidenav_content">
+      
+                <main> {
+                    contentHeader()
+                }
+      
+                    {
+                    Form()
+                } 
+                {document()}
+                </main>
+                {
+                footer()
+            } </div>
+        </div>
+      </Fragment>
+    )
 };
 
 export default Project;
