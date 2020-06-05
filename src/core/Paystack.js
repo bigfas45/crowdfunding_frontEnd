@@ -78,7 +78,7 @@ const redirect = () => {
   };
 
   // let email, amount
-  let key =pk_live_098c35141fc51e791417dbd444a3f1a152d968df
+  let key ='pk_live_098c35141fc51e791417dbd444a3f1a152d968df'
   //       const process = () => {
   //           refre.map((r,i) => {
   //             email = r.userId.email
