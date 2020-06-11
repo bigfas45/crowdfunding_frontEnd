@@ -59,6 +59,7 @@ import ManageBlog from "./admin/ManageBlog";
 import Blog from "./admin/Blog";
 import UpdateBlog from "./admin/UpdateBlog";
 import AdminPayment from "./admin/Payment";
+import Refund from "./admin/Refund";
 
 
 
@@ -120,7 +121,7 @@ const Routes = () => {
         <AdminRoute path="/admin/blog/create" exact component={Blog} />
         <AdminRoute path="/admin/blog/update/:blogId" exact component={UpdateBlog} />
         <AdminRoute path="/admin/project/payment/:projectId" exact component={AdminPayment} />
-
+        <AdminRoute path="/admin/payment/refund/:paymentId" exact component={Refund} />
 
         <Route path="/signout" exact component={signout} />
         <Route path="/" exact component={Signin} />

@@ -534,8 +534,8 @@ const IssuerApplicationForm = () => {
                                             </div>
                                         </fieldset>
                                         <fieldset>
-                                            <h5 class="mb-3 font-weight-600">Social media profiles:</h5>
-                                            <h3>Investor declaration</h3>
+                                         
+                                            <h3>Issuer declaration</h3>
                                             <p>1. I confirm that all information and documentation either signed or provided herein is true and correct and I further understand that I am responsible for the correctness of all information provided by myself or on my behalf.</p>
                                             <p>2. I have read and understand the contents including the terms and conditions of this application form.</p>
                                             <p>3. Before completing this form, I have read and understand the latest MINIMUM DISCLOSURE DOCUMENTS that are relevant to the crowdfunding investment project(s) of my choice. (Click on the name to download the document.)</p>

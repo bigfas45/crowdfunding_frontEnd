@@ -521,3 +521,34 @@ export const createCategory = (userId, token, category) => {
         })
         .catch(err => console.log(err));
     };
+
+
+
+    export const getSinglePayment = (paymentId) => {
+        return fetch (`${API}/payment/${paymentId}`, {
+            method: "GET"
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+    };
+
+
+    export const refundPayment = (body) => {
+        return  fetch(`https://api.paystack.co/refund`, {
+             method: "POST",
+             headers: {
+                 Accept: "application/json",
+                 
+                 Authorization: `Bearer sk_live_bbad292d623947bcfb3f7f9785b2ed2b1dcee30d`
+             },
+             body: body
+         })
+             .then(response => {
+                 return response.json();
+             })
+             .catch(err => {
+                 console.log(err);
+             });
+     };

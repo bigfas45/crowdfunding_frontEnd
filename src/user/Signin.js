@@ -3,8 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { signin, authenticate, isAuthenticated } from "../auth";
 import { Spinner, Button } from "reactstrap";
 import img from "../img/nasdlogop.jpg"
-import imgLogo from "../nasdlogop.jpg";
-
+import imgLogo from "../img/logo.jpg"
 const Signin = () => {
   const [values, setValues] = useState({
     email: "",

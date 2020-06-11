@@ -250,7 +250,7 @@ const CorporateInvestorForm = () => {
                                 </label>
                                 <input
                                   maxLength="100"
-                                  type="text"
+                                  type="date"
                                   onChange={handleChange("dateofincorporation")}
                                   value={dateofincorporation}
                                   className="form-control"
@@ -525,9 +525,7 @@ const CorporateInvestorForm = () => {
                         </fieldset>
 
                         <fieldset>
-                          <h5 className="mb-3 font-weight-600">
-                            Social media profiles:
-                          </h5>
+                        
                           <h3>Investor declaration</h3>
                           <p>
                             1. I confirm that all information and documentation

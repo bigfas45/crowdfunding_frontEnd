@@ -107,10 +107,10 @@ initInvestmentCount();
     const dashboarddashboard = () => {
       swal({
         title: ` Disclaimer`,
-        text: `NASD CROWDY PORTAL [“Portal”] is a product of NASD Technology Service Limited.
+        text: `NASD VentureRamp crowdfunding  PORTAL [“Portal”] is a product of NASD Technology Service Limited.
         Users of this Portal are subject to this Disclaimer, the Privacy Statement, Terms of Use, Risk Warning and all other Policies and Procedures.
         
-        Any User that accesses this Portal agrees to be bound by this Disclaimer. All Investments including Crowdfunding Projects submitted on the NASD Crowdy Portals are highly speculative in nature and involves substantial risk of loss. We therefore encourage Investors to get advice from their Professional Investment Advisor and to make independent investigations before acting on any information published on the Portal. 
+        Any User that accesses this Portal agrees to be bound by this Disclaimer. All Investments including Crowdfunding Projects submitted on the NASD VentureRamp crowdfunding  Portals are highly speculative in nature and involves substantial risk of loss. We therefore encourage Investors to get advice from their Professional Investment Advisor and to make independent investigations before acting on any information published on the Portal. 
         
         We make no endorsements, representations or warranties whatsoever that any Investor will, or is likely to, achieve profits based on expected or simulated performance of a Crowdfunding Project as this is not necessarily indicative of future results.
        

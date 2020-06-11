@@ -2,7 +2,7 @@ import React, {Fragment, useState} from "react";
 import {Link, Redirect} from "react-router-dom";
 import {signup, sendVerificationMail} from '../auth';
 import {Spinner, Button} from "reactstrap";
-import imgLogo from "../nasdlogop.jpg";
+import imgLogo from "../img/logo.jpg"
 
 
 const Signup = () => {
@@ -170,7 +170,7 @@ const Signup = () => {
                                                 showError()
                                             }
                                                 <div class="card-header justify-content-center">
-                                                <center><img src="https://nasdng.com/wp-content/uploads/2020/02/logo.png"/></center> 
+                                                <center><img src={imgLogo}/></center> 
                                                  
                                                 </div>
                                                 <div class="card-header justify-content-center">
@@ -216,7 +216,7 @@ const Signup = () => {
                                                             <div class="form-group">
                                                                 <label class="small mb-1" for="inputConfirmPassword">
                                                                     Password</label>
-                                                                    <input onChange={handleChnage("password")} value={password} class="form-control py-4" id="inputConfirmPassword" type="text"/></div>
+                                                                    <input onChange={handleChnage("password")} value={password} class="form-control py-4" id="inputConfirmPassword" type="password"/></div>
                                                         </div>
                                                     </div>
                                                     <div className="form-group mb-0">

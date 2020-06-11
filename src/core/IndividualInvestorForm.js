@@ -1149,7 +1149,7 @@ const contentHeader = () => {
                           </h5>
                           <h3>Investor Declaration</h3>
                           <p>
-                            1. I confirm that all information and documentation provided herein is true and correct; I further understand that I am responsible for the veracity of all information provided.
+                            1. I confirm that all information and documentation provided herein is true and correct; I further understand that I am responsible for the authenticity of all information provided.
                           </p>
                           <p>
                             2. I have read and understood the contents including the terms and conditions of this Application form.
