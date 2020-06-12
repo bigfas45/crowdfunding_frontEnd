@@ -46,32 +46,34 @@ const ResetPassword = ({match}) => {
     
       const showError = () => {
         return (
-         
-            <div
-              class="alert alert-danger"
-              role="alert"
-              style={{ display: error ? "" : "none" }}
-            >
-              {error}
-            </div>
-        
-       
+
+            <div className="alert alert-danger" role="alert"
+                style={
+                    {
+                        display: error ? "" : "none"
+                    }
+            }>
+                {error} </div>
+
+
         );
-      };
-    
-      const showSuccess = () => {
+    };
+
+    const showSuccess = () => {
         return (
-          <Fragment>
-            <div
-              class="alert alert-info"
-              role="alert"
-              style={{ display: success ? "" : "none" }}
-            >
-             Your Password has been Reset <Link to="/">Signin</Link>  
-            </div>
-          </Fragment>
+            <Fragment>
+                <div className="alert alert-info" role="alert"
+                    style={
+                        {
+                            display: success ? "" : "none"
+                        }
+                }>
+                   Your password has been reset
+                    <Link to="/signin">Signin</Link>
+                </div>
+            </Fragment>
         );
-      };
+    };
 
 
 
