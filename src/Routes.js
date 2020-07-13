@@ -14,17 +14,7 @@ import VerificationInvestor from "./core/VerificationConfirmation";
 
 
 
-import DonationHome from "./donations/Home";
-import DonationRegistration from "./donations/Registration";
-import DonationIndividualInvestorForm from "./donations/IndividualInvestorForm";
-import DonationCorporateInvestorForm from "./donations/CorporateInvestorForm";
-import DonationInvestment from "./donations/Investment";
-import DonationInvestmentDetails from "./donations/InvestmentDetails";
-import DonationFundProject from "./donations/FundProject";
-import DonationPaystack from "./donations/Paystack";
-import DonationInvoice from "./donations/Invoice";
-import DonationBalance from "./donations/Balance";
-import DonationVerificationInvestor from "./donations/VerificationConfirmation";
+
 
 
 
@@ -105,15 +95,7 @@ const Routes = () => {
 
 
 
-        <DonationRoute path="/donation/dashboard" exact component={DonationHome} />
-        <DonationRoute path="/donate" exact component={DonationInvestment} />
-        <DonationRoute path="/investment/:projectId" exact component={InvestmentDetails} />
-        <DonationRoute path="/project/fund/:projectId" exact component={FundProject} />
-        <DonationRoute path="/project/paystack/:refId" exact component={Paystack} />
-        <DonationRoute path="/invoice/:refId" exact component={Invoice} />
-        <DonationRoute path="/payment/balance" exact component={Balance} />
-        <DonationRoute path="/investor/verification/:email" exact component={VerificationInvestor} />
-
+       
 
         <IssuerRoute path="/issuer/dashboard" exact component={IssuerHome} />
         <IssuerRoute path="/issuer/project/create" exact component={IssuerProject} />
