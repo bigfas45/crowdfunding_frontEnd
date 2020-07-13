@@ -41,7 +41,6 @@ import ResetPassword from "./user/ResetPassword";
 
 import ForgetPassword from "./user/ForgetPassword";
 import PrivateRoute from './auth/PrivateRoute'
-import DonationRoute from './auth/DonationRoute'
 import AdminRoute from './auth/AdminRoute'
 import IssuerRoute from './auth/IssuerRoute'
 import AdminHome from "./admin/Home";
