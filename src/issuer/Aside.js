@@ -12,7 +12,7 @@ import { withRouter } from "react-router";
 
 const Aside = ({ history }) => {
 
-  const {user: {_id, firstname, lastname, email, role}} = isAuthenticated()
+  const {user: {_id, firstname, lastname, email, role, userTyp}} = isAuthenticated()
 
 
 const asideBar = () => {

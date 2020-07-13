@@ -11,7 +11,8 @@ const Header = ({ history }) => {
             firstname,
             lastname,
             email,
-            role
+            role,
+             userType
         }
     } = isAuthenticated();
     return (

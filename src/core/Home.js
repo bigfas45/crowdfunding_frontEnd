@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from "react";
 import Header from "./Header";
 import Aside from "./Aside";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import { isAuthenticated } from "../auth";
 import  image from  '../img/company.svg';
 import  image2 from  '../img/person-investor.svg';
@@ -21,7 +21,8 @@ const Home = () => {
             firstname,
             lastname,
             email,
-            role
+            role,
+            userType
         }
     } = isAuthenticated();
 
@@ -93,7 +94,8 @@ const process = () => {
 useEffect(() => {
   init();
   init2();
-  initInvestmentCount()
+  initInvestmentCount();
+  
 }, []);
 
 
@@ -212,8 +214,15 @@ const dashboarddashboard = () => {
                         <div className="position-relative">
                             <div className="row align-items-center justify-content-between">
                                 <div className="col position-relative">
-                                    <h2 className="text-primary">Welcome back, your dashboard is ready!</h2>
-                                    <p className="text-gray-700">Great job, your affiliate dashboard is ready to go! You can view sales, generate links, prepare coupons, and download affiliate reports using this dashboard.</p>
+                                    <h2 className="text-primary">Welcome, your dashboard is ready!</h2>
+                                    <p className="text-gray-700">Your dashboard is your one stop zone to view the following information on your account:</p>
+                                    <ul className="text-gray-700">
+                                        <li> Number of projects you have invested in till date</li>
+                                        <li>Total amount invested</li>
+                                        <li>Last login date &amp; time</li>
+                                        <li>Completed funding campaigns</li>
+                                    </ul>
+
                                     <Link className="btn btn-teal" to="/investment">Get started<i className="ml-1" data-feather="arrow-right"></i></Link>
                                 </div>
                                 <div className="col d-none d-md-block text-right pt-3"><img className="img-fluid mt-n5" src={IMG} style={{maxWidth: "25rem"}} /></div>
@@ -294,7 +303,10 @@ const dashboarddashboard = () => {
                         <div className="col-lg-8 col-xl-9 mb-4">
                         {process()}
 
-{individual === _id || corporate === _id ? '' : Reg()}
+<div>
+    {userType ===3 ? '' : (individual === _id || corporate === _id ? '' : Reg())}
+</div>
+
                         </div>
                     </div>
                 </div>
@@ -321,7 +333,8 @@ const dashboarddashboard = () => {
   return (
    
     <Fragment>
-           {dashboarddashboard()}
+      
+           {/* {dashboarddashboard()} */}
           <Header />
             <div id="layoutSidenav">
                 <Menu />

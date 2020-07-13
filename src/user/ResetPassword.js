@@ -59,21 +59,10 @@ const ResetPassword = ({match}) => {
         );
     };
 
-    const showSuccess = () => {
-        return (
-            <Fragment>
-                <div className="alert alert-info" role="alert"
-                    style={
-                        {
-                            display: success ? "" : "none"
-                        }
-                }>
-                   Your password has been reset
-                    <Link to="/signin">Signin</Link>
-                </div>
-            </Fragment>
-        );
-    };
+  
+
+
+
 
 
 
@@ -90,12 +79,17 @@ const ResetPassword = ({match}) => {
                                         <div class="col-lg-5">
                                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                                
-                                            {showSuccess()}
+                                       
                                {showError()}
                            
                                                 <div class="card-header justify-content-center">
                                               
-                                                    <h3 class="font-weight-light my-4">Enter your new password to reset password</h3>
+                                                    <h3 class="font-weight-light my-4">{success ? (
+                                                        <div className="text-success">
+                                                            Your password has been reset<br/>
+                                                            Please<Link to="/signin"> Signin</Link></div>
+                                                      
+                                                    ) :  'Enter your new password to reset password'}</h3>
                                                 </div>
                                                 <div class="card-body">
                                                     <form>

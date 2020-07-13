@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import ShowImage from './ShowImage';
 import moment from 'moment';
 import image from "../img/puzzle-959x539.jpg";
@@ -65,7 +65,7 @@ let percentage=0
               <ShowImage item={project} url="project" />
               <div class=""><br/>
               {  payment()}
-                  <h3 class="text-primary mb-0"><a target="_black" href={`${project.website}`} >{project.title}</a></h3>
+                  <h3 class="text-primary mb-0"><Link to={`/investment/${project._id}`} >{project.title}</Link></h3>
                   <div class="small text-gray-800 font-weight-500">
                       <span><br/><i style={
                                   {color: "green"}

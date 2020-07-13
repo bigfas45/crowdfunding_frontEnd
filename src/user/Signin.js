@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, refresh } from "react-router-dom";
 import { signin, authenticate, isAuthenticated } from "../auth";
 import { Spinner, Button } from "reactstrap";
 import img from "../img/nasdlogop.jpg"
@@ -67,8 +67,8 @@ const Signin = () => {
     if (redirectToReferrer) {
       if (user && user.role === 1) {
         return <Redirect to="/admin/dashboard"></Redirect>;
-      }else if(user && user.role === 0 && user.userType ===1 ){
-        return <Redirect to="/investor/dashboard"></Redirect>;
+      }else if(user && user.role === 0 && user.userType ===1 || user.userType === 3 ){
+        return <Redirect  to="/investor/dashboard" refresh={true}></Redirect>;
       }else if(user && user.role === 0 && user.userType ===0 ){
         return <Redirect to="/issuer/dashboard"></Redirect>;
       }

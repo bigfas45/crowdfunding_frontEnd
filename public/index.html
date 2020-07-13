@@ -88,6 +88,14 @@
             });
         </script>
 
+<script>
+$(function(){
+    $("#sidebarToggle").on("click", function (e) {
+                    e.preventDefault();
+                    $("body").toggleClass("sidenav-toggled");
+                });
+}); 
+</script>
 
 
     </body>

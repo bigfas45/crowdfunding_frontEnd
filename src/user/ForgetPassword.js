@@ -8,24 +8,17 @@ import {passwordReset} from '../auth';
 const ForgetPassword = () => {
 
     const [values, setValues] = useState({
-       
         email: "",
         error: "",
         success: false
       });
       const { email,  error, success } = values;
-    
       const handleChnage = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value });
       };
     
     
       
-    
-    
-      
-      
-    
     
       const clickSubmit = event => {
         event.preventDefault();

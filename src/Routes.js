@@ -14,6 +14,20 @@ import VerificationInvestor from "./core/VerificationConfirmation";
 
 
 
+import DonationHome from "./donations/Home";
+import DonationRegistration from "./donations/Registration";
+import DonationIndividualInvestorForm from "./donations/IndividualInvestorForm";
+import DonationCorporateInvestorForm from "./donations/CorporateInvestorForm";
+import DonationInvestment from "./donations/Investment";
+import DonationInvestmentDetails from "./donations/InvestmentDetails";
+import DonationFundProject from "./donations/FundProject";
+import DonationPaystack from "./donations/Paystack";
+import DonationInvoice from "./donations/Invoice";
+import DonationBalance from "./donations/Balance";
+import DonationVerificationInvestor from "./donations/VerificationConfirmation";
+
+
+
 import IssuerHome from "./issuer/Home";
 import IssuerProject from "./issuer/Project";
 import IssuerManageProducts from "./issuer/ManageProducts";
@@ -37,6 +51,7 @@ import ResetPassword from "./user/ResetPassword";
 
 import ForgetPassword from "./user/ForgetPassword";
 import PrivateRoute from './auth/PrivateRoute'
+import DonationRoute from './auth/DonationRoute'
 import AdminRoute from './auth/AdminRoute'
 import IssuerRoute from './auth/IssuerRoute'
 import AdminHome from "./admin/Home";
@@ -76,7 +91,7 @@ const Routes = () => {
     <BrowserRouter>
  
       <Switch>
-        <PrivateRoute path="/investor/dashboard" exact component={Home} />
+        <PrivateRoute path="/investor/dashboard" exact component={Home}  />
         <PrivateRoute path="/investor/registration" exact component={Registration} />
         <PrivateRoute path="/individual/investor/registration" exact component={IndividualInvestorForm} />
         <PrivateRoute path="/corporate/investor/registration" exact component={CorporateInvestorForm} />
@@ -87,6 +102,17 @@ const Routes = () => {
         <PrivateRoute path="/invoice/:refId" exact component={Invoice} />
         <PrivateRoute path="/payment/balance" exact component={Balance} />
         <PrivateRoute path="/investor/verification/:email" exact component={VerificationInvestor} />
+
+
+
+        <DonationRoute path="/donation/dashboard" exact component={DonationHome} />
+        <DonationRoute path="/donate" exact component={DonationInvestment} />
+        <DonationRoute path="/investment/:projectId" exact component={InvestmentDetails} />
+        <DonationRoute path="/project/fund/:projectId" exact component={FundProject} />
+        <DonationRoute path="/project/paystack/:refId" exact component={Paystack} />
+        <DonationRoute path="/invoice/:refId" exact component={Invoice} />
+        <DonationRoute path="/payment/balance" exact component={Balance} />
+        <DonationRoute path="/investor/verification/:email" exact component={VerificationInvestor} />
 
 
         <IssuerRoute path="/issuer/dashboard" exact component={IssuerHome} />

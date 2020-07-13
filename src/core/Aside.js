@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
 import '../styles.css';
@@ -12,7 +12,9 @@ import { withRouter } from "react-router";
 
 const Aside = ({ history }) => {
 
-  const {user: {_id, firstname, lastname, email, role}} = isAuthenticated()
+  const {user: {_id, firstname, lastname, email, role}} = isAuthenticated();
+
+  
 
 
 const asideBar = () => {

@@ -1,7 +1,8 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect} from "react";
 import {Link, withRouter} from "react-router-dom";
 import {API} from '../config';
 import { signout, isAuthenticated } from "../auth";
+import $ from "jquery";
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
@@ -18,9 +19,22 @@ const Menu = ({history}) => {
             firstname,
             lastname,
             email,
-            role
+            role,
+           userType
         }
     } = isAuthenticated();
+
+   
+    
+   
+    
+        
+        
+  
+
+
+
+  
     return (
         <Fragment>
             <div id="layoutSidenav_nav">

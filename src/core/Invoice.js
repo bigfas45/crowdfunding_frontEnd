@@ -53,9 +53,7 @@ const Invoice = ({ match }) => {
                                         </div>
                                         <div class="col-auto">
                                            
-                                            <a href="#!" class="btn btn-success">
-                                                Download
-                                            </a>
+                                          
                                             <a href="#!" class="btn btn-primary ml-2">
                                                 PAID
                                             </a>

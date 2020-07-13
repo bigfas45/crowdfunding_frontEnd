@@ -225,7 +225,7 @@ const contentHeader = () => {
                                   className="form-control"
                                 >
                                   <option label="blank">Select Title</option>
-                                  <option>M.r</option>
+                                  <option>Mr.</option>
                                   <option>Mrs.</option>
                                   <option>Miss.</option>
                                 </select>
@@ -303,8 +303,8 @@ const contentHeader = () => {
                                   onChange={handleChange("nationality")}
                                   value={nationality}
                                 >
-                                  <option label="blank">
-                                    Select Nationality
+                                  <option label="Nigerian">
+                                  Nigerian 
                                   </option>
                                   <option value="afghan">Afghan</option>
                                   <option value="albanian">Albanian</option>
@@ -473,7 +473,7 @@ const contentHeader = () => {
                                   </option>
                                   <option value="ni-vanuatu">Ni-Vanuatu</option>
                                   <option value="nicaraguan">Nicaraguan</option>
-                                  <option value="nigerien">Nigerian</option>
+                                  <option value="nigerien">Nigerian </option>
                                   <option value="north korean">
                                     North Korean
                                   </option>
@@ -573,8 +573,8 @@ const contentHeader = () => {
                                   onChange={handleChange("countryOfResidence")}
                                   value={countryOfResidence}
                                 >
-                                  <option label="blank">
-                                    Select Country of Residence
+                                  <option label="Nigerian">
+                                  Nigerian 
                                   </option>
                                   <option value="Afganistan">
                                     Afghanistan
@@ -802,7 +802,7 @@ const contentHeader = () => {
                                   </option>
                                   <option value="Nicaragua">Nicaragua</option>
                                   <option value="Niger">Niger</option>
-                                  <option value="Nigeria">Nigeria</option>
+                                  <option value="Nigeria">Nigerian </option>
                                   <option value="Niue">Niue</option>
                                   <option value="Norfolk Island">
                                     Norfolk Island
@@ -1025,7 +1025,7 @@ const contentHeader = () => {
                                   onChange={handleChange("originOfFunds")}
                                   value={originOfFunds}
                                 >
-                                  <option label="">Select Currency</option>
+                                  <option label="">  Origin of Funds</option>
                                   <option>Savings</option>
                                   <option>Profit</option>
                                   <option>Inheritance</option>
@@ -1059,7 +1059,7 @@ const contentHeader = () => {
                                 >
                                   <option label="blank">Select Currency</option>
                                   <option value="Naira">Naira(₦)</option>
-                                  <option value="Dollars">Dollars($)</option>
+                                
                                 </select>
                               </div>
                             </div>

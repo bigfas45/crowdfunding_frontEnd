@@ -112,11 +112,8 @@ const Inestment = () => {
                   <div class="pl-4">
                     <h3 class="mb-4">Investment opportunities</h3>
                     <p>
-                      Investing in early-stage and growth companies puts your
-                      capital at risk. Please read our{" "}
-                      <a href="#"> Risk Disclosure Statement</a> and the
-                      description of risks on each campaign page. Provided by
-                      NASD.
+                    Investing in early-stage and growth companies puts your capital at risk. Please read our Risk Disclosure
+Statement and the description of risks on each campaign page.
                     </p>
                   </div>
                 </div>
@@ -146,7 +143,7 @@ const content2 = () => {
                                                 <div class="card-">
                                                     <h6 class="card-header bg-white accordion-heading single-product mb-0">
                                                         <a class="text-dark" href="#productInfo" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="productInfo">
-                                                            <i class="fa fa-eercast mr-3 font-16"></i>Filter By Status</a>
+                                                            <i class="fa fa-eercast mr-3 font-16"></i>Filter By Type</a>
                                                     </h6>
                                                     <div class="collapse show" id="productInfo" data-parent="#productPanels">
                                                         <div class="card-body pb-0 border-bottom">

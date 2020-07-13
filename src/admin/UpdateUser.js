@@ -245,6 +245,7 @@ const UpdateUser = ({ match }) => {
 
                         <option value="1">Investor</option>
                         <option value="0">Issuers</option>
+                        <option value="3">Donation</option>
                       </select>
                     </div>
                   </div>

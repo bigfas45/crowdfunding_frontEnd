@@ -17,9 +17,9 @@ const Header = ({ history }) => {
     return (
         <Fragment>
             <nav className="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-                <Link className="navbar-brand d-none d-sm-block" to="index.html">NASD</Link>
+                <Link className="navbar-brand d-none d-sm-block" to="/dashboard">NASD</Link>
                 <button className="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" to="#">
-                    <i data-feather="menu"></i>
+                   Menu
                 </button>
                 <form className="form-inline mr-auto d-none d-lg-block"><input className="form-control form-control-solid mr-sm-2" type="search" placeholder="Search" aria-label="Search"/></form>
                 <ul className="navbar-nav align-items-center ml-auto">

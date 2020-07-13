@@ -26,7 +26,7 @@ import ShowImage from './ShowImage';
 
 const InestmentDetails = ({ match }) => {
   const {
-    user: { _id, firstname, lastname, email, role }
+    user: { _id, firstname, lastname, email, role, userType }
   } = isAuthenticated();
   const [investorForm, setInvestorForm] = useState([]);
   const [corporateForm, setCorporateForm] = useState([]);
@@ -296,8 +296,8 @@ let individualStatus , corporateStatus
                           <br />
                           {process()}
 
-                          {individual === _id || corporate === _id ? 
-                          individualStatus === 1 || corporateStatus === 1  ? 
+                          {individual === _id || corporate === _id  || userType=== 3   ? 
+                          individualStatus === 1 || corporateStatus === 1 || userType=== 3  ? 
                        
                          
                        (  <Fragment>
