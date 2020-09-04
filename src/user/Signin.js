@@ -94,7 +94,7 @@ const Signin = () => {
                                             }
                                                 <div class="card-header justify-content-center">
                                                 <center><img src={imgLogo} height="150" width="200"/></center> 
-                                                    <h3 class="font-weight-light my-4">Login</h3>
+                                                    {/* <h3 class="font-weight-light my-4">Login</h3> */}
                                                 </div>
                                                 <div class="card-body">
                                                     <form>
