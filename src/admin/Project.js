@@ -146,157 +146,166 @@ const Project = () => {
   const projectForm = () => {
     return (
       <Fragment>
-          <div class="container-fluid mt-n10">
-        <div className="col-12 box-margin height-card">
-          <div className="card">
-            <div className="card-body">
-              <h6 className="card-title mb-30">Add Project</h6>
-              {showSuccess()}
-              {showError()}
-              <form onSubmit={clickSubmit}>
-                <div className="row">
-                  <div className="col-sm-12">
-                    <div className="form-group">
-                      <label className="control-label">Project Title</label>
-                      <input
-                        onChange={handleChange("title")}
-                        value={title}
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter project title"
-                      />
+        <div class="container-fluid mt-n10">
+          <div className="col-12 box-margin height-card">
+            <div className="card">
+              <div className="card-body">
+                <h6 className="card-title mb-30">Add Project</h6>
+                {showSuccess()}
+                {showError()}
+                <form onSubmit={clickSubmit}>
+                  <div className="row">
+                    <div className="col-sm-12">
+                      <div className="form-group">
+                        <label className="control-label">Project Title</label>
+                        <input
+                          onChange={handleChange('title')}
+                          value={title}
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter project title"
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="form-group">
-                      <label className="control-label">Project Type</label>
-                      <select
-                        onChange={handleChange("projectType")}
-                        value={projectType}
-                        className="form-control"
-                        id="category"
-                        name="category"
-                      >
-                        <option>Select Here..</option>
-                        <option value="Loan">Loan</option>
-                        <option value="Equity">Equity</option>
-                      </select>
+                    <div className="col-sm-6">
+                      <div className="form-group">
+                        <label className="control-label">Project Type</label>
+                        <select
+                          onChange={handleChange('projectType')}
+                          value={projectType}
+                          className="form-control"
+                          id="category"
+                          name="category"
+                        >
+                          <option>Select Here..</option>
+                          <option value="Loan">Loan</option>
+                          <option value="Equity">Equity</option>
+                          <option value="Donations">Donations</option>
+                        </select>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="form-group">
-                      <label className="control-label">Category</label>
-                      <select
-                        onChange={handleChange("category")}
-                        value={category}
-                        className="form-control"
-                        id="category"
-                        name="category"
-                      >
-                        <option>Select Here..</option>
+                    <div className="col-sm-6">
+                      <div className="form-group">
+                        <label className="control-label">Category</label>
+                        <select
+                          onChange={handleChange('category')}
+                          value={category}
+                          className="form-control"
+                          id="category"
+                          name="category"
+                        >
+                          <option>Select Here..</option>
 
-                        {categories &&
-                          categories.map((c, i) => (
-                            <option key={i} value={c._id}>
-                              {c.name}
-                            </option>
-                          ))}
-                      </select>
+                          {categories &&
+                            categories.map((c, i) => (
+                              <option key={i} value={c._id}>
+                                {c.name}
+                              </option>
+                            ))}
+                        </select>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-4">
-                    <div className="form-group">
-                      <label className="control-label">Location</label>
-                      <input
-                        onChange={handleChange("location")}
-                        value={location}
-                        type="text"
-                        className="form-control"
-                      />
+                  <div className="row">
+                    <div className="col-sm-4">
+                      <div className="form-group">
+                        <label className="control-label">Location</label>
+                        <input
+                          onChange={handleChange('location')}
+                          value={location}
+                          type="text"
+                          className="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-sm-4">
+                      <div className="form-group">
+                        <label className="control-label"> Website </label>
+                        <input
+                          onChange={handleChange('website')}
+                          value={website}
+                          type="text"
+                          className="form-control"
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div className="col-sm-4">
-                    <div className="form-group">
-                      <label className="control-label"> Website </label>
-                      <input onChange={handleChange("website")}   value={website} type="text" className="form-control" />
+                  <div className="row">
+                    <div className="col-sm-4">
+                      <div className="form-group">
+                        <label className="control-label">Goal </label>
+                        <input
+                          onChange={handleChange('pledge')}
+                          value={pledge}
+                          type="number"
+                          className="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-sm-4">
+                      <div className="form-group">
+                        <label className="control-label">Return</label>
+                        <input
+                          onChange={handleChange('returns')}
+                          value={returns}
+                          type="number"
+                          className="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-sm-4">
+                      <div className="form-group">
+                        <label className="control-label">Duration</label>
+                        <input
+                          onChange={handleChange('duration')}
+                          value={duration}
+                          type="number"
+                          className="form-control"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-4">
-                    <div className="form-group">
-                      <label className="control-label">Goal </label>
-                      <input
-                        onChange={handleChange("pledge")}
-                        value={pledge}
-                        type="number"
-                        className="form-control"
-                      />
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <div className="form-group">
+                        <label htmlFor="inputDescription">
+                          Project Description
+                        </label>
+                        <CKEditor
+                          editor={ClassicEditor}
+                          name="description"
+                          onChange={handleOnChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-sm-6">
+                      <div className="form-group">
+                        <label className="control-label">Feature Picture</label>
+                        <small>
+                          (This is the first thing that people will see when
+                          they come across your project.)
+                        </small>
+                        <input
+                          onChange={handleChange('image')}
+                          required=""
+                          type="file"
+                          name="file"
+                          className="dropify"
+                          data-height="300"
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div className="col-sm-4">
-                    <div className="form-group">
-                      <label className="control-label">Return</label>
-                      <input
-                        onChange={handleChange("returns")}
-                        value={returns}
-                        type="number"
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-sm-4">
-                    <div className="form-group">
-                      <label className="control-label">Duration</label>
-                      <input
-                        onChange={handleChange("duration")}
-                        value={duration}
-                        type="number"
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-6">
-                    <div className="form-group">
-                      <label htmlFor="inputDescription">Project Description</label>
-                      <CKEditor
-                        editor={ClassicEditor}
-                        name="description"
-                        onChange={handleOnChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="form-group">
-                      <label className="control-label">Feature Picture</label>
-                      <small>
-                        (This is the first thing that people will see when they
-                        come across your project.)
-                      </small>
-                      <input
-                        onChange={handleChange("image")}
-                        required=""
-                        type="file"
-                        name="file"
-                        className="dropify"
-                        data-height="300"
-                      />
-                    </div>
-                  </div>
-                </div>
-            
-            
-                <input type="submit"  className="btn btn-success float-right"   value="Submit and continue" />
-                
-             
+
+                  <input
+                    type="submit"
+                    className="btn btn-success float-right"
+                    value="Submit and continue"
+                  />
                 </form>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </Fragment>
     );

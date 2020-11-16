@@ -214,226 +214,235 @@ const UpdateAnnualReport = ({match}) => {
 
 
     const projectForm = () => {
-        return (<Fragment>
+        return (
+          <Fragment>
             <div class="container-fluid mt-n10">
-                <div className="col-12 box-margin height-card">
-                    <div className="card">
-                        <div className="card-body">
-                            <h6 className="card-title mb-30">Add Project</h6>
-                            {
-                            showSuccess()
-                        }
-                            {
-                            showError()
-                        }
-                            <form onSubmit={clickSubmit}>
-                                <div className="row">
-                                    <div className="col-sm-12">
-                                        <div className="form-group">
-                                            <label className="control-label">Project Title</label>
-                                            <input onChange={
-                                                    handleChange("title")
-                                                }
-                                                value={title}
-                                                type="text"
-                                                className="form-control"
-                                                placeholder="Enter project title"/>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="form-group">
-                                            <label className="control-label">Project Type</label>
-                                            <select onChange={
-                                                    handleChange("projectType")
-                                                }
-                                                value={projectType}
-                                                className="form-control"
-                                                id="category">
-                                                <option> {projectType}</option>
-                                                <option value="Loan">Loan</option>
-                                                <option value="Equity">Equity</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="form-group">
-                                            <label className="control-label">Category</label>
-                                            <select onChange={
-                                                    handleChange("category")
-                                                }
-                                                value={category}
-                                                className="form-control"
-                                                id="category"
-                                                name="category">
-                                                <option> {category}</option>
-
-                                                {
-                                                categories && categories.map((c, i) => (<option key={i}
-                                                    value={
-                                                        c._id
-                                                }> {
-                                                    c.name
-                                                } </option>))
-                                            } </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-4">
-                                        <div className="form-group">
-                                            <label className="control-label">Location</label>
-                                            <input onChange={
-                                                    handleChange("location")
-                                                }
-                                                value={location}
-                                                type="text"
-                                                className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <div className="form-group">
-                                            <label className="control-label">
-                                                Website
-                                            </label>
-                                            <input onChange={
-                                                    handleChange("website")
-                                                }
-                                                value={website}
-                                                type="text"
-                                                className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <div className="form-group">
-                                            <label className="control-label">
-                                                Status
-                                            </label>
-                                            <select onChange={
-                                                    handleChange('status')
-                                                }
-                                                className="form-control custom-select">
-
-                                                <option> {
-                                                    getStatus(status)
-                                                }</option>
-
-                                                <option value="0">Inactivate</option>
-                                                <option value="1">Activate</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-4">
-                                        <div className="form-group">
-                                            <label className="control-label">Goal
-                                            </label>
-                                            <input onChange={
-                                                    handleChange("pledge")
-                                                }
-                                                value={pledge}
-                                                type="number"
-                                                className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <div className="form-group">
-                                            <label className="control-label">Return</label>
-                                            <input onChange={
-                                                    handleChange("returns")
-                                                }
-                                                value={returns}
-                                                type="number"
-                                                className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <div className="form-group">
-                                            <label className="control-label">Duration</label>
-                                            <input onChange={
-                                                    handleChange("duration")
-                                                }
-                                                value={duration}
-                                                type="number"
-                                                className="form-control"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <div className="form-group">
-                                            <label htmlFor="inputDescription">
-                                                Project Description
-                                            </label>
-                                            <CKEditor editor={ClassicEditor}
-                                                name="description"
-                                                onChange={handleOnChange}
-                                                data={
-                                                    ` ${des} `
-                                                }/>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="form-group">
-                                            <label className="control-label">Feature Picture</label>
-                                            <small>
-                                                (This is the first thing that people will see when they
-                                                                        come across your project.)
-                                            </small>
-                                            <input onChange={
-                                                    handleChange("image")
-                                                }
-                                                required=""
-                                                type="file"
-                                                name="file"
-                                                className="dropify"
-                                                data-height="300"/>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4 single_gallery_item development branding">
-                                            <div class="gallery-content">
-                                                <img src={
-                                                        `${API}/project/image/${
-                                                            match.params.projectId
-                                                        }`
-                                                    }
-                                                    alt={title}/>
-                                                <div class="gallery-hover-overlay d-flex justify-content-between">
-                                                    <div class="port-more-view">
-                                                        <div class="port-text  mb-30">
-                                                            <p class="text-white mb-0">Magazine
-                                                            </p>
-                                                            <h4>
-                                                                <a href="#" class="text-white">
-                                                                    Responsive Template
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="port-icon">
-                                                            <a href="#" class="gallery_icon">
-                                                                <i class="fa fa-plus"></i>
-                                                            </a>
-                                                            <a href="#">
-                                                                <i class="fa fa-link"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {
-                                loading && loading ? (<Button className="btn btn-danger float-right" variant="success" disabled>
-                                    <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>
-                                    Loading...
-                                </Button>) : (<input type="submit" className="btn btn-success float-right" value="Update product"/>)
-                            } </form>
+              <div className="col-12 box-margin height-card">
+                <div className="card">
+                  <div className="card-body">
+                    <h6 className="card-title mb-30">Add Project</h6>
+                    {showSuccess()}
+                    {showError()}
+                    <form onSubmit={clickSubmit}>
+                      <div className="row">
+                        <div className="col-sm-12">
+                          <div className="form-group">
+                            <label className="control-label">
+                              Project Title
+                            </label>
+                            <input
+                              onChange={handleChange('title')}
+                              value={title}
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter project title"
+                            />
+                          </div>
                         </div>
-                    </div>
+                        <div className="col-sm-6">
+                          <div className="form-group">
+                            <label className="control-label">
+                              Project Type
+                            </label>
+                            <select
+                              onChange={handleChange('projectType')}
+                              value={projectType}
+                              className="form-control"
+                              id="category"
+                            >
+                              <option> {projectType}</option>
+                              <option value="Loan">Loan</option>
+                              <option value="Equity">Equity</option>
+                              <option value="Donations">Donations</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className="col-sm-6">
+                          <div className="form-group">
+                            <label className="control-label">Category</label>
+                            <select
+                              onChange={handleChange('category')}
+                              value={category}
+                              className="form-control"
+                              id="category"
+                              name="category"
+                            >
+                              <option> {category}</option>
+                              {categories &&
+                                categories.map((c, i) => (
+                                  <option key={i} value={c._id}>
+                                    {' '}
+                                    {c.name}{' '}
+                                  </option>
+                                ))}{' '}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-sm-4">
+                          <div className="form-group">
+                            <label className="control-label">Location</label>
+                            <input
+                              onChange={handleChange('location')}
+                              value={location}
+                              type="text"
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-sm-4">
+                          <div className="form-group">
+                            <label className="control-label">Website</label>
+                            <input
+                              onChange={handleChange('website')}
+                              value={website}
+                              type="text"
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-sm-4">
+                          <div className="form-group">
+                            <label className="control-label">Status</label>
+                            <select
+                              onChange={handleChange('status')}
+                              className="form-control custom-select"
+                            >
+                              <option> {getStatus(status)}</option>
+
+                              <option value="0">Inactivate</option>
+                              <option value="1">Activate</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-sm-4">
+                          <div className="form-group">
+                            <label className="control-label">Goal</label>
+                            <input
+                              onChange={handleChange('pledge')}
+                              value={pledge}
+                              type="number"
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-sm-4">
+                          <div className="form-group">
+                            <label className="control-label">Return</label>
+                            <input
+                              onChange={handleChange('returns')}
+                              value={returns}
+                              type="number"
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                        <div className="col-sm-4">
+                          <div className="form-group">
+                            <label className="control-label">Duration</label>
+                            <input
+                              onChange={handleChange('duration')}
+                              value={duration}
+                              type="number"
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-sm-6">
+                          <div className="form-group">
+                            <label htmlFor="inputDescription">
+                              Project Description
+                            </label>
+                            <CKEditor
+                              editor={ClassicEditor}
+                              name="description"
+                              onChange={handleOnChange}
+                              data={` ${des} `}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-sm-6">
+                          <div className="form-group">
+                            <label className="control-label">
+                              Feature Picture
+                            </label>
+                            <small>
+                              (This is the first thing that people will see when
+                              they come across your project.)
+                            </small>
+                            <input
+                              onChange={handleChange('image')}
+                              required=""
+                              type="file"
+                              name="file"
+                              className="dropify"
+                              data-height="300"
+                            />
+                          </div>
+                          <div class="col-12 col-md-6 col-lg-4 single_gallery_item development branding">
+                            <div class="gallery-content">
+                              <img
+                                src={`${API}/project/image/${match.params.projectId}`}
+                                alt={title}
+                              />
+                              <div class="gallery-hover-overlay d-flex justify-content-between">
+                                <div class="port-more-view">
+                                  <div class="port-text  mb-30">
+                                    <p class="text-white mb-0">Magazine</p>
+                                    <h4>
+                                      <a href="#" class="text-white">
+                                        Responsive Template
+                                      </a>
+                                    </h4>
+                                  </div>
+                                  <div class="port-icon">
+                                    <a href="#" class="gallery_icon">
+                                      <i class="fa fa-plus"></i>
+                                    </a>
+                                    <a href="#">
+                                      <i class="fa fa-link"></i>
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {loading && loading ? (
+                        <Button
+                          className="btn btn-danger float-right"
+                          variant="success"
+                          disabled
+                        >
+                          <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                          Loading...
+                        </Button>
+                      ) : (
+                        <input
+                          type="submit"
+                          className="btn btn-success float-right"
+                          value="Update product"
+                        />
+                      )}{' '}
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
-        </Fragment>);
+          </Fragment>
+        );
     };
 
 
