@@ -28,6 +28,8 @@ const Home = () => {
 } = isAuthenticated();
 
 const [data, setData] = useState([]);
+const [data2, setData2] = useState([]);
+
 const [error, setError] = useState(false);
 
 let issuerUserId, issuerStatus
@@ -40,8 +42,8 @@ const init = () => {
   getIssuerApplicationForm(_id).then(data => {
   if (data.error) {
      setError(data.error);
-  }else{
-    setData(data)
+  } else {
+    setData2(data);
     
   }
 });
@@ -51,7 +53,7 @@ const init = () => {
 
 
 const process = () => {
-data.map((issuer, i) => {
+data2.map((issuer, i) => {
   issuerUserId = issuer.userId._id
   issuerStatus = issuer.status
 })
@@ -179,41 +181,43 @@ initInvestmentCount();
 
 
   const activeTimeLine = () => {
-    return(
+    return (
       <Fragment>
-        
-         <div class="row">
-                        <div class="col-lg-8 box-margin height-card">
-                            <div class="card">
-                               
-                          { process()}
-                        
-                      
-                         
-                                {issuerUserId === _id   ? ( 
-                                  <Fragment>
-                                    <div class="card-body">
-                                    <div class="crm-chart">
-                                        <div id="apex7"></div>
-                                    </div>
-                                </div>
-                                  </Fragment>
-                                ) : Reg()}
-                            </div>
-                        </div>
+        <div class="row">
+          <div class="col-lg-8 box-margin height-card">
+            <div class="card">
+              {process()}
 
-                        <div class="col-xl-4">
-                            <div class="card mb-30">
-                                <div class="card-body">
-                                    <div class="card-header border-none bg-transparent d-flex align-items-center justify-content-between p-0 mb-30">
-                                        <div class="widgets-card-title">
-                                            <h5 class="card-title mb-0">Activity Timeline</h5>
-                                        </div>
-                                    </div>
+            
 
-                                  
-                                    <ul class="dashboard-active-timeline list-unstyled" id="dashboardTimeline">
-                                        {/* <li class="d-flex align-items-center mb-15">
+              {issuerUserId === _id ? (
+                <Fragment>
+                  <div class="card-body">
+                    <div class="crm-chart">
+                      <div id="apex7"></div>
+                    </div>
+                  </div>
+                </Fragment>
+              ) : (
+                Reg()
+              )}
+            </div>
+          </div>
+
+          <div class="col-xl-4">
+            <div class="card mb-30">
+              <div class="card-body">
+                <div class="card-header border-none bg-transparent d-flex align-items-center justify-content-between p-0 mb-30">
+                  <div class="widgets-card-title">
+                    <h5 class="card-title mb-0">Activity Timeline</h5>
+                  </div>
+                </div>
+
+                <ul
+                  class="dashboard-active-timeline list-unstyled"
+                  id="dashboardTimeline"
+                >
+                  {/* <li class="d-flex align-items-center mb-15">
                                             <div class="timeline-icon bg-primary mr-3">
                                                 <i class="icon_plus"></i>
                                             </div>
@@ -223,16 +227,13 @@ initInvestmentCount();
                                                 <p class="mb-0 font-13">25 mins ago</p>
                                             </div>
                                         </li> */}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                      
-                    </div>
-                
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </Fragment>
-    )
+    );
   }
 
     const contentHeader = () => {
@@ -344,39 +345,90 @@ initInvestmentCount();
 
 
   const content = () => {
-    return(
-        <Fragment>
-              <div id="layoutSidenav_content">
-            <main>
-                <div className="container-fluid mt-5">
-                    <div className="d-flex justify-content-between align-items-sm-center flex-column flex-sm-row mb-4">
-                        <div className="mr-4 mb-3 mb-sm-0">
-                            <h1 className="mb-0">Dashboard</h1>
-                            <div className="small"><span className="font-weight-500 text-primary"> &middot; {moment().format('LLLL')} &middot;</span></div>
-                        </div>
-                        <div className="dropdown">
-                            <Link className="btn btn-white btn-sm font-weight-500 line-height-normal p-3 dropdown-toggle" id="dropdownMenuLink" to="#" role="button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"><i className="text-primary mr-2" data-feather="calendar"></i>{moment().format("MMM - Do - YY") }</Link>
-                            <div className="dropdown-menu dropdown-menu-sm-right animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                <Link className="dropdown-item" to="#!">Last 30 days</Link><Link className="dropdown-item" to="#!">Last week</Link><Link className="dropdown-item" to="#!">This year</Link><Link className="dropdown-item" to="#!">Yesterday</Link>
-                                <div className="dropdown-divider"></div>
-                                <Link className="dropdown-item" to="#!">Custom</Link>
-                            </div>
-                        </div>
+    return (
+      <Fragment>
+        <div id="layoutSidenav_content">
+          <main>
+            <div className="container-fluid mt-5">
+              <div className="d-flex justify-content-between align-items-sm-center flex-column flex-sm-row mb-4">
+                <div className="mr-4 mb-3 mb-sm-0">
+                  <h1 className="mb-0">Dashboard</h1>
+                  <div className="small">
+                    <span className="font-weight-500 text-primary">
+                      {' '}
+                      &middot; {moment().format('LLLL')} &middot;
+                    </span>
+                  </div>
+                </div>
+                <div className="dropdown">
+                  <Link
+                    className="btn btn-white btn-sm font-weight-500 line-height-normal p-3 dropdown-toggle"
+                    id="dropdownMenuLink"
+                    to="#"
+                    role="button"
+                    data-toggle="dropdown"
+                    data-display="static"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i
+                      className="text-primary mr-2"
+                      data-feather="calendar"
+                    ></i>
+                    {moment().format('MMM - Do - YY')}
+                  </Link>
+                  <div
+                    className="dropdown-menu dropdown-menu-sm-right animated--fade-in"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <Link className="dropdown-item" to="#!">
+                      Last 30 days
+                    </Link>
+                    <Link className="dropdown-item" to="#!">
+                      Last week
+                    </Link>
+                    <Link className="dropdown-item" to="#!">
+                      This year
+                    </Link>
+                    <Link className="dropdown-item" to="#!">
+                      Yesterday
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="#!">
+                      Custom
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <div className="alert alert-primary border-0 mb-4 mt-5 px-md-5">
+                <div className="position-relative">
+                  <div className="row align-items-center justify-content-between">
+                    <div className="col position-relative">
+                      <h2 className="text-primary">
+                        Welcome back, your dashboard is ready!
+                      </h2>
+                      <p className="text-gray-700">
+                        Great job, your affiliate dashboard is ready to go! You
+                        can view sales, generate links, prepare coupons, and
+                        download affiliate reports using this dashboard.
+                      </p>
+                      <Link className="btn btn-teal" to="/investment">
+                        Get started
+                        <i className="ml-1" data-feather="arrow-right"></i>
+                      </Link>
                     </div>
-                    <div className="alert alert-primary border-0 mb-4 mt-5 px-md-5">
-                        <div className="position-relative">
-                            <div className="row align-items-center justify-content-between">
-                                <div className="col position-relative">
-                                    <h2 className="text-primary">Welcome back, your dashboard is ready!</h2>
-                                    <p className="text-gray-700">Great job, your affiliate dashboard is ready to go! You can view sales, generate links, prepare coupons, and download affiliate reports using this dashboard.</p>
-                                    <Link className="btn btn-teal" to="/investment">Get started<i className="ml-1" data-feather="arrow-right"></i></Link>
-                                </div>
-                                <div className="col d-none d-md-block text-right pt-3"><img className="img-fluid mt-n5" src={IMG} style={{maxWidth: "25rem"}} /></div>
-                            </div>
-                        </div>
+                    <div className="col d-none d-md-block text-right pt-3">
+                      <img
+                        className="img-fluid mt-n5"
+                        src={IMG}
+                        style={{ maxWidth: '25rem' }}
+                      />
                     </div>
-                    <div className="row">
-                        <div className="col-xl-3 col-md-6 mb-4">
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                {/* <div className="col-xl-3 col-md-6 mb-4">
                             <div className="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-blue h-100">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center">
@@ -389,8 +441,8 @@ initInvestmentCount();
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-xl-3 col-md-6 mb-4">
+                        </div> */}
+                {/* <div className="col-xl-3 col-md-6 mb-4">
                             <div className="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-purple h-100">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center">
@@ -403,8 +455,8 @@ initInvestmentCount();
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-xl-3 col-md-6 mb-4">
+                        </div> */}
+                {/* <div className="col-xl-3 col-md-6 mb-4">
                             <div className="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-green h-100">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center">
@@ -417,8 +469,8 @@ initInvestmentCount();
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-xl-3 col-md-6 mb-4">
+                        </div> */}
+                {/* <div className="col-xl-3 col-md-6 mb-4">
                             <div className="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-yellow h-100">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center">
@@ -431,56 +483,79 @@ initInvestmentCount();
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
+              </div>
+              <div className="row">
+                <div className="col-lg-4 col-xl-3 mb-4">
+                  <div className="card bg-secondary border-0">
+                    <div className="card-body">
+                      <h5 className="text-white-50">Total Raised</h5>
+                      {totalInvestedCapital()}
+                      <div className="mb-4">
+                        <span className="display-4 text-white">
+                          ₦
+                          {totalInvestmentCapital.toLocaleString(
+                            navigator.language,
+                            { minimumFractionDigits: 0 }
+                          )}
+                        </span>
+                        <span className="text-white-50"> current year</span>
+                      </div>
+                      <div
+                        className="progress bg-white-25 rounded-pill"
+                        style={{ height: '0.5rem' }}
+                      >
+                        <div
+                          className="progress-bar bg-white w-75 rounded-pill"
+                          role="progressbar"
+                          aria-valuenow="75"
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
                     </div>
-                    <div className="row">
-                        <div className="col-lg-4 col-xl-3 mb-4">
-                           
-                           
-                            <div className="card bg-secondary border-0">
-                                <div className="card-body">
-                                    <h5 className="text-white-50">Total Raised</h5>
-                                    {totalInvestedCapital()}
-                                    <div className="mb-4"><span className="display-4 text-white">₦{totalInvestmentCapital.toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</span><span className="text-white-50"> current year</span></div>
-                                    <div className="progress bg-white-25 rounded-pill" style={{height: "0.5rem"}}><div className="progress-bar bg-white w-75 rounded-pill" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-8 col-xl-9 mb-4">
-                        {process()}
+                  </div>
+                </div>
+                <div className="col-lg-8 col-xl-9 mb-4">
+                  {process()}
 
-{individual === _id || corporate === _id ? '' : Reg()}
-                        </div>
-                    </div>
+                  {issuerUserId === _id ? '' : Reg()}
                 </div>
-            </main>
-            <footer className="footer mt-auto footer-light">
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-6 small">Copyright &copy;<a href="http://ventureramp.com.ng/">ventureramp.com.ng</a> 2020</div>
-                        <div className="col-md-6 text-md-right small">
-                            <Link to="#!">Privacy Policy</Link>
-                            &middot;
-                            <Link to="#!">Terms &amp; Conditions</Link>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </main>
+          <footer className="footer mt-auto footer-light">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-md-6 small">
+                  Copyright &copy;
+                  <a href="http://ventureramp.com.ng/">ventureramp.com.ng</a>{' '}
+                  2020
                 </div>
-            </footer>
+                <div className="col-md-6 text-md-right small">
+                  <Link to="#!">Privacy Policy</Link>
+                  &middot;
+                  <Link to="#!">Terms &amp; Conditions</Link>
+                </div>
+              </div>
+            </div>
+          </footer>
         </div>
-        </Fragment>
-    )
+      </Fragment>
+    );
 }
 
 
   return (
     <Fragment>
-    {dashboarddashboard()}
-   <Header />
-     <div id="layoutSidenav">
-         <Menu />
-         {content()}
-     </div>
- </Fragment>
+      {dashboarddashboard()}
+      <Header />
+      <div id="layoutSidenav">
+        <Menu />
+        {content()}
+      
+      </div>
+    </Fragment>
   );
 };
 

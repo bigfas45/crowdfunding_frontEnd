@@ -336,30 +336,34 @@ const totalInvestedCapital = () => {
                                             projects.map((p, i) => {
                                                 count++;
                                                 return (
-                                                    <Fragment>
-                                                        <tr key={i}>
-                                                            <td>{count}</td>
-                                                            <td> {
-                                                                p.title
-                                                            }
-                                                                <br/>
-                                                                <small>{
-                                                                    moment(p.createdAt).format("LL")
-                                                                }</small>
-                                                            </td>
-                                                            <td> {
-                                                                p.pledge.toLocaleString(navigator.language, {minimumFractionDigits: 0})
-                                                            } </td>
-                                                            <td>{
-                                                                p.duration
-                                                            }</td>
-                                                            <td>{
-                                                                p.category.name
-                                                            }</td>
-                                                            <td>{
-                                                                getStatus(p.status)
-                                                            }</td>
-                                                            {/* <td> {" "}
+                                                  <Fragment>
+                                                    <tr key={i}>
+                                                      <td>{count}</td>
+                                                      <td>
+                                                        {' '}
+                                                        {p.title}
+                                                        <br />
+                                                        <small>
+                                                          {moment(
+                                                            p.createdAt
+                                                          ).format('LL')}
+                                                        </small>
+                                                      </td>
+                                                      <td>
+                                                        {' '}
+                                                        {p.pledge.toLocaleString(
+                                                          navigator.language,
+                                                          {
+                                                            minimumFractionDigits: 0,
+                                                          }
+                                                        )}{' '}
+                                                      </td>
+                                                      <td>{p.duration}</td>
+                                                      <td>{p.category.name}</td>
+                                                      <td>
+                                                        {getStatus(p.status)}
+                                                      </td>
+                                                      {/* <td> {" "}
                                                                 <Link className="btn btn-info btn-sm"
                                                                     to={
                                                                         `/issuer/project/update/${
@@ -373,25 +377,31 @@ const totalInvestedCapital = () => {
                                                                 
                                                             </td> */}
 
-                                                            <td>                    
-                                                                <div class="actions ml-3">
-                                                                    <a href={`/issuer/project/update/${ p._id }`} class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="Quick view">
-                                                                        <i class="fa fa-external-link"></i>
-                                                                    </a>
-                                                                    <Link className="btn btn-info btn-sm"
-                                                                    to={
-                                                                        `/admin/project/payment/${
-                                                                            p._id
-                                                                        }`
-                                                                }>
-                                                                        <i class="btn btn-primary md-trigger mr-2 mb-2" data-modal="modal-1" class="fa fa-credit-card-alt"></i>
-                                                                    </Link>
-                                                                </div>
-                                                            </td>
-
-                                                            
-                                                        </tr>
-                                                    </Fragment>
+                                                      <td>
+                                                        <div class="actions ml-3">
+                                                          <a
+                                                            href={`/issuer/project/update/${p._id}`}
+                                                            class="action-item mr-2"
+                                                            data-toggle="tooltip"
+                                                            title=""
+                                                            data-original-title="Quick view"
+                                                          >
+                                                            <i class="fa fa-external-link"></i>
+                                                          </a>
+                                                          <Link
+                                                            className="btn btn-info btn-sm"
+                                                            to={`/issuer/project/payment/${p._id}`}
+                                                          >
+                                                            <i
+                                                              class="btn btn-primary md-trigger mr-2 mb-2"
+                                                              data-modal="modal-1"
+                                                              class="fa fa-credit-card-alt"
+                                                            ></i>
+                                                          </Link>
+                                                        </div>
+                                                      </td>
+                                                    </tr>
+                                                  </Fragment>
                                                 );
                                             })
                                         } </tbody>
