@@ -412,8 +412,11 @@ initInvestmentCount();
                         can view sales, generate links, prepare coupons, and
                         download affiliate reports using this dashboard.
                       </p>
-                      <Link className="btn btn-teal" to="/investment">
-                        Get started
+                      <Link
+                        className="btn btn-teal"
+                        to="/issuer/project/manage"
+                      >
+                        Submit Project
                         <i className="ml-1" data-feather="arrow-right"></i>
                       </Link>
                     </div>
@@ -529,7 +532,9 @@ initInvestmentCount();
               <div className="row">
                 <div className="col-md-6 small">
                   Copyright &copy;
-                  <a href="http://ventureramp.com.ng/">ventureramp.com.ng</a>{' '}
+                  <a href="http://ventureramp.com.ng/">
+                    ventureramp.com.ng
+                  </a>{' '}
                   2020
                 </div>
                 <div className="col-md-6 text-md-right small">
